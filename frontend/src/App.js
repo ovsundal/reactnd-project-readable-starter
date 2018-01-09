@@ -15,6 +15,7 @@ import {
 } from 'reactstrap';
 import './components/navigation';
 import Navigation from "./components/navigation";
+import Post from "./components/post";
 
 class App extends Component {
     constructor(props) {
@@ -33,52 +34,12 @@ class App extends Component {
 
     render() {
         return (
-            <div>
+            <row>
                 <Navigation/>
-            </div>
+                <Post/>
+            </row>
         )
     }
-
-    // render() {
-    //     return (
-    //         <div>
-    //             <Navbar color="inverse" inverse toggleable>
-    //                 <NavbarToggler right onClick={this.toggle} />
-    //                 <NavbarBrand href="/">reactstrap</NavbarBrand>
-    //                 <Collapse isOpen={this.state.isOpen} navbar>
-    //                     <Nav className="ml-auto" navbar>
-    //                         <NavItem>
-    //                             <NavLink href="/components/">Components</NavLink>
-    //                         </NavItem>
-    //                         <NavItem>
-    //                             <NavLink href="https://github.com/reactstrap/reactstrap">Github</NavLink>
-    //                         </NavItem>
-    //                     </Nav>
-    //                 </Collapse>
-    //             </Navbar>
-    //             <Jumbotron>
-    //                 <Container>
-    //                     <Row>
-    //                         <Col>
-    //                             <h1>Welcome to React</h1>
-    //                             <p>
-    //                                 <Button
-    //                                     tag="a"
-    //                                     color="success"
-    //                                     size="large"
-    //                                     href="http://reactstrap.github.io"
-    //                                     target="_blank"
-    //                                 >
-    //                                     View Reactstrap Docs
-    //                                 </Button>
-    //                             </p>
-    //                         </Col>
-    //                     </Row>
-    //                 </Container>
-    //             </Jumbotron>
-    //         </div>
-    //     );
-    // }
 }
 
 export default App;
