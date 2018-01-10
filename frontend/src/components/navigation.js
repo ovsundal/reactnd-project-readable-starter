@@ -11,7 +11,7 @@ import {
     DropdownToggle,
     DropdownMenu,
     DropdownItem } from 'reactstrap';
-
+import {Link, Route} from 'react-router-dom';
 
 //Navbar from https://reactstrap.github.io/components/navbar/
 class Navigation extends React.Component {
@@ -37,7 +37,8 @@ class Navigation extends React.Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="/components/">Components</NavLink>
+                                <NavLink href="/components/">
+                                    <Link to="/newPost">New Post</Link></NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink href="https://github.com/reactstrap/reactstrap">Github</NavLink>

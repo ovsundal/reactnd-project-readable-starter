@@ -16,6 +16,9 @@ import {
 import './components/navigation';
 import Navigation from "./components/navigation";
 import Post from "./components/post";
+import Searchbar from "./components/searchbar";
+import CreatePost from "./components/createPost";
+import { Route } from 'react-router-dom'
 
 class App extends Component {
     constructor(props) {
@@ -34,10 +37,31 @@ class App extends Component {
 
     render() {
         return (
-            <row>
-                <Navigation/>
-                <Post/>
-            </row>
+            <Container>
+                <Col>
+                    <Navigation/>
+                </Col>
+                {/*route to default blog*/}
+                <Route exact path="/" render={() => (
+                    <Container>
+                        <Row>
+                            <Col xs="8">
+                                <Post/>
+                                <Post/>
+                            </Col>
+                            <Col xs="4">
+                                <Searchbar/>
+                            </Col>
+                        </Row>
+                    </Container>
+                )}/>
+                {/*route to new post*/}
+                <Route path="/newPost" render={() => (
+                    <Container>
+                        <CreatePost/>
+                    </Container>
+                )}/>
+            </Container>
         )
     }
 }
