@@ -7,16 +7,16 @@ class CreatePost extends React.Component {
         return (
             <Form>
                 <FormGroup>
+                    <Label for="author">Author</Label>
+                    <Input type="text" id="author" placeholder="author" />
+                </FormGroup>
+                <FormGroup>
                     <Label for="title">Title</Label>
-                    <Input type="text" id="title" placeholder="Post title" />
+                    <Input type="text" id="title" placeholder="title" />
                 </FormGroup>
                 <FormGroup>
                     <Label for="content">Content</Label>
-                    <Input type="textarea" name="text" id="content" />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="author">Author</Label>
-                    <Input type="text" id="author" placeholder="author" />
+                    <Input type="textarea" name="text" id="content" placeholder="content" />
                 </FormGroup>
                 <FormGroup>
                     <Label for="exampleFile">Picture</Label>
