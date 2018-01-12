@@ -1,13 +1,13 @@
 export const ADD_POST = 'ADD_POST';
 
-export function addPost({author, title, content, picture, category, dateCreated}) {
+export function addPost({id, timestamp, title, body, author, category}) {
     return {
         type: ADD_POST,
-        author,
+        id,
+        timestamp,
         title,
-        content,
-        picture,
-        category,
-        dateCreated
+        body,
+        author,
+        category
     }
 }
