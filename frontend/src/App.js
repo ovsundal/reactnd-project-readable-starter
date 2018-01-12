@@ -13,8 +13,8 @@ import {
     Jumbotron,
     Button
 } from 'reactstrap';
-import './components/navigation';
-import Navigation from "./components/navigation";
+import './components/navigationBar';
+import Navigation from "./components/navigationBar";
 import Post from "./components/post";
 import Searchbar from "./components/searchbar";
 import CreatePost from "./components/createPost";
