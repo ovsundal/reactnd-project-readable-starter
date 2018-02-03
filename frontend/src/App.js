@@ -13,11 +13,11 @@ import {
     Jumbotron,
     Button
 } from 'reactstrap';
-import './components/navigationBar';
-import Navigation from "./components/navigationBar";
-import Post from "./components/post";
+import './components/NavigationBar';
+import Navigation from "./components/NavigationBar";
+import Post from "./components/Post";
 import Searchbar from "./components/searchbar";
-import CreatePost from "./components/createPost";
+import CreatePost from "./components/CreatePost";
 import { Route } from 'react-router-dom'
 
 class App extends Component {
@@ -56,7 +56,7 @@ class App extends Component {
                     </Container>
                 )}/>
                 {/*route to new post*/}
-                <Route path="/newPost" render={() => (
+                <Route path="/NewPost" render={() => (
                     <Container>
                         <CreatePost/>
                     </Container>

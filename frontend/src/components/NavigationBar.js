@@ -37,7 +37,7 @@ class Navigation extends React.Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                    <Link to="/newPost">New Post</Link>
+                                    <Link to="/NewPost">New Post</Link>
                             </NavItem>
                         </Nav>
                     </Collapse>
