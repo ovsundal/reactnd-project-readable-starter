@@ -27,7 +27,7 @@ class CreatePost extends React.Component {
       })
     };
 
-    //submit form, send data to redux
+
     handleSubmit = (event) => {
         event.preventDefault();
         const data = {
@@ -36,10 +36,13 @@ class CreatePost extends React.Component {
             title: this.state.title,
             body: this.state.content,
             author: this.state.author,
-            category: this.state.category
+            category: this.state.category,
+            voteScore: 0,
+            deleted: false
         };
+        //send data to redux
         this.props.dispatch(addPost(data));
-
+        // this.props.history.push('/');
     };
 
     render() {
