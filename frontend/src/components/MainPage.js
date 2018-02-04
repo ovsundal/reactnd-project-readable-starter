@@ -19,8 +19,11 @@ import Post from "./Post";
 import Searchbar from "./searchbar";
 import CreatePost from "./CreatePost";
 import { Route } from 'react-router-dom'
+import * as actions from '../actions'
+import {connect} from "react-redux";
+import {getPosts} from "../actions";
 
-class App extends Component {
+class MainPage extends Component {
     constructor(props) {
         super(props);
 
@@ -30,9 +33,13 @@ class App extends Component {
         };
     }
 
+    componentWillMount() {
+       console.log(this.props
+            .getPosts());
+    }
+
     componentDidMount() {
-
-
+        console.log(this.props)
     }
 
 
@@ -54,7 +61,6 @@ class App extends Component {
                         <Row>
                             <Col xs="8">
                                 <Post/>
-                                <Post/>
                             </Col>
                             <Col xs="4">
                                 <Searchbar/>
@@ -73,4 +79,24 @@ class App extends Component {
     }
 }
 
-export default App;
+//mapStateToProps allows you to specify which data
+// from the store you want passed to component
+//it's a function that lets connect() know how to map specific
+//parts of the stores state into usable props
+function mapStateToProps({posts}) {
+    return {
+        posts
+    }
+}
+
+//bind dispatch to action creators before they hit the component
+function mapDispatchToProps(dispatch) {
+    return {
+        getPosts: (data) => dispatch(actions.getPosts(data))
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(MainPage)

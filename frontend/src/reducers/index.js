@@ -18,6 +18,7 @@ export default function (state = initialPostState, action) {
     switch(action) {
         case ADD_POST: {
             return {
+                //return the entire state using object spread syntax
                 ...state
             }
         }
@@ -30,27 +31,3 @@ export default function (state = initialPostState, action) {
         }
     }
 }
-
-//
-// const newPost(state = initialPostState, action) {
-//     const {id, timestamp, title, body, author, category} = action;
-//
-//     //how will state change from action
-//     switch (action.type) {
-//         case ADD_POST:
-//             return {
-//                 //return same state we had before using object spread syntax (is that necessary here?)
-//                 ...state,
-//                 [id]: action.id,
-//                 [timestamp]: action.timestamp,
-//                 [title]: action.title,
-//                 [body]: action.body,
-//                 [author]: action.author,
-//                 [category]: action.category
-//             };
-//         default:
-//             return state;
-//     }
-// }
-//
-// export default newPost;
