@@ -1,0 +1,76 @@
+import React, { Component } from 'react';
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+    Container,
+    Row,
+    Col,
+    Jumbotron,
+    Button
+} from 'reactstrap';
+import './NavigationBar';
+import Navigation from "./NavigationBar";
+import Post from "./Post";
+import Searchbar from "./searchbar";
+import CreatePost from "./CreatePost";
+import { Route } from 'react-router-dom'
+
+class App extends Component {
+    constructor(props) {
+        super(props);
+
+        this.toggle = this.toggle.bind(this);
+        this.state = {
+            isOpen: false
+        };
+    }
+
+    componentDidMount() {
+
+
+    }
+
+
+    toggle() {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+    }
+
+    render() {
+        return (
+            <Container>
+                <Col>
+                    <Navigation/>
+                </Col>
+                {/*route to default blog*/}
+                <Route exact path="/" render={() => (
+                    <Container>
+                        <Row>
+                            <Col xs="8">
+                                <Post/>
+                                <Post/>
+                            </Col>
+                            <Col xs="4">
+                                <Searchbar/>
+                            </Col>
+                        </Row>
+                    </Container>
+                )}/>
+                {/*route to new post*/}
+                <Route path="/NewPost" render={() => (
+                    <Container>
+                        <CreatePost/>
+                    </Container>
+                )}/>
+            </Container>
+        )
+    }
+}
+
+export default App;

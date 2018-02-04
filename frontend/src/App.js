@@ -19,6 +19,7 @@ import Post from "./components/Post";
 import Searchbar from "./components/searchbar";
 import CreatePost from "./components/CreatePost";
 import { Route } from 'react-router-dom'
+import MainPage from "./components/MainPage";
 
 class App extends Component {
     constructor(props) {
@@ -34,34 +35,10 @@ class App extends Component {
             isOpen: !this.state.isOpen
         });
     }
-
+//configure react-router here
     render() {
         return (
-            <Container>
-                <Col>
-                    <Navigation/>
-                </Col>
-                {/*route to default blog*/}
-                <Route exact path="/" render={() => (
-                    <Container>
-                        <Row>
-                            <Col xs="8">
-                                <Post/>
-                                <Post/>
-                            </Col>
-                            <Col xs="4">
-                                <Searchbar/>
-                            </Col>
-                        </Row>
-                    </Container>
-                )}/>
-                {/*route to new post*/}
-                <Route path="/NewPost" render={() => (
-                    <Container>
-                        <CreatePost/>
-                    </Container>
-                )}/>
-            </Container>
+            <MainPage/>
         )
     }
 }

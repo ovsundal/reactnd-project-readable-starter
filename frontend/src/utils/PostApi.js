@@ -13,3 +13,12 @@ export const addPost = data =>
             headers,
             body: JSON.stringify(data)
         }).then(response => response.json());
+
+//get all posts
+export const getPosts = data =>
+    fetch(`${url}posts`,
+        {
+            method: 'GET',
+            headers,
+            body: JSON.stringify(data)
+        }).then(response => response.json());

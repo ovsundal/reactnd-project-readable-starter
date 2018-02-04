@@ -37,7 +37,7 @@ class CreatePost extends React.Component {
             body: this.state.content,
             author: this.state.author,
             category: this.state.category,
-            voteScore: 0,
+            voteScore: 1,
             deleted: false
         };
         //send data to redux
