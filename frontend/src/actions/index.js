@@ -9,12 +9,8 @@ export const sendPost = (posts, action) => ({
 
 export const addPost = (data) => dispatch =>
     PostApi.addPost(data)
-    //if successful api upload, dispatch item to store
         .then(post => dispatch(sendPost(post, ADD_POST)));
 
 export const getPosts = () => dispatch =>
     PostApi.getPosts()
         .then(posts => dispatch(sendPost(posts, GET_ALL_POSTS)));
-
-
-

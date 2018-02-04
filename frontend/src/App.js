@@ -16,7 +16,7 @@ import {
 import './components/NavigationBar';
 import Navigation from "./components/NavigationBar";
 import Post from "./components/Post";
-import Searchbar from "./components/searchbar";
+import Searchbar from "./components/Searchbar";
 import CreatePost from "./components/CreatePost";
 import { Route } from 'react-router-dom'
 import MainPage from "./components/MainPage";

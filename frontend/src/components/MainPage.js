@@ -1,27 +1,18 @@
 import React, { Component } from 'react';
 import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
     Container,
     Row,
     Col,
-    Jumbotron,
-    Button
 } from 'reactstrap';
 import './NavigationBar';
 import Navigation from "./NavigationBar";
 import Post from "./Post";
-import Searchbar from "./searchbar";
+import Searchbar from "./Searchbar";
 import CreatePost from "./CreatePost";
 import { Route } from 'react-router-dom'
 import * as actions from '../actions'
 import {connect} from "react-redux";
-import {getPosts} from "../actions";
+
 
 class MainPage extends Component {
     constructor(props) {
@@ -32,21 +23,14 @@ class MainPage extends Component {
             isOpen: false
         };
     }
-
-    componentWillMount() {
-       console.log(this.props
-            .getPosts());
-    }
-
-    componentDidMount() {
-        console.log(this.props)
-    }
-
-
     toggle() {
         this.setState({
             isOpen: !this.state.isOpen
         });
+    }
+
+    componentWillMount() {
+        this.props.getPosts();
     }
 
     render() {
@@ -61,6 +45,14 @@ class MainPage extends Component {
                         <Row>
                             <Col xs="8">
                                 <Post/>
+                                <h1>POSTS HERE</h1>
+
+
+                                {this.props.posts && Object.values(this.props.posts)
+                                    .map(post =>
+                                        console.log(this.props)
+                                    )}
+
                             </Col>
                             <Col xs="4">
                                 <Searchbar/>
@@ -85,14 +77,15 @@ class MainPage extends Component {
 //parts of the stores state into usable props
 function mapStateToProps({posts}) {
     return {
-        posts
+        //QUESTION: this is always null, why?
+        posts: console.log(posts)
     }
 }
 
 //bind dispatch to action creators before they hit the component
 function mapDispatchToProps(dispatch) {
     return {
-        getPosts: (data) => dispatch(actions.getPosts(data))
+        getPosts: () => dispatch(actions.getPosts())
     }
 }
 
