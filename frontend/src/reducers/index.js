@@ -1,4 +1,7 @@
-import {ADD_POST, GET_ALL_POSTS} from '../actions';
+import {
+    ADD_POST,
+    GET_ALL_POSTS,
+    VOTE_POST} from '../actions';
 
 //A reducer takes in the current state and an action, and returns the new state. At first it is always
 //initialized with an initial state (null-values)
@@ -25,6 +28,14 @@ export default function (state = initialPostState, action) {
         case GET_ALL_POSTS: {
             //return all posts that are not marked with deleted
             return action.posts.filter(post => !(post.deleted));
+        }
+
+        case VOTE_POST: {
+            if(action.voteType === 'upVote') {
+                return action.posts.filter(post => post.id === action.id ? post.voteScore + 1 : post.voteScore)
+            } else {
+                return action.posts.filter(post => post.id === action.id ? post.voteScore - 1 : post.voteScore)
+            }
         }
         default: {
             return state;

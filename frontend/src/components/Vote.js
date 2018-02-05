@@ -1,7 +1,11 @@
 import React from 'react';
 
 const Upvote = () => {
-    return <p>UPVOTE</p>
+    return <div>
+        <p>UPVOTE</p>
+        <p>DOWNVOTE</p>
+    </div>
+
 };
 
 export default Upvote;

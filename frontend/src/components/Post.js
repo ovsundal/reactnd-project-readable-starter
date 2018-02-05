@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Card, CardText, CardBody,
     CardTitle, CardSubtitle, Button } from 'reactstrap';
 import moment from "moment";
-import Upvote from "./Upvote";
+import Vote from "./Vote";
 
 //template from http://reactstrap.github.io/components/card/
 const Post = (props) => {
@@ -17,7 +17,7 @@ const Post = (props) => {
                         <br/>
                     </CardSubtitle>
                     {/*vote section*/}
-                    <Upvote/>
+                    <Vote/>
                     <br/>
 
                     <CardText className='post-content'>{props.body}</CardText>
