@@ -12,6 +12,7 @@ import CreatePost from "./CreatePost";
 import { Route } from 'react-router-dom'
 import * as actions from '../actions'
 import {connect} from "react-redux";
+import {toDateTime} from "../utils/DateFormat";
 
 
 class MainPage extends Component {
@@ -45,13 +46,22 @@ class MainPage extends Component {
                         <Row>
                             <Col xs="8">
                                 <Post/>
-                                <h1>POSTS HERE</h1>
+                                {/*only render after posts have been retrieved from store. JS treats null as an object,*/}
+                                {/*so when item is retrieved it is type array, so only render in array form*/}
+                                {typeof this.props.posts.id !== 'object' && this.props.posts.map((post)=>
+                                    <Post
+                                        key={post.id}
+                                        title={post.title}
+                                        body={post.body}
+                                        author={post.author}
+                                        category={post.category}
+                                        timestamp={toDateTime(post.timestamp)}
+                                    />
 
 
-                                {this.props.posts && Object.values(this.props.posts)
-                                    .map(post =>
-                                        console.log(this.props)
-                                    )}
+                                )}
+
+
 
                             </Col>
                             <Col xs="4">
@@ -75,10 +85,9 @@ class MainPage extends Component {
 // from the store you want passed to component
 //it's a function that lets connect() know how to map specific
 //parts of the stores state into usable props
-function mapStateToProps({posts}) {
+function mapStateToProps(posts) {
     return {
-        //QUESTION: this is always null, why?
-        posts: console.log(posts)
+        posts
     }
 }
 

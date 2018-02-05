@@ -1,26 +1,34 @@
 import React from 'react';
 import { Col, Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button } from 'reactstrap';
+import moment from "moment";
 
 //template from http://reactstrap.github.io/components/card/
 const Post = (props) => {
     return (
         <Col>
-            <Card>
-                <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
+            <Card className="post">
                 <CardBody>
-                    <CardTitle>Post title</CardTitle>
-                    <CardSubtitle>Post subtitle</CardSubtitle>
-                    <CardText>Lorem ipsum dolor sit amet, nihil labitur blandit in per, porro forensibus pro an.
-                        Eum in doctus nonumes nominavi. Ut suas dicant appellantur eos, autem doctus vix et, duo et
-                        integre feugiat impedit. In pri dicam verterem, modus blandit repudiandae pro te, nec ut sale
-                        persecuti. Saperet fabellas eloquentiam ex pro, nec iisque sadipscing eu, nibh postea cum te.
+                    <CardTitle className='post-title'>{props.title}</CardTitle>
+                    <CardSubtitle className='post-author'>Author: {props.author}</CardSubtitle>
+                    <hr/>
+                    <CardText className='post-content'>{props.body}
                     </CardText>
-                    <Button>Read more</Button>
+                    <hr/>
+                    <Button>Comments</Button>
+                    <i>
+                        <p className='post-topic'>
+                            <span className='float-left'>
+                                #{props.category}
+                            </span>
+                            <span className='float-right'>
+                                Created: {moment(props.timestamp).format("DD-MM-YYYY HH:mm:ss")}
+                            </span>
+                        </p>
+                    </i>
                 </CardBody>
             </Card>
         </Col>
     );
 };
-
 export default Post;

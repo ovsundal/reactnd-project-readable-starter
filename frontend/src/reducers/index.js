@@ -15,7 +15,7 @@ const initialPostState = {
 };
 
 export default function (state = initialPostState, action) {
-    switch(action) {
+    switch(action.type) {
         case ADD_POST: {
             return {
                 //return the entire state using object spread syntax
@@ -24,7 +24,7 @@ export default function (state = initialPostState, action) {
         }
         case GET_ALL_POSTS: {
             //return all posts that are not marked with deleted
-            return action.posts.filter(post => !(post.deleted))
+            return action.posts.filter(post => !(post.deleted));
         }
         default: {
             return state;
