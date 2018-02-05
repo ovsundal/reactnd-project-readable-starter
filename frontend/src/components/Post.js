@@ -17,7 +17,9 @@ const Post = (props) => {
                         <br/>
                     </CardSubtitle>
                     {/*vote section*/}
-                    <Vote/>
+                    <Vote
+                        id = {props.id}
+                    />
                     <br/>
 
                     <CardText className='post-content'>{props.body}</CardText>
