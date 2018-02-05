@@ -56,9 +56,9 @@ class MainPage extends Component {
                                         author={post.author}
                                         category={post.category}
                                         timestamp={toDateTime(post.timestamp)}
+                                        voteScore={post.voteScore}
+                                        commentCount={post.commentCount}
                                     />
-
-
                                 )}
 
 

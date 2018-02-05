@@ -1,7 +1,8 @@
 import React from 'react';
-import { Col, Card, CardImg, CardText, CardBody,
+import { Col, Card, CardText, CardBody,
     CardTitle, CardSubtitle, Button } from 'reactstrap';
 import moment from "moment";
+import Upvote from "./Upvote";
 
 //template from http://reactstrap.github.io/components/card/
 const Post = (props) => {
@@ -10,18 +11,25 @@ const Post = (props) => {
             <Card className="post">
                 <CardBody>
                     <CardTitle className='post-title'>{props.title}</CardTitle>
-                    <CardSubtitle className='post-author'>Author: {props.author}</CardSubtitle>
+                    <CardSubtitle>
+                        <span className=' post-author'>Author: {props.author}</span>
+                        <span className=' post-score float-right'>Score: {props.voteScore}</span>
+                        <br/>
+                    </CardSubtitle>
+                    {/*vote section*/}
+                    <Upvote/>
+                    <br/>
+
+                    <CardText className='post-content'>{props.body}</CardText>
                     <hr/>
-                    <CardText className='post-content'>{props.body}
-                    </CardText>
-                    <hr/>
-                    <Button>Comments</Button>
+                    <Button className='post-comments float-left'>Comments ({props.commentCount})</Button>
+                    <br/><br/>
                     <i>
-                        <p className='post-topic'>
-                            <span className='float-left'>
+                        <p>
+                            <span className='post-category float-left'>
                                 #{props.category}
                             </span>
-                            <span className='float-right'>
+                            <span className='post-dateCreated float-right'>
                                 Created: {moment(props.timestamp).format("DD-MM-YYYY HH:mm:ss")}
                             </span>
                         </p>

@@ -22,3 +22,12 @@ export const getPosts = data =>
             headers,
             body: JSON.stringify(data)
         }).then(response => response.json());
+
+//vote for post
+export const votePost = id =>
+    fetch(`${url}posts/${id}`,
+        {
+            method: 'POST',
+            headers,
+            body: JSON.stringify(data)
+        }).then(response => response.json());
