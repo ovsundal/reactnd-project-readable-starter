@@ -14,20 +14,16 @@ export default function (state = null, action) {
             }
         }
         case GET_ALL_POSTS: {
-            // console.log(action)
-            // console.log(state);
-            // return all posts that are not marked with deleted
-            // return action.posts.filter(post => !(post.deleted));
-            //need to turn action.posts into an array containing all posts here
-            return {...state, posts: action.posts};
+            return {...state, ...makeObj(action.posts)};
         }
 
         case VOTE_POST: {
-                console.log(action)
-            console.log(state)
 
-            console.log({...state, ...makeObj(action.posts)});
-                return {...state, ...makeObj(action.posts)};
+            console.log(action.posts);
+            console.log(state);
+            console.log({...state, ...makeObj([action.posts])})
+
+                return {...state, ...makeObj([action.posts])};
         }
         default: {
             return state;
@@ -43,5 +39,7 @@ function makeObj (posts) {
         const itemId = item.id;
         newObj[itemId] = item
     }
+    console.log('newobj')
+    console.log(newObj)
     return newObj
 }

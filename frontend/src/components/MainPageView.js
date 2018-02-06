@@ -46,7 +46,7 @@ class MainPage extends Component {
                                 {/*{console.log(this.props)}*/}
                                 {/*{console.log( this.props.posts != null)}*/}
                                 {/*{console.log(this.props.posts instanceof Array)}*/}
-                                {this.props.posts !== null && this.props.posts.posts.map((post)=>
+                                {this.props.posts && Object.values(this.props.posts).map((post)=>
                                     <Post
                                         key={post.id}
                                         id={post.id}
@@ -78,9 +78,10 @@ class MainPage extends Component {
 // from the store you want passed to component
 //it's a function that lets connect() know how to map specific
 //parts of the stores state into usable props
-function mapStateToProps(posts) {
+function mapStateToProps(state) {
+
     return {
-        posts
+        posts: state
     }
 }
 
