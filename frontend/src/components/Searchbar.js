@@ -1,6 +1,6 @@
 import React from 'react';
-import { Col, Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button } from 'reactstrap';
+import { Col, Card, CardBody,
+    CardTitle } from 'reactstrap';
 
 const Searchbar = (props) => {
     return (

@@ -1,44 +1,65 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Col, Card, CardText, CardBody,
     CardTitle, CardSubtitle, Button } from 'reactstrap';
 import moment from "moment";
-import Vote from "./Vote";
+import {votePost} from "../actions";
+import {connect} from "react-redux";
 
-//template from http://reactstrap.github.io/components/card/
-const Post = (props) => {
-    return (
-        <Col>
-            <Card className="post">
-                <CardBody>
-                    <CardTitle className='post-title'>{props.title}</CardTitle>
-                    <CardSubtitle>
-                        <span className=' post-author'>Author: {props.author}</span>
-                        <span className=' post-score float-right'>Score: {props.voteScore}</span>
+class Post extends Component {
+
+
+    submitVote =(id, voteType) => {
+        this.props.dispatch(votePost(id, voteType))
+    };
+
+    render() {
+        return (
+            <Col>
+                <Card className="post">
+                    <CardBody>
+                        <CardTitle className='post-title'>{this.props.title}</CardTitle>
+                        <CardSubtitle>
+                            <span className=' post-author'>Author: {this.props.author}</span>
+                            <span className=' post-score float-right'>Score: {this.props.voteScore}</span>
+                            <br/>
+                        </CardSubtitle>
+                        {/*vote section*/}
+                        <button
+                            onClick={() => this.submitVote(this.props.id, 'upVote')}>UPVOTE
+                        </button>
+                        <button
+                            onClick={() => this.submitVote(this.props.id, 'downVote')}>DOWNVOTE
+                        </button>
+
                         <br/>
-                    </CardSubtitle>
-                    {/*vote section*/}
-                    <Vote
-                        id = {props.id}
-                    />
-                    <br/>
 
-                    <CardText className='post-content'>{props.body}</CardText>
-                    <hr/>
-                    <Button className='post-comments float-left'>Comments ({props.commentCount})</Button>
-                    <br/><br/>
-                    <i>
-                        <p>
-                            <span className='post-category float-left'>
-                                #{props.category}
-                            </span>
-                            <span className='post-dateCreated float-right'>
-                                Created: {moment(props.timestamp).format("DD-MM-YYYY HH:mm:ss")}
-                            </span>
-                        </p>
-                    </i>
-                </CardBody>
-            </Card>
-        </Col>
-    );
-};
-export default Post;
+                        <CardText className='post-content'>{this.props.body}</CardText>
+                        <hr/>
+                        <Button className='post-comments float-left'>Comments ({this.props.commentCount})</Button>
+                        <br/><br/>
+                        <i>
+                            <p>
+                                <span className='post-category float-left'>
+                                    #{this.props.category}
+                                </span>
+                                <span className='post-dateCreated float-right'>
+                                    Created: {moment(this.props.timestamp).format("DD-MM-YYYY HH:mm:ss")}
+                                </span>
+                            </p>
+                        </i>
+                    </CardBody>
+                </Card>
+            </Col>
+        );
+    };
+
+
+}
+
+const mapDispatchToProps = dispatch => ({
+    dispatch
+});
+
+export default connect(
+    mapDispatchToProps
+)(Post);

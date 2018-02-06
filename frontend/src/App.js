@@ -1,25 +1,10 @@
 import React, { Component } from 'react';
-import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    Container,
-    Row,
-    Col,
-    Jumbotron,
-    Button
-} from 'reactstrap';
 import './components/NavigationBar';
+import MainPage from "./components/MainPageView";
+import {Route, Switch} from "react-router-dom";
+import {Container} from "reactstrap";
+import CreatePost from "./components/CreatePostView";
 import Navigation from "./components/NavigationBar";
-import Post from "./components/Post";
-import Searchbar from "./components/Searchbar";
-import CreatePost from "./components/CreatePost";
-import { Route } from 'react-router-dom'
-import MainPage from "./components/MainPage";
 
 class App extends Component {
     constructor(props) {
@@ -35,12 +20,19 @@ class App extends Component {
             isOpen: !this.state.isOpen
         });
     }
-//configure react-router here
+
     render() {
         return (
-            <MainPage/>
+            <Container className='app'>
+                <Navigation/>
+
+                {/*routing declarations*/}
+                <Switch>
+                    <Route exact path='/' component={MainPage}/>
+                    <Route path="/NewPost" component={CreatePost}/>
+                </Switch>
+            </Container>
         )
     }
 }
-
 export default App;

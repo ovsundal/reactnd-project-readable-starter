@@ -24,10 +24,10 @@ export const getPosts = data =>
         }).then(response => response.json());
 
 //vote for post
-export const votePost = data =>
-    fetch(`${url}posts/${data.id}`,
+export const votePost = (id, vote) =>
+    fetch(`${url}posts/${id}`,
         {
             method: 'POST',
             headers,
-            body: JSON.stringify(data)
+            body: JSON.stringify({option: vote})
         }).then(response => response.json());

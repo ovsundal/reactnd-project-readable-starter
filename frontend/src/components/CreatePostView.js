@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import {Button, Form, FormGroup, Label, Input, FormText, Container, Col} from 'reactstrap';
 import {addPost} from "../actions";
 import {connect} from "react-redux";
+import { withRouter } from 'react-router-dom'
 const uuidV1 = require('uuid/v1');
 
 //code from https://reactstrap.github.io/components/form/
@@ -42,7 +43,8 @@ class CreatePost extends React.Component {
         };
         //send data to redux
         this.props.dispatch(addPost(data));
-        // this.props.history.push('/');
+        //return to main page
+        this.props.history.push('/');
     };
 
     render() {
@@ -77,19 +79,6 @@ class CreatePost extends React.Component {
                         value={this.state.content}
                         onChange={this.handleInputChange}
                       />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="picture">Picture</Label>
-                    <Input
-                        type="file"
-                        name="file"
-                        id="picture"
-                        // value={this.state.picture}
-                        // onChange={this.handleInputChange}
-                    />
-                    <FormText color="muted">
-                        Upload picture
-                    </FormText>
                 </FormGroup>
                 <FormGroup tag="fieldset">
                     <legend>Category</legend>

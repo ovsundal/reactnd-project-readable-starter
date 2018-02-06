@@ -8,7 +8,6 @@ import './NavigationBar';
 import Navigation from "./NavigationBar";
 import Post from "./Post";
 import Searchbar from "./Searchbar";
-import CreatePost from "./CreatePost";
 import { Route } from 'react-router-dom'
 import * as actions from '../actions'
 import {connect} from "react-redux";
@@ -37,18 +36,17 @@ class MainPage extends Component {
     render() {
         return (
             <Container>
-                <Col>
-                    <Navigation/>
-                </Col>
-                {/*route to default blog*/}
-                <Route exact path="/" render={() => (
+
                     <Container>
                         <Row>
                             <Col xs="8">
-                                <Post/>
                                 {/*only render after posts have been retrieved from store. JS treats null as an object,*/}
                                 {/*so when item is retrieved it is type array, so only render in array form*/}
-                                {typeof this.props.posts.id !== 'object' && this.props.posts.map((post)=>
+                                {/*{console.log(this.props.posts.posts)}*/}
+                                {/*{console.log(this.props)}*/}
+                                {/*{console.log( this.props.posts != null)}*/}
+                                {/*{console.log(this.props.posts instanceof Array)}*/}
+                                {this.props.posts !== null && this.props.posts.posts.map((post)=>
                                     <Post
                                         key={post.id}
                                         id={post.id}
@@ -70,13 +68,7 @@ class MainPage extends Component {
                             </Col>
                         </Row>
                     </Container>
-                )}/>
-                {/*route to new post*/}
-                <Route path="/NewPost" render={() => (
-                    <Container>
-                        <CreatePost/>
-                    </Container>
-                )}/>
+
             </Container>
         )
     }

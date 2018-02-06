@@ -10,14 +10,14 @@ export const sendPost = (posts, action) => ({
 });
 
 export const addPost = (data) => dispatch =>
-    PostApi.addPost(data)
+    console.log(PostApi.addPost(data)
     //if successful api upload, dispatch item to store
-        .then(post => dispatch(sendPost(post, ADD_POST)));
+        .then(post => dispatch(sendPost(post, ADD_POST))));
 
 export const getPosts = () => dispatch =>
     PostApi.getPosts()
         .then(posts => dispatch(sendPost(posts, GET_ALL_POSTS)));
 
-export const votePost = (data) => dispatch =>
-    PostApi.votePost(data)
+export const votePost = (id, voteType) => dispatch =>
+    PostApi.votePost(id, voteType)
         .then(posts => dispatch(sendPost(posts, VOTE_POST)));
