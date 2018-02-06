@@ -1,17 +1,6 @@
 import React from 'react';
-import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem } from 'reactstrap';
-import {Link, Route} from 'react-router-dom';
+import {Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem} from 'reactstrap';
+import {Link} from 'react-router-dom';
 
 //Navbar from https://reactstrap.github.io/components/navbar/
 class Navigation extends React.Component {

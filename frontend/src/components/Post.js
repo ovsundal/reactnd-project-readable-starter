@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Card, CardText, CardBody,
     CardTitle, CardSubtitle, Button } from 'reactstrap';
-import moment from "moment";
 import {votePost} from "../actions";
 import {connect} from "react-redux";
 
@@ -43,7 +42,7 @@ class Post extends Component {
                                     #{this.props.category}
                                 </span>
                                 <span className='post-dateCreated float-right'>
-                                    Created: {moment(this.props.timestamp).format("DD-MM-YYYY HH:mm:ss")}
+                                    Created: {new Date(this.props.timestamp).toDateString()}
                                 </span>
                             </p>
                         </i>

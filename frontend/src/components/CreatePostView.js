@@ -1,8 +1,8 @@
 import React from 'react';
-import {Button, Form, FormGroup, Label, Input, FormText, Container, Col} from 'reactstrap';
+import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
 import {addPost} from "../actions";
 import {connect} from "react-redux";
-import { withRouter } from 'react-router-dom'
+
 const uuidV1 = require('uuid/v1');
 
 //code from https://reactstrap.github.io/components/form/

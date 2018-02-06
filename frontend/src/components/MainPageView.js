@@ -1,14 +1,8 @@
-import React, { Component } from 'react';
-import {
-    Container,
-    Row,
-    Col,
-} from 'reactstrap';
+import React, {Component} from 'react';
+import {Col, Container, Row,} from 'reactstrap';
 import './NavigationBar';
-import Navigation from "./NavigationBar";
 import Post from "./Post";
 import Searchbar from "./Searchbar";
-import { Route } from 'react-router-dom'
 import * as actions from '../actions'
 import {connect} from "react-redux";
 import {toDateTime} from "../utils/DateFormat";
