@@ -15,47 +15,44 @@ class SortingModal extends React.Component {
 
 
     handleFilterByCategory = event => {
-        console.log(event.target.value);
-        this.props.sortPostsByCategory(event.target.value);
+
+        //if all is selected, use getAll query, otherwise use category sorter query
+        if (event.target.value === 'all') {
+            this.props.getPosts();
+        } else {
+            this.props.sortPostsByCategory(event.target.value);
+        }
+
         this.setState({
             selectedOption: event.target.value
         })
     };
 
+    // handleSortingByDateOrScore = event => {
+    //     this.props.sortPostsByCategory(event.target.value);
+    //     this.setState({
+    //         selectedOption: event.target.value
+    //     })
+    // };
 
     render() {
         return (
             <Card>
-                {/*<CardBody>*/}
-                    {/*<FormGroup>*/}
-                        {/*<legend>Sort By</legend>*/}
-                        {/*<FormGroup check>*/}
-                            {/*<Label check>*/}
-                                {/*<Input*/}
-                                    {/*type="radio"*/}
-                                    {/*name="category"*/}
-                                    {/*value="date"*/}
-                                    {/*onChange={this.handleSorting}*/}
-                                {/*/>*/}
-                                {/*Date*/}
-                            {/*</Label>*/}
-                        {/*</FormGroup>*/}
-                        {/*<FormGroup check>*/}
-                            {/*<Label check>*/}
-                                {/*<Input*/}
-                                    {/*type="radio"*/}
-                                    {/*name="category"*/}
-                                    {/*value="score"*/}
-                                    {/*onChange={this.handleSorting}*/}
-                                {/*/>*/}
-                                {/*Score*/}
-                            {/*</Label>*/}
-                        {/*</FormGroup>*/}
-                    {/*</FormGroup>*/}
-                {/*</CardBody>*/}
                 <CardBody>
                     <FormGroup>
                         <legend>Categories</legend>
+                        <FormGroup check>
+                            <Label check>
+                                <Input
+                                    type="radio"
+                                    name="category"
+                                    value="all"
+                                    checked={this.state.selectedOption === "all"}
+                                    onChange={this.handleFilterByCategory}
+                                />
+                                all
+                            </Label>
+                        </FormGroup>
                         <FormGroup check>
                             <Label check>
                                 <Input
@@ -101,7 +98,8 @@ class SortingModal extends React.Component {
 
 function mapDispatchToProps(dispatch) {
     return {
-        sortPostsByCategory: (category) => dispatch(actions.sortPostsByCategory(category))
+        sortPostsByCategory: (category) => dispatch(actions.sortPostsByCategory(category)),
+        getPosts: () => dispatch(actions.getPosts())
     }
 }
 

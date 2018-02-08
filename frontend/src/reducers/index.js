@@ -10,8 +10,6 @@ export default function (state = null, action) {
             return {...state};
         }
         case GET_ALL_POSTS: {
-            console.log('from GETALL')
-            console.log({...state, ...makeObj(action.posts)})
             return {...state, ...makeObj(action.posts)};
         }
 
@@ -19,20 +17,8 @@ export default function (state = null, action) {
             return {...state, ...makeObj([action.posts])};
         }
         case SORT_BY_CATEGORY: {
-            //hvordan skrive reducer for sort by category?
+            //set state to null and merge with posts returned from query
             state = null;
-            // console.log(action)
-            console.log('state')
-            console.log({...state});
-
-            console.log('makeObj')
-            console.log(makeObj([action.posts]))
-
-            console.log('both')
-            console.log({...state, ...makeObj(action.posts)})
-
-            // console.log({...state, ...makeObj([action.posts])})
-
             return {...state, ...makeObj(action.posts)};
         }
         default: {
