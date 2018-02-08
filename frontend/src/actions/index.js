@@ -4,9 +4,8 @@ export const ADD_POST = 'ADD_POST';
 export const GET_ALL_POSTS = 'GET_ALL_POSTS';
 export const VOTE_POST = 'VOTE_POST';
 export const SORT_BY_CATEGORY = 'SORT_BY_CATEGORY';
+export const SORT_BY_MODE = 'SORT_BY_MODE';
 
-export const SORT_BY_DATE = 'SORT_BY_DATE';
-export const SORT_BY_SCORE = 'SORT_BY_SCORE';
 
 
 
@@ -30,4 +29,8 @@ export const votePost = (id, voteType) => dispatch =>
 export const sortPostsByCategory = category => dispatch =>
     PostApi.sortPostsByCategory(category)
         .then(posts => dispatch(sendPost(posts, SORT_BY_CATEGORY)));
+
+export const sortPostsByMode = mode => dispatch =>
+    sortPostsByCategory(mode)
+        .then(posts => dispatch(sendPost(posts, SORT_BY_MODE)));
 

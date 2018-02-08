@@ -28,12 +28,12 @@ class SortingModal extends React.Component {
         })
     };
 
-    // handleSortingByDateOrScore = event => {
-    //     this.props.sortPostsByCategory(event.target.value);
-    //     this.setState({
-    //         selectedOption: event.target.value
-    //     })
-    // };
+    handleFilterBySorting = event => {
+        this.props.sortPostsByMode(event.target.value);
+        this.setState({
+            selectedOption: event.target.value
+        })
+    };
 
     render() {
         return (
@@ -99,7 +99,7 @@ class SortingModal extends React.Component {
 function mapDispatchToProps(dispatch) {
     return {
         sortPostsByCategory: (category) => dispatch(actions.sortPostsByCategory(category)),
-        getPosts: () => dispatch(actions.getPosts())
+        sortPostsByMode: (mode) => dispatch(actions.sortPostsByMode(mode))
     }
 }
 
