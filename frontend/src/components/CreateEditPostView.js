@@ -12,7 +12,8 @@ class CreatePost extends React.Component {
             author: '',
             title: '',
             content: '',
-            category: ''
+            category: '',
+            selectedOption: ''
         };
     }
 
@@ -22,7 +23,8 @@ class CreatePost extends React.Component {
         const value = event.target.value;
 
         this.setState({
-          [name]: value
+          [name]: value,
+          selectedOption: event.target.value
       })
     };
 
@@ -86,9 +88,10 @@ class CreatePost extends React.Component {
                                 type="radio"
                                 name="category"
                                 value="react"
+                                checked={this.state.selectedOption === "react"}
                                 onChange={this.handleInputChange}
                             />
-                            React
+                            react
                         </Label>
                     </FormGroup>
                     <FormGroup check>
@@ -97,9 +100,10 @@ class CreatePost extends React.Component {
                                 type="radio"
                                 name="category"
                                 value="redux"
+                                checked={this.state.selectedOption === "redux"}
                                 onChange={this.handleInputChange}
                             />
-                            Redux
+                            redux
                         </Label>
                     </FormGroup>
                     <FormGroup check>
@@ -108,9 +112,10 @@ class CreatePost extends React.Component {
                                 type="radio"
                                 name="category"
                                 value="udacity"
+                                checked={this.state.selectedOption === "udacity"}
                                 onChange={this.handleInputChange}
                             />
-                            Udacity
+                            udacity
                         </Label>
                     </FormGroup>
                 </FormGroup>

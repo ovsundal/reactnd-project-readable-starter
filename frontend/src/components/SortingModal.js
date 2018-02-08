@@ -5,14 +5,21 @@ import {connect} from "react-redux";
 
 class SortingModal extends React.Component {
 
+    constructor(props) {
+        super(props);
 
-    // handleSorting = event => {
-    //     console.log(event.target.value);
-    // };
+        this.state = {
+            selectedOption: ''
+        };
+    }
+
 
     handleFilterByCategory = event => {
         console.log(event.target.value);
         this.props.sortPostsByCategory(event.target.value);
+        this.setState({
+            selectedOption: event.target.value
+        })
     };
 
 
@@ -55,6 +62,7 @@ class SortingModal extends React.Component {
                                     type="radio"
                                     name="category"
                                     value="react"
+                                    checked={this.state.selectedOption === "react"}
                                     onChange={this.handleFilterByCategory}
                                 />
                                 react
@@ -66,6 +74,7 @@ class SortingModal extends React.Component {
                                     type="radio"
                                     name="category"
                                     value="redux"
+                                    checked={this.state.selectedOption === "redux"}
                                     onChange={this.handleFilterByCategory}
                                 />
                                 redux
@@ -77,6 +86,7 @@ class SortingModal extends React.Component {
                                     type="radio"
                                     name="category"
                                     value="udacity"
+                                    checked={this.state.selectedOption === "udacity"}
                                     onChange={this.handleFilterByCategory}
                                 />
                                 udacity
