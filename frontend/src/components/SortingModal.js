@@ -9,35 +9,62 @@ class SortingModal extends React.Component {
         super(props);
 
         this.state = {
-            selectedOption: ''
+            selectedCategory: '',
+            selectedMode: ''
         };
     }
 
 
     handleFilterByCategory = event => {
-
-        //if all is selected, use getAll query, otherwise use category sorter query
-        if (event.target.value === 'all') {
-            this.props.getPosts();
-        } else {
-            this.props.sortPostsByCategory(event.target.value);
-        }
+        event.target.value === 'all'
+            ? this.props.getPosts()
+            : this.props.sortPostsByCategory(event.target.value);
 
         this.setState({
-            selectedOption: event.target.value
+            selectedCategory: event.target.value
         })
     };
 
-    handleFilterBySorting = event => {
-        this.props.sortPostsByMode(event.target.value);
+    handleFilterBySortingMode = event => {
+        console.log(event.target.value)
+        // this.props.sortPostsByMode(event.target.value);
         this.setState({
-            selectedOption: event.target.value
+            selectedMode: event.target.value
         })
     };
 
     render() {
         return (
             <Card>
+                <CardBody>
+                    <FormGroup>
+                        <legend>Sort By</legend>
+                        <FormGroup check>
+                            <Label check>
+                                <Input
+                                    type="radio"
+                                    name="category"
+                                    value="date"
+                                    checked={this.state.selectedMode === "date"}
+                                    onChange={this.handleFilterBySortingMode}
+                                />
+                                Date
+                            </Label>
+                        </FormGroup>
+                        <FormGroup check>
+                            <Label check>
+                                <Input
+                                    type="radio"
+                                    name="category"
+                                    value="score"
+                                    checked={this.state.selectedMode === "score"}
+                                    onChange={this.handleFilterBySortingMode}
+                                />
+                                Score
+                            </Label>
+                        </FormGroup>
+                    </FormGroup>
+                </CardBody>
                 <CardBody>
                     <FormGroup>
                         <legend>Categories</legend>
@@ -47,7 +74,7 @@ class SortingModal extends React.Component {
                                     type="radio"
                                     name="category"
                                     value="all"
-                                    checked={this.state.selectedOption === "all"}
+                                    checked={this.state.selectedCategory === "all"}
                                     onChange={this.handleFilterByCategory}
                                 />
                                 all
@@ -59,7 +86,7 @@ class SortingModal extends React.Component {
                                     type="radio"
                                     name="category"
                                     value="react"
-                                    checked={this.state.selectedOption === "react"}
+                                    checked={this.state.selectedCategory === "react"}
                                     onChange={this.handleFilterByCategory}
                                 />
                                 react
@@ -71,7 +98,7 @@ class SortingModal extends React.Component {
                                     type="radio"
                                     name="category"
                                     value="redux"
-                                    checked={this.state.selectedOption === "redux"}
+                                    checked={this.state.selectedCategory === "redux"}
                                     onChange={this.handleFilterByCategory}
                                 />
                                 redux
@@ -83,7 +110,7 @@ class SortingModal extends React.Component {
                                     type="radio"
                                     name="category"
                                     value="udacity"
-                                    checked={this.state.selectedOption === "udacity"}
+                                    checked={this.state.selectedCategory === "udacity"}
                                     onChange={this.handleFilterByCategory}
                                 />
                                 udacity
@@ -98,6 +125,7 @@ class SortingModal extends React.Component {
 
 function mapDispatchToProps(dispatch) {
     return {
+        getPosts: () => dispatch(actions.getPosts()),
         sortPostsByCategory: (category) => dispatch(actions.sortPostsByCategory(category)),
         sortPostsByMode: (mode) => dispatch(actions.sortPostsByMode(mode))
     }

@@ -24,7 +24,7 @@ class CreatePost extends React.Component {
 
         this.setState({
           [name]: value,
-          selectedOption: event.target.value
+          selectedCategory: event.target.value
       })
     };
 
@@ -88,7 +88,7 @@ class CreatePost extends React.Component {
                                 type="radio"
                                 name="category"
                                 value="react"
-                                checked={this.state.selectedOption === "react"}
+                                checked={this.state.selectedCategory === "react"}
                                 onChange={this.handleInputChange}
                             />
                             react
@@ -100,7 +100,7 @@ class CreatePost extends React.Component {
                                 type="radio"
                                 name="category"
                                 value="redux"
-                                checked={this.state.selectedOption === "redux"}
+                                checked={this.state.selectedCategory === "redux"}
                                 onChange={this.handleInputChange}
                             />
                             redux
@@ -112,7 +112,7 @@ class CreatePost extends React.Component {
                                 type="radio"
                                 name="category"
                                 value="udacity"
-                                checked={this.state.selectedOption === "udacity"}
+                                checked={this.state.selectedCategory === "udacity"}
                                 onChange={this.handleInputChange}
                             />
                             udacity
