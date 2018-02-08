@@ -23,11 +23,19 @@ export const getPosts = data =>
             body: JSON.stringify(data)
         }).then(response => response.json());
 
-//vote for post
+//voting
 export const votePost = (id, vote) =>
     fetch(`${url}posts/${id}`,
         {
             method: 'POST',
             headers,
             body: JSON.stringify({option: vote})
+        }).then(response => response.json());
+
+//sort by category
+export const sortPostsByCategory = category =>
+    fetch(`${url}${category}/posts`,
+        {
+            method: 'GET',
+            headers,
         }).then(response => response.json());

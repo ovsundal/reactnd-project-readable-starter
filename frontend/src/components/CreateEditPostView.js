@@ -2,10 +2,8 @@ import React from 'react';
 import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
 import {addPost} from "../actions";
 import {connect} from "react-redux";
-
 const uuidV1 = require('uuid/v1');
 
-//code from https://reactstrap.github.io/components/form/
 class CreatePost extends React.Component {
     constructor(props) {
         super(props);
@@ -87,7 +85,7 @@ class CreatePost extends React.Component {
                             <Input
                                 type="radio"
                                 name="category"
-                                value="React"
+                                value="react"
                                 onChange={this.handleInputChange}
                             />
                             React
@@ -98,7 +96,7 @@ class CreatePost extends React.Component {
                             <Input
                                 type="radio"
                                 name="category"
-                                value="Redux"
+                                value="redux"
                                 onChange={this.handleInputChange}
                             />
                             Redux
@@ -109,7 +107,7 @@ class CreatePost extends React.Component {
                             <Input
                                 type="radio"
                                 name="category"
-                                value="Udacity"
+                                value="udacity"
                                 onChange={this.handleInputChange}
                             />
                             Udacity

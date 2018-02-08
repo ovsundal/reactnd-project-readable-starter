@@ -3,7 +3,7 @@ import './components/NavigationBar';
 import MainPage from "./components/MainPageView";
 import {Route, Switch} from "react-router-dom";
 import {Container} from "reactstrap";
-import CreatePost from "./components/CreatePostView";
+import CreatePost from "./components/CreateEditPostView";
 import Navigation from "./components/NavigationBar";
 
 class App extends Component {
