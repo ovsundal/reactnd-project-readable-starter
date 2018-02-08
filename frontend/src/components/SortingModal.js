@@ -43,7 +43,7 @@ class SortingModal extends React.Component {
                             <Label check>
                                 <Input
                                     type="radio"
-                                    name="category"
+                                    name="mode"
                                     value="date"
                                     checked={this.state.selectedMode === "date"}
                                     onChange={this.handleFilterBySortingMode}
@@ -55,7 +55,7 @@ class SortingModal extends React.Component {
                             <Label check>
                                 <Input
                                     type="radio"
-                                    name="category"
+                                    name="mode"
                                     value="score"
                                     checked={this.state.selectedMode === "score"}
                                     onChange={this.handleFilterBySortingMode}
