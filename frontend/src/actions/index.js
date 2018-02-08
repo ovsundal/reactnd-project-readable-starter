@@ -31,6 +31,5 @@ export const sortPostsByCategory = category => dispatch =>
         .then(posts => dispatch(sendPost(posts, SORT_BY_CATEGORY)));
 
 export const sortPostsByMode = mode => dispatch =>
-    sortPostsByCategory(mode)
-        .then(posts => dispatch(sendPost(posts, SORT_BY_MODE)));
+        (posts => dispatch(sendPost(posts, mode)));
 
