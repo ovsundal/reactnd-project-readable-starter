@@ -14,9 +14,7 @@ class Post extends Component {
     };
 
     deletePost = (id) => {
-        console.log(this.props);
         this.props.deletePost(id);
-        console.log(this.props);
     };
 
     render() {

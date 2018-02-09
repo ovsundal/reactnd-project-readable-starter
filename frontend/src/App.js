@@ -30,6 +30,7 @@ class App extends Component {
                 <Switch>
                     <Route exact path='/' component={MainPage}/>
                     <Route path="/NewPost" component={CreateEditPost}/>
+                    <Route exact path="/:category/:id" component={CreateEditPost}/>
                 </Switch>
             </Container>
         )
