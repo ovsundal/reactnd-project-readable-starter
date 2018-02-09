@@ -8,6 +8,9 @@ class CreateEditPost extends React.Component {
     constructor(props) {
         super(props);
 
+        console.log(this.props)
+        console.log(this.state)
+
         this.state = {
             author: '',
             title: '',

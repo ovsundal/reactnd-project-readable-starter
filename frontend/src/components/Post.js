@@ -22,7 +22,11 @@ class Post extends Component {
             <Col>
                 <Card className="post">
                     <CardBody>
-                        <Link to={`/${this.props.category}/${this.props.id}`}>
+                        <Link
+                            to={{
+                                pathname: `/${this.props.category}/${this.props.id}`,
+                                data: this.props
+                            }}>
                             <CardTitle className='post-title'>{this.props.title}</CardTitle>
                         </Link>
                         <CardSubtitle>
