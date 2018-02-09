@@ -3,7 +3,7 @@ import './components/NavigationBar';
 import MainPage from "./components/MainPageView";
 import {Route, Switch} from "react-router-dom";
 import {Container} from "reactstrap";
-import CreatePost from "./components/CreateEditPostView";
+import CreateEditPost from "./components/CreateEditPostView";
 import Navigation from "./components/NavigationBar";
 
 class App extends Component {
@@ -29,7 +29,7 @@ class App extends Component {
                 {/*routing declarations*/}
                 <Switch>
                     <Route exact path='/' component={MainPage}/>
-                    <Route path="/NewPost" component={CreatePost}/>
+                    <Route path="/NewPost" component={CreateEditPost}/>
                 </Switch>
             </Container>
         )

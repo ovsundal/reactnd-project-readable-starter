@@ -4,7 +4,7 @@ import {addPost} from "../actions";
 import {connect} from "react-redux";
 const uuidV1 = require('uuid/v1');
 
-class CreatePost extends React.Component {
+class CreateEditPost extends React.Component {
     constructor(props) {
         super(props);
 
@@ -125,4 +125,4 @@ class CreatePost extends React.Component {
     }
 }
 
-export default connect()(CreatePost);
+export default connect()(CreateEditPost);

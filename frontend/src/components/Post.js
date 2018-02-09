@@ -11,6 +11,10 @@ class Post extends Component {
         this.props.dispatch(votePost(id, voteType))
     };
 
+    deletePost(id) {
+        console.log(id)
+    };
+
     render() {
         return (
             <Col>
@@ -35,7 +39,13 @@ class Post extends Component {
 
                         <CardText className='post-content'>{this.props.body}</CardText>
                         <hr/>
-                        <Button className='post-comments float-left'>Comments ({this.props.commentCount})</Button>
+                        <Button
+                            className='post-comments float-left'>Edit Post/View Comments ({this.props.commentCount})
+                        </Button>
+                        <Button
+                            onClick={() => this.deletePost(this.props.id)}
+                            className='float-right'>Delete Post
+                        </Button>
                         <br/><br/>
                         <i>
                             <p>
@@ -52,8 +62,6 @@ class Post extends Component {
             </Col>
         );
     };
-
-
 }
 
 const mapDispatchToProps = dispatch => ({
