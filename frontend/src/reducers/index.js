@@ -27,9 +27,9 @@ export default function (state = null, action) {
         case SORT_BY_DATE: {
 
             const sortedArrByDate = Object.values(state).sort((a,b) => {
-                return a.timestamp - b.timestamp;
+                return b.timestamp - a.timestamp;
             });
-            return {...state};
+            return {...makeObj(sortedArrByDate)};
         }
         case SORT_BY_SCORE: {
 
