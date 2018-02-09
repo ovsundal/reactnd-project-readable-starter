@@ -64,6 +64,9 @@ class MainPage extends Component {
 //it's a function that lets connect() know how to map specific
 //parts of the stores state into usable props
 function mapStateToProps(state) {
+
+    console.log('posts in mainpageview')
+    console.log(state)
     return {posts: state}
 }
 

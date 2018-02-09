@@ -27,6 +27,7 @@ class SortingModal extends React.Component {
 
     handleFilterBySortingMode = event => {
         // console.log(event.target.value)
+        console.log(this.props.posts);
         this.props.sortPostsByMode(event.target.value);
         this.setState({
             selectedMode: event.target.value
