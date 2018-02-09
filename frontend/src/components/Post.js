@@ -4,6 +4,7 @@ import { Col, Card, CardText, CardBody,
 import {votePost} from "../actions";
 import {connect} from "react-redux";
 import * as actions from "../actions";
+import {Link} from "react-router-dom";
 
 class Post extends Component {
 
@@ -23,7 +24,9 @@ class Post extends Component {
             <Col>
                 <Card className="post">
                     <CardBody>
-                        <CardTitle className='post-title'>{this.props.title}</CardTitle>
+                        <Link to={`/${this.props.category}/${this.props.id}`}>
+                            <CardTitle className='post-title'>{this.props.title}</CardTitle>
+                        </Link>
                         <CardSubtitle>
                             <span className=' post-author'>Author: {this.props.author}</span>
                             <span className=' post-score float-right'>Score: {this.props.voteScore}</span>

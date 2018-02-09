@@ -46,7 +46,6 @@ export default function (state = null, action) {
                 Object.values(state).filter((post) => {
                     return post.id !== action.posts.id;
                 });
-
             return {...makeObj(deletedObjectRemovedFromState)};
         }
         default: {
