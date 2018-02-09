@@ -25,27 +25,19 @@ export default function (state = null, action) {
             return {...state, ...makeObj(action.posts)};
         }
         case SORT_BY_DATE: {
-            //set state to null and merge with posts returned from query
-            console.log('sort by date pre sort')
-            console.log(state)
 
-            const state = Object.valueOf(state).sort((a,b) => {
+            const sortedArrByDate = Object.values(state).sort((a,b) => {
                 return a.timestamp - b.timestamp;
             });
-
-            console.log('sort by date post sort')
-            console.log(state)
-
-            return {...state, ...makeObj(action.posts)};
+            return {...makeObj(sortedArrByDate.reverse())};
         }
         case SORT_BY_SCORE: {
 
-            const sortedArr = Object.values(state)
+            const sortedArrByScore = Object.values(state)
                 .sort((a, b) => {
                     return b.score - a.score;
                 });
-
-            return {...makeObj(sortedArr.reverse())};
+            return {...makeObj(sortedArrByScore.reverse())};
         }
         default: {
             return state;
