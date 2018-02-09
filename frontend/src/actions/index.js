@@ -6,6 +6,7 @@ export const VOTE_POST = 'VOTE_POST';
 export const SORT_BY_CATEGORY = 'SORT_BY_CATEGORY';
 export const SORT_BY_DATE = 'SORT_BY_DATE';
 export const SORT_BY_SCORE = 'SORT_BY_SCORE';
+export const DELETE_POST = 'DELETE_POST';
 
 
 export const sendPost = (posts, action) => ({
@@ -37,7 +38,11 @@ export const sortPostsByMode = (mode) => dispatch => {
     mode === 'date'
         ? dispatch(sortBy(SORT_BY_DATE))
         : dispatch(sortBy(SORT_BY_SCORE))
+};
 
+export const deletePost = (id) => dispatch => {
+    PostApi.deletePost(id)
+        .then(posts => dispatch(sendPost(posts, DELETE_POST)))
 };
 
 

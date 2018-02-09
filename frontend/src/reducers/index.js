@@ -4,7 +4,8 @@ import {
     SORT_BY_CATEGORY,
     SORT_BY_DATE,
     SORT_BY_SCORE,
-    VOTE_POST
+    VOTE_POST,
+    DELETE_POST
 } from '../actions';
 
 export default function (state = null, action) {
@@ -13,7 +14,7 @@ export default function (state = null, action) {
             return {...state};
         }
         case GET_ALL_POSTS: {
-            return {...state, ...makeObj(action.posts.reverse())};
+            return {...state, ...makeObj(action.posts)};
         }
 
         case VOTE_POST: {
@@ -38,6 +39,15 @@ export default function (state = null, action) {
                     return b.voteScore - a.voteScore;
                 });
             return {...makeObj(sortedArrByScore)};
+        }
+        case DELETE_POST: {
+
+            const deletedObjectRemovedFromState =
+                Object.values(state).filter((post) => {
+                    return post.id !== action.posts.id;
+                });
+
+            return {...makeObj(deletedObjectRemovedFromState)};
         }
         default: {
             return state;

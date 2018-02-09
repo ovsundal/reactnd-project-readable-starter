@@ -3,6 +3,7 @@ import { Col, Card, CardText, CardBody,
     CardTitle, CardSubtitle, Button } from 'reactstrap';
 import {votePost} from "../actions";
 import {connect} from "react-redux";
+import * as actions from "../actions";
 
 class Post extends Component {
 
@@ -11,8 +12,10 @@ class Post extends Component {
         this.props.dispatch(votePost(id, voteType))
     };
 
-    deletePost(id) {
-        console.log(id)
+    deletePost = (id) => {
+        console.log(this.props);
+        this.props.deletePost(id);
+        console.log(this.props);
     };
 
     render() {
@@ -65,9 +68,10 @@ class Post extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    dispatch
+    deletePost: (id) => dispatch(actions.deletePost(id))
 });
 
 export default connect(
+    null,
     mapDispatchToProps
 )(Post);

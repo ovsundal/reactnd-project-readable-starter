@@ -39,7 +39,7 @@ class CreateEditPost extends React.Component {
             author: this.state.author,
             category: this.state.category,
             voteScore: 1,
-            deleted: false
+            deletedHOOOO: false
         };
         //send data to redux
         this.props.dispatch(addPost(data));

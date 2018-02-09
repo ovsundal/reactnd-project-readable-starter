@@ -39,3 +39,11 @@ export const sortPostsByCategory = category =>
             method: 'GET',
             headers,
         }).then(response => response.json());
+
+//delete post
+export const deletePost = id =>
+    fetch(`${url}posts/${id}`,
+        {
+            method: 'DELETE',
+            headers
+        }).then(response => response.json());
