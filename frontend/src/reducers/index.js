@@ -13,7 +13,7 @@ export default function (state = null, action) {
             return {...state};
         }
         case GET_ALL_POSTS: {
-            return {...state, ...makeObj(action.posts)};
+            return {...state, ...makeObj(action.posts.reverse())};
         }
 
         case VOTE_POST: {
@@ -29,15 +29,15 @@ export default function (state = null, action) {
             const sortedArrByDate = Object.values(state).sort((a,b) => {
                 return a.timestamp - b.timestamp;
             });
-            return {...makeObj(sortedArrByDate.reverse())};
+            return {...state};
         }
         case SORT_BY_SCORE: {
 
             const sortedArrByScore = Object.values(state)
                 .sort((a, b) => {
-                    return b.score - a.score;
+                    return b.voteScore - a.voteScore;
                 });
-            return {...makeObj(sortedArrByScore.reverse())};
+            return {...makeObj(sortedArrByScore)};
         }
         default: {
             return state;

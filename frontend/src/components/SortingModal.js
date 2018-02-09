@@ -9,13 +9,14 @@ class SortingModal extends React.Component {
         super(props);
 
         this.state = {
-            selectedCategory: '',
-            selectedMode: ''
+            selectedCategory: 'all',
+            selectedMode: 'date'
         };
     }
 
 
     handleFilterByCategory = event => {
+
         event.target.value === 'all'
             ? this.props.getPosts()
             : this.props.sortPostsByCategory(event.target.value);
@@ -26,8 +27,7 @@ class SortingModal extends React.Component {
     };
 
     handleFilterBySortingMode = event => {
-        // console.log(event.target.value)
-        console.log(this.props.posts);
+
         this.props.sortPostsByMode(event.target.value);
         this.setState({
             selectedMode: event.target.value
