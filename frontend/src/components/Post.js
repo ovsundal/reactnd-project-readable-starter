@@ -24,12 +24,13 @@ class Post extends Component {
                         </CardSubtitle>
                         {/*vote section*/}
                         <button
-                            onClick={() => this.submitVote(this.props.id, 'upVote')}>UPVOTE
-                        </button>
-                        <button
+                            className='float-right'
                             onClick={() => this.submitVote(this.props.id, 'downVote')}>DOWNVOTE
                         </button>
-
+                        <button
+                            className='float-right'
+                            onClick={() => this.submitVote(this.props.id, 'upVote')}>UPVOTE
+                        </button>
                         <br/>
 
                         <CardText className='post-content'>{this.props.body}</CardText>
