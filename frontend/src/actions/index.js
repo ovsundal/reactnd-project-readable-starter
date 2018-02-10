@@ -7,6 +7,8 @@ export const SORT_BY_CATEGORY = 'SORT_BY_CATEGORY';
 export const SORT_BY_DATE = 'SORT_BY_DATE';
 export const SORT_BY_SCORE = 'SORT_BY_SCORE';
 export const DELETE_POST = 'DELETE_POST';
+export const GET_POST = 'GET_POST';
+
 
 
 export const sendPost = (posts, action) => ({
@@ -45,4 +47,7 @@ export const deletePost = (id) => dispatch => {
         .then(posts => dispatch(sendPost(posts, DELETE_POST)))
 };
 
-
+export const getPost = (id) => dispatch => {
+    PostApi.getPost(id)
+        .then(posts => dispatch(sendPost(posts, GET_POST)))
+};
