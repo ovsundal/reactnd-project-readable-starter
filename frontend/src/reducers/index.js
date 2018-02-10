@@ -5,7 +5,8 @@ import {
     SORT_BY_DATE,
     SORT_BY_SCORE,
     VOTE_POST,
-    DELETE_POST
+    DELETE_POST,
+    GET_POST
 } from '../actions';
 
 export default function (state = null, action) {
@@ -47,6 +48,10 @@ export default function (state = null, action) {
                     return post.id !== action.posts.id;
                 });
             return {...makeObj(deletedObjectRemovedFromState)};
+        }
+        case GET_POST: {
+            console.log(action.posts)
+            return {...makeObj(action.posts)};
         }
         default: {
             return state;

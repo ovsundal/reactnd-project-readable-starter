@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
 import {addPost} from "../actions";
 import {connect} from "react-redux";
+import * as actions from "../actions";
 const uuidV1 = require('uuid/v1');
 
 class CreateEditPost extends React.Component {
@@ -22,7 +23,7 @@ class CreateEditPost extends React.Component {
 
     componentWillMount() {
         if(this.props.id) {
-
+            this.props.getPost(this.props.id)
         }
     }
 
@@ -134,4 +135,15 @@ class CreateEditPost extends React.Component {
     }
 }
 
-export default connect()(CreateEditPost);
+function mapStateToProps(state) {
+    return {posts: state}
+}
+
+const mapDispatchToProps = dispatch => ({
+    getPost: (id) => dispatch(actions.getPost(id))
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CreateEditPost)
