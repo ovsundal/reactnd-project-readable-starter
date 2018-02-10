@@ -20,6 +20,12 @@ class CreateEditPost extends React.Component {
         };
     }
 
+    componentWillMount() {
+        if(this.props.id) {
+
+        }
+    }
+
     //update state when user type
     handleInputChange = event => {
         const name = event.target.name;

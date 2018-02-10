@@ -47,3 +47,11 @@ export const deletePost = id =>
             method: 'DELETE',
             headers
         }).then(response => response.json());
+
+//get single post
+export const getPost = id =>
+    fetch(`${url}posts/${id}`,
+        {
+            method: 'GET',
+            headers
+        }).then(response => response.json());
