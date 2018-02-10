@@ -30,7 +30,13 @@ class App extends Component {
                 <Switch>
                     <Route exact path='/' component={MainPage}/>
                     <Route path="/NewPost" component={CreateEditPost}/>
-                    <Route exact path="/:category/:id" component={CreateEditPost}/>
+                    <Route exact path="/:category/:id" render={(props) => (
+                        <CreateEditPost
+                            category={props.match.params.category}
+                            id={props.match.params.id}
+                        />
+                    )}
+                    />
                 </Switch>
             </Container>
         )

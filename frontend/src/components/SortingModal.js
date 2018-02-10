@@ -10,7 +10,7 @@ class SortingModal extends React.Component {
 
         this.state = {
             selectedCategory: 'all',
-            selectedMode: 'date'
+            selectedMode: ''
         };
     }
 

@@ -24,8 +24,7 @@ class Post extends Component {
                     <CardBody>
                         <Link
                             to={{
-                                pathname: `/${this.props.category}/${this.props.id}`,
-                                data: this.props
+                                pathname: `/${this.props.category}/${this.props.id}`
                             }}>
                             <CardTitle className='post-title'>{this.props.title}</CardTitle>
                         </Link>
