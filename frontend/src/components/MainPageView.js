@@ -17,6 +17,9 @@ class MainPage extends Component {
         this.state = {
             isOpen: false
         };
+
+        console.log(this.props.category)
+
     }
 
     toggle() {
@@ -51,7 +54,9 @@ class MainPage extends Component {
                             )}
                         </Col>
                         <Col xs="4">
-                            <SortingModal/>
+                            <SortingModal
+                            category={this.props.category}
+                            />
                         </Col>
                     </Row>
                 </Container>

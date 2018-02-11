@@ -29,7 +29,14 @@ class App extends Component {
                 {/*routing declarations*/}
                 <Switch>
                     <Route exact path='/' component={MainPage}/>
+
                     <Route path="/NewPost" component={CreateEditPost}/>
+
+                    <Route path="/:category" render={(props) => (
+                        <MainPage
+                        category={props.match.params.category}/>
+                    )}/>
+
                     <Route exact path="/:category/:id" render={(props) => (
                         <CreateEditPost
                             id={props.match.params.id}

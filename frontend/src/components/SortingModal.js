@@ -8,10 +8,18 @@ class SortingModal extends React.Component {
     constructor(props) {
         super(props);
 
+        console.log(this.props.category)
         this.state = {
-            selectedCategory: 'all',
+            selectedCategory: this.props.category
+                ? this.props.category
+                : 'all',
             selectedMode: ''
         };
+
+        //if url contains a category, find all category posts
+        this.props.category
+            ? this.props.sortPostsByCategory(this.props.category)
+            : '';
     }
 
 
