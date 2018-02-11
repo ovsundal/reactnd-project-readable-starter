@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 
 class VotePanel extends Component {
 
-
     submitVote = (id, voteType) => {
         this.props.votePost(id, voteType)
     };

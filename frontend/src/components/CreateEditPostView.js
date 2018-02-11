@@ -1,10 +1,10 @@
 import React from 'react';
 import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
-import {addPost} from "../actions";
-import {connect} from "react-redux";
 import * as actions from "../actions";
+import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import VotePanel from "./VotePanel";
+
 const uuidV1 = require('uuid/v1');
 
 class CreateEditPost extends React.Component {
@@ -63,7 +63,7 @@ class CreateEditPost extends React.Component {
         event.preventDefault();
         const data = {
             //if this is an existing post (edit), set id to old id, if new post make a new id
-            id: this.state.id === '' ? uuidV1 : this.state.id,
+            id: this.state.id === '' ? uuidV1() : this.state.id,
             timestamp: Date.now(),
             title: this.state.title,
             body: this.state.content,
@@ -72,7 +72,7 @@ class CreateEditPost extends React.Component {
             voteScore: 1
         };
         //send data to redux
-        this.props.dispatch(addPost(data));
+        this.props.addPost(data);
         //return to main page
         this.props.history.push('/');
     };
@@ -80,7 +80,7 @@ class CreateEditPost extends React.Component {
     render() {
         return (
             <Form>
-                {/*only render delete post button and score if post exist (has an id)*/}
+                {/*only render score panel if post exist (has an id)*/}
                 {this.state.id !== ''
                 && <div>
                     <VotePanel
@@ -162,11 +162,13 @@ class CreateEditPost extends React.Component {
                     className='float-left'
                     onClick={this.handleSubmit}>Submit
                 </Button>
-                <Button
+                {/*only render delete post button if post exist (has an id)*/}
+                {this.state.id !== ''
+                && <Button
                     className='float-right'
                     onClick={() => this.handleDelete(this.props.id)}>Delete Post
                 </Button>
-
+                }
             </Form>
         );
     }
@@ -177,6 +179,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = dispatch => ({
+    addPost: (data) => dispatch(actions.addPost(data)),
     deletePost: (id) => dispatch(actions.deletePost(id)),
     getPost: (id) => dispatch(actions.getPost(id))
 });

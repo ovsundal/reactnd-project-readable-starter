@@ -7,11 +7,6 @@ import VotePanel from "./VotePanel";
 
 class Post extends Component {
 
-
-    submitVote =(id, voteType) => {
-        this.props.votePost(id, voteType)
-    };
-
     deletePost = (id) => {
         this.props.deletePost(id);
     };
@@ -37,9 +32,14 @@ class Post extends Component {
                         <br/>
                         <CardText className='post-content'>{this.props.body}</CardText>
                         <hr/>
-                        <Button
-                            className='post-comments float-left'>Edit Post/View Comments ({this.props.commentCount})
-                        </Button>
+                        <Link
+                            to={{
+                                pathname: `/${this.props.category}/${this.props.id}`
+                            }}>
+                            <Button
+                                className='post-comments float-left'>View Comments ({this.props.commentCount})
+                            </Button>
+                        </Link>
                         <Button
                             onClick={() => this.deletePost(this.props.id)}
                             className='float-right'>Delete Post
@@ -63,7 +63,6 @@ class Post extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    votePost: (id, voteType) => dispatch(actions.votePost(id, voteType)),
     deletePost: (id) => dispatch(actions.deletePost(id))
 });
 
