@@ -64,3 +64,12 @@ export const updatePost = data =>
             headers,
             body: JSON.stringify(data)
         }).then(response => response.json());
+
+//get all comments of a post
+//get all posts
+export const getComments = parentId =>
+    fetch(`${url}posts/${parentId}/comments`,
+        {
+            method: 'POST',
+            headers
+        }).then(response => response.json());

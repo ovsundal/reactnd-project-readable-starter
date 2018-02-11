@@ -9,6 +9,7 @@ export const SORT_BY_SCORE = 'SORT_BY_SCORE';
 export const DELETE_POST = 'DELETE_POST';
 export const GET_POST = 'GET_POST';
 export const UPDATE_POST = 'UPDATE_POST';
+export const GET_ALL_COMMENTS = 'GET_ALL_COMMENTS';
 
 
 
@@ -16,6 +17,13 @@ export const sendPost = (posts, action) => ({
     type: action,
     posts
 });
+
+export const sendComment = (comments, action) => ({
+    type: action,
+    comments
+});
+
+
 //må ha posts her ellers vil reducer state være null
 export const sortBy = (action) => ({
     type: action
@@ -57,3 +65,8 @@ export const updatePost = (data) => dispatch => {
     PostApi.updatePost(data)
         .then(posts => dispatch(sendPost(posts, UPDATE_POST)));
 };
+
+//comments
+export const getComments = (parentId) => dispatch =>
+    PostApi.getComments(parentId)
+        .then(comments => dispatch(sendComment(comments, GET_ALL_COMMENTS)));

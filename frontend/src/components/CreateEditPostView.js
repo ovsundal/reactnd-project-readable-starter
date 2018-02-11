@@ -43,6 +43,10 @@ class CreateEditPost extends React.Component {
         });
     }
 
+    componentDidMount() {
+        this.props.getComments(this.state.id);
+    }
+
     handleDelete = id => {
         this.props.deletePost(id);
         this.props.history.push('/');
@@ -212,7 +216,8 @@ const mapDispatchToProps = dispatch => ({
     addPost: (data) => dispatch(actions.addPost(data)),
     updatePost: (data) => dispatch(actions.updatePost(data)),
     deletePost: (id) => dispatch(actions.deletePost(id)),
-    getPost: (id) => dispatch(actions.getPost(id))
+    getPost: (id) => dispatch(actions.getPost(id)),
+    getComments: (id) => dispatch(actions.getComments(id))
 });
 
 export default withRouter(connect(
