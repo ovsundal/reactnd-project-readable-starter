@@ -29,23 +29,12 @@ class Post extends Component {
                         </Link>
                         <CardSubtitle>
                             <span className=' post-author'>Author: {this.props.author}</span>
-                            <span className=' post-score float-right'>Score: {this.props.voteScore}</span>
-                            <br/>
                         </CardSubtitle>
-                        {/*vote section*/}
                         <VotePanel
                             id={this.props.id}
+                            voteScore={this.props.voteScore}
                         />
-                        {/*<button*/}
-                            {/*className='float-right'*/}
-                            {/*onClick={() => this.submitVote(this.props.id, 'downVote')}>DOWNVOTE*/}
-                        {/*</button>*/}
-                        {/*<button*/}
-                            {/*className='float-right'*/}
-                            {/*onClick={() => this.submitVote(this.props.id, 'upVote')}>UPVOTE*/}
-                        {/*</button>*/}
                         <br/>
-
                         <CardText className='post-content'>{this.props.body}</CardText>
                         <hr/>
                         <Button

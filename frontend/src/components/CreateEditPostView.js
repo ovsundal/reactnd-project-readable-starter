@@ -4,6 +4,7 @@ import {addPost} from "../actions";
 import {connect} from "react-redux";
 import * as actions from "../actions";
 import {withRouter} from "react-router-dom";
+import VotePanel from "./VotePanel";
 const uuidV1 = require('uuid/v1');
 
 class CreateEditPost extends React.Component {
@@ -15,7 +16,8 @@ class CreateEditPost extends React.Component {
                 author: '',
                 title: '',
                 content: '',
-                category: ''
+                category: '',
+                voteScore: ''
             };
 
             //if this is an existing post to edit, do an api query to get post info
@@ -35,6 +37,7 @@ class CreateEditPost extends React.Component {
             title: currentPost.title,
             content: currentPost.body,
             category: currentPost.category,
+            voteScore: currentPost.voteScore,
             selectedOption: currentPost.selectedOption,
             selectedCategory: currentPost.category
         });
@@ -77,6 +80,15 @@ class CreateEditPost extends React.Component {
     render() {
         return (
             <Form>
+                {/*only render delete post button and score if post exist (has an id)*/}
+                {this.state.id !== ''
+                && <div>
+                    <VotePanel
+                        id={this.state.id}
+                        voteScore={this.state.voteScore}
+                    />
+                </div>
+                }
                 <FormGroup>
                     <Label for="author">Author</Label>
                     <Input
@@ -150,13 +162,11 @@ class CreateEditPost extends React.Component {
                     className='float-left'
                     onClick={this.handleSubmit}>Submit
                 </Button>
-                {/*only render delete post button and score if post exist (has an id)*/}
-                {this.props.id !== ''
-                && <Button
+                <Button
                     className='float-right'
                     onClick={() => this.handleDelete(this.props.id)}>Delete Post
-                    </Button>
-                }
+                </Button>
+
             </Form>
         );
     }
