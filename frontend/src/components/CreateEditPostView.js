@@ -61,18 +61,39 @@ class CreateEditPost extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+
+        //fill data
         const data = {
-            //if this is an existing post (edit), set id to old id, if new post make a new id
-            id: this.state.id === '' ? uuidV1() : this.state.id,
-            timestamp: Date.now(),
             title: this.state.title,
             body: this.state.content,
-            author: this.state.author,
-            category: this.state.category,
-            voteScore: 1
         };
-        //send data to redux
-        this.props.addPost(data);
+
+        // if new post make a new id, author, timestamp and submit with POST
+        if(this.state.id === '') {
+
+            data.id = uuidV1();
+            data.author = this.state.author;
+            data.timestamp = Date.now();
+            data.category = this.state.category;
+            data.voteScore = 1;
+
+            //create new post (POST)
+            this.props.addPost(data);
+        }
+        //if this is an existing post, set id to old id and update
+        else {
+            data.id = this.state.id;
+            console.log(data)
+            //update post (PUT)
+            // this.props.updatePost(data);
+        }
+
+
+
+
+
+
+
         //return to main page
         this.props.history.push('/');
     };
