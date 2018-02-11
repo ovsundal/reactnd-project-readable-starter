@@ -50,8 +50,7 @@ export default function (state = null, action) {
             return {...makeObj(deletedObjectRemovedFromState)};
         }
         case GET_POST: {
-            console.log(action.posts)
-            return {...makeObj(action.posts)};
+            return {...makeObj([action.posts])};
         }
         default: {
             return state;

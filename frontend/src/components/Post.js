@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
-import { Col, Card, CardText, CardBody,
-    CardTitle, CardSubtitle, Button } from 'reactstrap';
-import {votePost} from "../actions";
-import {connect} from "react-redux";
+import React, {Component} from 'react';
+import {Button, Card, CardBody, CardSubtitle, CardText, CardTitle, Col} from 'reactstrap';
 import * as actions from "../actions";
+import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 
 class Post extends Component {
 
 
     submitVote =(id, voteType) => {
-        this.props.dispatch(votePost(id, voteType))
+        this.props.votePost(id, voteType)
     };
 
     deletePost = (id) => {
@@ -72,6 +70,7 @@ class Post extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
+    votePost: (id, voteType) => dispatch(actions.votePost(id, voteType)),
     deletePost: (id) => dispatch(actions.deletePost(id))
 });
 

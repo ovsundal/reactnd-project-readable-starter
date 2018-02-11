@@ -44,10 +44,10 @@ export const sortPostsByMode = (mode) => dispatch => {
 
 export const deletePost = (id) => dispatch => {
     PostApi.deletePost(id)
-        .then(posts => dispatch(sendPost(posts, DELETE_POST)))
+        .then(posts => dispatch(sendPost(posts, DELETE_POST)));
 };
 
 export const getPost = (id) => dispatch => {
     PostApi.getPost(id)
-        .then(posts => dispatch(sendPost(posts, GET_POST)))
+        .then(posts => dispatch(sendPost(posts, GET_POST)));
 };

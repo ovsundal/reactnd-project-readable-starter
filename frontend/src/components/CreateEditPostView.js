@@ -9,23 +9,36 @@ class CreateEditPost extends React.Component {
     constructor(props) {
         super(props);
 
-        console.log(this.props.category)
-        console.log(this.props.id)
+            this.state = {
+                id: '',
+                author: '',
+                title: '',
+                content: '',
+                category: ''
+            };
 
-        this.state = {
-            author: '',
-            title: '',
-            content: '',
-            category: '',
-            selectedOption: ''
-        };
-    }
-
-    componentWillMount() {
-        if(this.props.id) {
-            this.props.getPost(this.props.id)
+            //if this is an existing post to edit, do an api query
+            if(this.props.id) {
+                this.props.getPost(this.props.id);
+            }
         }
+
+        //add api query result to state
+    componentWillReceiveProps(props) {
+
+        const currentPost = props.post[this.props.id];
+
+        this.setState({
+            id: currentPost.id,
+            author: currentPost.author,
+            title: currentPost.title,
+            content: currentPost.body,
+            category: currentPost.category,
+            selectedOption: currentPost.selectedOption,
+            selectedCategory: currentPost.category
+        });
     }
+
 
     //update state when user type
     handleInputChange = event => {
@@ -42,14 +55,14 @@ class CreateEditPost extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const data = {
-            id: uuidV1(),
+            //if this is an existing post (edit), set id to old id, if new post make a new id
+            id: this.state.id === '' ? uuidV1 : this.state.id,
             timestamp: Date.now(),
             title: this.state.title,
             body: this.state.content,
             author: this.state.author,
             category: this.state.category,
-            voteScore: 1,
-            deletedHOOOO: false
+            voteScore: 1
         };
         //send data to redux
         this.props.dispatch(addPost(data));
@@ -136,7 +149,7 @@ class CreateEditPost extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {posts: state}
+    return {post: state}
 }
 
 const mapDispatchToProps = dispatch => ({

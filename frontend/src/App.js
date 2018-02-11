@@ -32,8 +32,8 @@ class App extends Component {
                     <Route path="/NewPost" component={CreateEditPost}/>
                     <Route exact path="/:category/:id" render={(props) => (
                         <CreateEditPost
-                            category={props.match.params.category}
                             id={props.match.params.id}
+                            category={props.match.params.category}
                         />
                     )}
                     />
