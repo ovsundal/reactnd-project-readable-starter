@@ -196,6 +196,9 @@ class CreateEditPost extends React.Component {
                     onClick={() => this.handleDelete(this.props.id)}>Delete Post
                 </Button>
                 }
+
+
+
             </Form>
         );
     }

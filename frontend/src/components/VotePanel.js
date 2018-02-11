@@ -11,7 +11,7 @@ class VotePanel extends Component {
     render() {
         return (
             <div>
-                <span className=' post-score float-right'>Score: {this.props.voteScore}</span>
+                <span className='float-right'>Score: {this.props.voteScore}</span>
                 <br/>
                 <button
                     className='float-right'
