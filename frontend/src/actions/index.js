@@ -8,6 +8,7 @@ export const SORT_BY_DATE = 'SORT_BY_DATE';
 export const SORT_BY_SCORE = 'SORT_BY_SCORE';
 export const DELETE_POST = 'DELETE_POST';
 export const GET_POST = 'GET_POST';
+export const UPDATE_POST = 'UPDATE_POST';
 
 
 
@@ -50,4 +51,9 @@ export const deletePost = (id) => dispatch => {
 export const getPost = (id) => dispatch => {
     PostApi.getPost(id)
         .then(posts => dispatch(sendPost(posts, GET_POST)));
+};
+
+export const updatePost = (data) => dispatch => {
+    PostApi.updatePost(data)
+        .then(posts => dispatch(sendPost(posts, UPDATE_POST)));
 };

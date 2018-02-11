@@ -85,7 +85,7 @@ class CreateEditPost extends React.Component {
             data.id = this.state.id;
             console.log(data)
             //update post (PUT)
-            // this.props.updatePost(data);
+            this.props.updatePost(data);
         }
 
 
@@ -201,6 +201,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => ({
     addPost: (data) => dispatch(actions.addPost(data)),
+    updatePost: (data) => dispatch(actions.updatePost(data)),
     deletePost: (id) => dispatch(actions.deletePost(id)),
     getPost: (id) => dispatch(actions.getPost(id))
 });

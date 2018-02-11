@@ -55,3 +55,12 @@ export const getPost = id =>
             method: 'GET',
             headers
         }).then(response => response.json());
+
+//update post
+export const updatePost = data =>
+    fetch(`${url}posts/${data.id}`,
+        {
+            method: 'PUT',
+            headers,
+            body: JSON.stringify(data)
+        }).then(response => response.json());
