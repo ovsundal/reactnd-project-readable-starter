@@ -49,14 +49,21 @@ class CreateEditPost extends React.Component {
     };
 
     //update state when user type
-    handleInputChange = event => {
+    handleTextInputChange = event => {
         const name = event.target.name;
         const value = event.target.value;
 
         this.setState({
-          [name]: value,
-          selectedCategory: event.target.value
+          [name]: value
       })
+    };
+
+    handleCategoryInputChange = event => {
+        const value = event.target.value;
+
+        this.setState({
+            selectedCategory: value
+        })
     };
 
     handleSubmit = (event) => {
@@ -111,7 +118,7 @@ class CreateEditPost extends React.Component {
                         name="author"
                         placeholder="author"
                         value={this.state.author}
-                        onChange={this.handleInputChange}
+                        onChange={this.handleTextInputChange}
                         // disable entry if this is an edit post, author should not be changed
                         disabled={this.state.id !== ''}
                     />
@@ -122,7 +129,7 @@ class CreateEditPost extends React.Component {
                            name="title"
                            placeholder="title"
                            value={this.state.title}
-                           onChange={this.handleInputChange}
+                           onChange={this.handleTextInputChange}
                     />
                 </FormGroup>
                 <FormGroup>
@@ -132,7 +139,7 @@ class CreateEditPost extends React.Component {
                         name="content"
                         placeholder="content"
                         value={this.state.content}
-                        onChange={this.handleInputChange}
+                        onChange={this.handleTextInputChange}
                       />
                 </FormGroup>
                 <FormGroup tag="fieldset">
@@ -144,7 +151,7 @@ class CreateEditPost extends React.Component {
                                 name="category"
                                 value="react"
                                 checked={this.state.selectedCategory === "react"}
-                                onChange={this.handleInputChange}
+                                onChange={this.handleCategoryInputChange}
                                 // disable entry if this is an edit post, category should not be changed
                                 disabled={this.state.id !== ''}
                             />
@@ -158,7 +165,7 @@ class CreateEditPost extends React.Component {
                                 name="category"
                                 value="redux"
                                 checked={this.state.selectedCategory === "redux"}
-                                onChange={this.handleInputChange}
+                                onChange={this.handleCategoryInputChange}
                                 disabled={this.state.id !== ''}
                             />
                             redux
@@ -171,7 +178,7 @@ class CreateEditPost extends React.Component {
                                 name="category"
                                 value="udacity"
                                 checked={this.state.selectedCategory === "udacity"}
-                                onChange={this.handleInputChange}
+                                onChange={this.handleCategoryInputChange}
                                 disabled={this.state.id !== ''}
                             />
                             udacity
