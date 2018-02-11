@@ -6,6 +6,7 @@ import SortingModal from "./SortingModal";
 import * as actions from '../actions'
 import {connect} from "react-redux";
 import {toDateTime} from "../utils/DateFormat";
+import {withRouter} from "react-router-dom";
 
 
 class MainPage extends Component {
@@ -74,7 +75,7 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(MainPage)
+)(MainPage))

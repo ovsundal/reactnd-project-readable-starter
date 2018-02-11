@@ -3,6 +3,7 @@ import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
 import {addPost} from "../actions";
 import {connect} from "react-redux";
 import * as actions from "../actions";
+import {withRouter} from "react-router-dom";
 const uuidV1 = require('uuid/v1');
 
 class CreateEditPost extends React.Component {
@@ -17,7 +18,7 @@ class CreateEditPost extends React.Component {
                 category: ''
             };
 
-            //if this is an existing post to edit, do an api query
+            //if this is an existing post to edit, do an api query to get post info
             if(this.props.id) {
                 this.props.getPost(this.props.id);
             }
@@ -39,6 +40,10 @@ class CreateEditPost extends React.Component {
         });
     }
 
+    handleDelete = id => {
+        this.props.deletePost(id);
+        this.props.history.push('/');
+    };
 
     //update state when user type
     handleInputChange = event => {
@@ -50,7 +55,6 @@ class CreateEditPost extends React.Component {
           selectedCategory: event.target.value
       })
     };
-
 
     handleSubmit = (event) => {
         event.preventDefault();
@@ -142,7 +146,17 @@ class CreateEditPost extends React.Component {
                         </Label>
                     </FormGroup>
                 </FormGroup>
-                <Button onClick={this.handleSubmit}>Submit</Button>
+                <Button
+                    className='float-left'
+                    onClick={this.handleSubmit}>Submit
+                </Button>
+                {/*only render delete post button if post exist (has an id)*/}
+                {this.props.id !== ''
+                && <Button
+                    className='float-right'
+                    onClick={() => this.handleDelete(this.props.id)}>Delete Post
+                    </Button>
+                }
             </Form>
         );
     }
@@ -153,10 +167,11 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = dispatch => ({
+    deletePost: (id) => dispatch(actions.deletePost(id)),
     getPost: (id) => dispatch(actions.getPost(id))
 });
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(CreateEditPost)
+)(CreateEditPost))
