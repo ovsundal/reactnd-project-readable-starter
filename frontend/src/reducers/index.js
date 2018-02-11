@@ -6,7 +6,7 @@ import {
     SORT_BY_SCORE,
     VOTE_POST,
     DELETE_POST,
-    GET_POST
+    GET_POST, UPDATE_POST
 } from '../actions';
 
 export default function (state = null, action) {
@@ -50,6 +50,9 @@ export default function (state = null, action) {
             return {...makeObj(deletedObjectRemovedFromState)};
         }
         case GET_POST: {
+            return {...makeObj([action.posts])};
+        }
+        case UPDATE_POST: {
             return {...makeObj([action.posts])};
         }
         default: {
