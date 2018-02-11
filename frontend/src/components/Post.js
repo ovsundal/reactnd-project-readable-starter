@@ -3,6 +3,7 @@ import {Button, Card, CardBody, CardSubtitle, CardText, CardTitle, Col} from 're
 import * as actions from "../actions";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import VotePanel from "./VotePanel";
 
 class Post extends Component {
 
@@ -32,14 +33,17 @@ class Post extends Component {
                             <br/>
                         </CardSubtitle>
                         {/*vote section*/}
-                        <button
-                            className='float-right'
-                            onClick={() => this.submitVote(this.props.id, 'downVote')}>DOWNVOTE
-                        </button>
-                        <button
-                            className='float-right'
-                            onClick={() => this.submitVote(this.props.id, 'upVote')}>UPVOTE
-                        </button>
+                        <VotePanel
+                            id={this.props.id}
+                        />
+                        {/*<button*/}
+                            {/*className='float-right'*/}
+                            {/*onClick={() => this.submitVote(this.props.id, 'downVote')}>DOWNVOTE*/}
+                        {/*</button>*/}
+                        {/*<button*/}
+                            {/*className='float-right'*/}
+                            {/*onClick={() => this.submitVote(this.props.id, 'upVote')}>UPVOTE*/}
+                        {/*</button>*/}
                         <br/>
 
                         <CardText className='post-content'>{this.props.body}</CardText>

@@ -150,7 +150,7 @@ class CreateEditPost extends React.Component {
                     className='float-left'
                     onClick={this.handleSubmit}>Submit
                 </Button>
-                {/*only render delete post button if post exist (has an id)*/}
+                {/*only render delete post button and score if post exist (has an id)*/}
                 {this.props.id !== ''
                 && <Button
                     className='float-right'
