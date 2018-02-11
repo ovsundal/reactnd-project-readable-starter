@@ -8,7 +8,6 @@ class SortingModal extends React.Component {
     constructor(props) {
         super(props);
 
-        console.log(this.props.category)
         this.state = {
             selectedCategory: this.props.category
                 ? this.props.category

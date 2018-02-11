@@ -17,9 +17,6 @@ class MainPage extends Component {
         this.state = {
             isOpen: false
         };
-
-        console.log(this.props.category)
-
     }
 
     toggle() {
