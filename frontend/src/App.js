@@ -32,7 +32,7 @@ class App extends Component {
 
                     <Route path="/NewPost" component={CreateEditPost}/>
 
-                    <Route path="/:category" render={(props) => (
+                    <Route exact path="/:category" render={(props) => (
                         <MainPage
                         category={props.match.params.category}/>
                     )}/>

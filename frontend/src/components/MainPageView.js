@@ -32,7 +32,6 @@ class MainPage extends Component {
     render() {
         return (
             <Container>
-                <Container>
                     <Row>
                         <Col xs="8">
                             {/*only render after posts have been retrieved from store*/}
@@ -56,7 +55,6 @@ class MainPage extends Component {
                             />
                         </Col>
                     </Row>
-                </Container>
             </Container>
         )
     }
