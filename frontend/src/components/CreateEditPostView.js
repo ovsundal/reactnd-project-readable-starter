@@ -83,16 +83,10 @@ class CreateEditPost extends React.Component {
         //if this is an existing post, set id to old id and update
         else {
             data.id = this.state.id;
-            console.log(data)
+
             //update post (PUT)
             this.props.updatePost(data);
         }
-
-
-
-
-
-
 
         //return to main page
         this.props.history.push('/');
@@ -118,6 +112,8 @@ class CreateEditPost extends React.Component {
                         placeholder="author"
                         value={this.state.author}
                         onChange={this.handleInputChange}
+                        // disable entry if this is an edit post, author should not be changed
+                        disabled={this.state.id !== ''}
                     />
                 </FormGroup>
                 <FormGroup>
