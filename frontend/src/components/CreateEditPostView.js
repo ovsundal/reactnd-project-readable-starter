@@ -125,7 +125,6 @@ class CreateEditPost extends React.Component {
                            onChange={this.handleInputChange}
                     />
                 </FormGroup>
-                {/*todo: allow post to attach pictures*/}
                 <FormGroup>
                     <Label for="content">Content</Label>
                     <Input
@@ -146,6 +145,8 @@ class CreateEditPost extends React.Component {
                                 value="react"
                                 checked={this.state.selectedCategory === "react"}
                                 onChange={this.handleInputChange}
+                                // disable entry if this is an edit post, category should not be changed
+                                disabled={this.state.id !== ''}
                             />
                             react
                         </Label>
@@ -158,6 +159,7 @@ class CreateEditPost extends React.Component {
                                 value="redux"
                                 checked={this.state.selectedCategory === "redux"}
                                 onChange={this.handleInputChange}
+                                disabled={this.state.id !== ''}
                             />
                             redux
                         </Label>
@@ -170,6 +172,7 @@ class CreateEditPost extends React.Component {
                                 value="udacity"
                                 checked={this.state.selectedCategory === "udacity"}
                                 onChange={this.handleInputChange}
+                                disabled={this.state.id !== ''}
                             />
                             udacity
                         </Label>
