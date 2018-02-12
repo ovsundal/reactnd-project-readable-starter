@@ -212,7 +212,7 @@ class CreateEditPostView extends React.Component {
             <br/><br/><br/>
 
 
-            <section>
+            <section className='comments'>
             {this.state.comments.length > 0
             && this.state.comments.map((comment) =>
 

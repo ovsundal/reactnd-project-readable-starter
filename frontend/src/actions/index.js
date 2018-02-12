@@ -1,5 +1,5 @@
 import * as PostApi from '../utils/PostApi';
-
+import * as CommentApi from '../utils/CommentApi'
 export const ADD_POST = 'ADD_POST';
 export const GET_ALL_POSTS = 'GET_ALL_POSTS';
 export const VOTE_POST = 'VOTE_POST';
@@ -71,5 +71,5 @@ export const updatePost = (data) => dispatch => {
 
 //comments
 export const getComments = (parentId) => dispatch =>
-    PostApi.getComments(parentId)
+    CommentApi.getComments(parentId)
         .then(comments => dispatch(sendComment(comments, GET_ALL_COMMENTS)));

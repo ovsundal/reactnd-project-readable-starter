@@ -7,9 +7,9 @@ import VotePanel from "./VotePanel";
 
 class Comment extends Component {
 
-    // deletePost = (id) => {
-    //     this.props.deletePost(id);
-    // };
+    deleteComment = (id) => {
+        this.props.deleteComment(id);
+    };
 
     render() {
         return (
@@ -32,18 +32,16 @@ class Comment extends Component {
                         <br/>
                         <CardText className='comment-content'>{this.props.body}</CardText>
                         <hr/>
-                        {/*<Link*/}
-                            {/*to={{*/}
-                                {/*pathname: `/${this.props.category}/${this.props.id}`*/}
-                            {/*}}>*/}
-                            {/*<Button*/}
-                                {/*className='post-comments float-left'>View Comments ({this.props.commentCount})*/}
-                            {/*</Button>*/}
-                        {/*</Link>*/}
-                        {/*<Button*/}
-                            {/*onClick={() => this.deleteComment(this.props.id)}*/}
-                            {/*className='float-right'>Delete Post*/}
-                        {/*</Button>*/}
+                        <footer className='button-panel'>
+                            <Button
+                                // onClick={() => this.deleteComment(this.props.id)}
+                                className='float-left'>Edit
+                            </Button>
+                            <Button
+                                // onClick={() => this.deleteComment(this.props.id)}
+                                className='float-right'>Delete
+                            </Button>
+                        </footer>
                         <br/><br/>
                         <i>
                             <p>
