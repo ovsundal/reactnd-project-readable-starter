@@ -8,7 +8,7 @@ import {
     DELETE_POST,
     GET_POST,
     UPDATE_POST,
-    GET_ALL_COMMENTS
+    GET_ALL_COMMENTS, DELETE_COMMENT
 } from '../actions';
 
 export default function (state = null, action) {
@@ -58,9 +58,14 @@ export default function (state = null, action) {
             return {...makeObj([action.posts])};
         }
         case GET_ALL_COMMENTS: {
-            // console.log(action)
-            // console.log('from getallcomments reducer')
             return action;
+        }
+        case DELETE_COMMENT: {
+            const deletedObjectRemovedFromState =
+                Object.values(state).filter((comments) => {
+                    return comments.id !== action.comments.id;
+                });
+            return {...makeObj(deletedObjectRemovedFromState)};
         }
         default: {
             return state;
