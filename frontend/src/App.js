@@ -5,6 +5,7 @@ import {Route, Switch} from "react-router-dom";
 import {Container} from "reactstrap";
 import CreateEditPostView from "./components/CreateEditPostView";
 import Navigation from "./components/NavigationBar";
+import CreatePost from "./components/CreatePost";
 
 class App extends Component {
     constructor(props) {
@@ -30,7 +31,7 @@ class App extends Component {
                 <Switch>
                     <Route exact path='/' component={MainPageView}/>
 
-                    <Route path="/NewPost" component={CreateEditPostView}/>
+                    <Route path="/NewPost" component={CreatePost}/>
 
                     <Route exact path="/:category" render={(props) => (
                         <MainPageView

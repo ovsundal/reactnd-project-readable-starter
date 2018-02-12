@@ -1,11 +1,12 @@
-import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
-import React from 'react';
-import VotePanel from "./VotePanel";
 import * as actions from "../actions";
+import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
+import React from "react";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 
-class EditPost extends React.Component {
+const uuidV1 = require('uuid/v1');
+
+class CreatePost extends React.Component {
     constructor(props) {
         super(props);
 
@@ -15,33 +16,9 @@ class EditPost extends React.Component {
             title: '',
             body: '',
             category: '',
-            voteScore: '',
-            comments: []
+            voteScore: 1
         };
     }
-
-    componentWillMount() {
-        this.props.getPost(this.props.id);
-    }
-
-    componentWillReceiveProps(props) {
-        const post = props.state.posts;
-        if(post && post.id) {
-            this.setState({
-                id: post.id,
-                author: post.author,
-                title: post.title,
-                body: post.body,
-                category: post.category,
-                voteScore: post.voteScore
-            });
-        }
-    }
-
-    handleDelete = id => {
-        this.props.deletePost(id);
-        this.props.history.push('/');
-    };
 
     handleTextInputChange = event => {
         event.preventDefault();
@@ -49,32 +26,33 @@ class EditPost extends React.Component {
         const value = event.target.value;
         this.setState({
             [name]: value
-        })
+        });
     };
 
-    handleUpdate = event => {
+    handleCategoryInputChange = event => {
+        const value = event.target.value;
+        this.setState({
+            selectedCategory: value
+        });
+    };
+
+    handleCreate = event => {
         event.preventDefault();
         const data = {
+            id: uuidV1(),
+            author: this.state.author,
             title: this.state.title,
             body: this.state.body,
-            id: this.state.id
+            category: this.state.selectedCategory,
+            voteScore: 1
         };
-        this.props.updatePost(data);
+        this.props.addPost(data);
         this.props.history.push('/');
     };
 
     render() {
         return (
             <Form>
-                {this.state.id !== ''
-                && <aside>
-                    <VotePanel
-                        id={this.state.id}
-                        voteScore={this.state.voteScore}
-                        componentType='post'
-                    />
-                </aside>
-                }
                 <FormGroup>
                     <Label for="author">Author</Label>
                     <Input
@@ -83,7 +61,6 @@ class EditPost extends React.Component {
                         placeholder="author"
                         value={this.state.author}
                         onChange={this.handleTextInputChange}
-                        disabled
                     />
                 </FormGroup>
                 <FormGroup>
@@ -113,8 +90,8 @@ class EditPost extends React.Component {
                                 type="radio"
                                 name="category"
                                 value="react"
-                                checked={this.state.category === "react"}
-                                disabled
+                                checked={this.state.selectedCategory === "react"}
+                                onChange={this.handleCategoryInputChange}
                             />
                             react
                         </Label>
@@ -125,8 +102,8 @@ class EditPost extends React.Component {
                                 type="radio"
                                 name="category"
                                 value="redux"
-                                checked={this.state.category === "redux"}
-                                disabled
+                                checked={this.state.selectedCategory === "redux"}
+                                onChange={this.handleCategoryInputChange}
                             />
                             redux
                         </Label>
@@ -137,8 +114,8 @@ class EditPost extends React.Component {
                                 type="radio"
                                 name="category"
                                 value="udacity"
-                                checked={this.state.category === "udacity"}
-                                disabled
+                                checked={this.state.selectedCategory === "udacity"}
+                                onChange={this.handleCategoryInputChange}
                             />
                             udacity
                         </Label>
@@ -146,15 +123,8 @@ class EditPost extends React.Component {
                 </FormGroup>
                 <Button
                     className='float-left'
-                    onClick={this.handleUpdate}>Update
+                    onClick={this.handleCreate}>Update
                 </Button>
-                {/*only render delete post button if post exist (has an id)*/}
-                {this.state.id !== ''
-                && <Button
-                    className='float-right'
-                    onClick={() => this.handleDelete(this.props.id)}>Delete Post
-                </Button>
-                }
             </Form>
         )
     }
@@ -165,13 +135,10 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = dispatch => ({
-    addPost: (data) => dispatch(actions.addPost(data)),
-    updatePost: (data) => dispatch(actions.updatePost(data)),
-    deletePost: (id) => dispatch(actions.deletePost(id)),
-    getPost: (id) => dispatch(actions.getPost(id))
+    addPost: (data) => dispatch(actions.addPost(data))
 });
 
 export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(EditPost))
+)(CreatePost))

@@ -16,9 +16,9 @@ class SortingModal extends React.Component {
         };
 
         //if url contains a category, find all category posts
-        this.props.category
-            ? this.props.sortPostsByCategory(this.props.category)
-            : '';
+        if(this.props.category) {
+            this.props.sortPostsByCategory(this.props.category)
+        }
     }
 
 
