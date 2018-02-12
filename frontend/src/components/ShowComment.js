@@ -36,7 +36,7 @@ class ShowComment extends Component {
                                 className='float-left'>Edit
                             </Button>
                             <Button
-                                // onClick={() => this.deleteComment(this.props.id)}
+                                onClick={() => this.deleteComment(this.props.id)}
                                 className='float-right'>Delete
                             </Button>
                             <br/><br/>
@@ -56,7 +56,7 @@ class ShowComment extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    // deleteComment: (id) => dispatch(actions.deleteComment(id))
+    deleteComment: (id) => dispatch(actions.deleteComment(id))
 });
 
 export default connect(

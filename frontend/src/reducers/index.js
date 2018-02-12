@@ -44,7 +44,6 @@ export default function (state = null, action) {
             return {...makeObj(sortedArrByScore)};
         }
         case DELETE_POST: {
-
             const deletedObjectRemovedFromState =
                 Object.values(state).filter((post) => {
                     return post.id !== action.posts.id;
@@ -61,11 +60,11 @@ export default function (state = null, action) {
             return action;
         }
         case DELETE_COMMENT: {
-            const deletedObjectRemovedFromState =
-                Object.values(state).filter((comments) => {
-                    return comments.id !== action.comments.id;
-                });
-            return {...makeObj(deletedObjectRemovedFromState)};
+            //set array returned equal to state, with the deleted comment filtered out
+            action.comments = state.comments.filter((comment) => {
+                return comment.id !== action.comments.id
+            });
+            return action;
         }
         default: {
             return state;
