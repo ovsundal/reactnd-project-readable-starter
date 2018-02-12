@@ -70,6 +70,6 @@ export const updatePost = data =>
 export const getComments = parentId =>
     fetch(`${url}posts/${parentId}/comments`,
         {
-            method: 'POST',
+            method: 'GET',
             headers
         }).then(response => response.json());

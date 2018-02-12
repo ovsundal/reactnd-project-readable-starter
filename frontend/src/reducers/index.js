@@ -6,7 +6,9 @@ import {
     SORT_BY_SCORE,
     VOTE_POST,
     DELETE_POST,
-    GET_POST, UPDATE_POST
+    GET_POST,
+    UPDATE_POST,
+    GET_ALL_COMMENTS
 } from '../actions';
 
 export default function (state = null, action) {
@@ -54,6 +56,10 @@ export default function (state = null, action) {
         }
         case UPDATE_POST: {
             return {...makeObj([action.posts])};
+        }
+        case GET_ALL_COMMENTS: {
+            console.log(action)
+            return {...makeObj([action.comments])}
         }
         default: {
             return state;

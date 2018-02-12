@@ -44,7 +44,8 @@ class CreateEditPost extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getComments(this.state.id);
+        console.log(this.props)
+        this.props.getComments(this.props.id);
     }
 
     handleDelete = id => {
