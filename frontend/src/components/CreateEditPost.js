@@ -210,8 +210,8 @@ const mapDispatchToProps = dispatch => ({
     addPost: (data) => dispatch(actions.addPost(data)),
     updatePost: (data) => dispatch(actions.updatePost(data)),
     deletePost: (id) => dispatch(actions.deletePost(id)),
-    getPost: (id) => dispatch(actions.getPost(id)),
-    getComments: (id) => dispatch(actions.getComments(id))
+    getPost: (id) => dispatch(actions.getPost(id))
+    // getComments: (id) => dispatch(actions.getComments(id))
 });
 
 export default withRouter(connect(
