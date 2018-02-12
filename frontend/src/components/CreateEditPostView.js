@@ -69,36 +69,37 @@ class CreateEditPostView extends React.Component {
                 {/*for edit post*/}
                 {this.state.id !== ''
                 && [this.state].map((post) =>
-                <CreateEditPost
-                    key={post.id}
-                    id={post.id}
-                    title={post.title}
-                    content={post.content}
-                    author={post.author}
-                    category={post.category}
-                    timestamp={new Date(post.timestamp).toDateString()}
-                    voteScore={post.voteScore}
-                    commentCount={post.commentCount}
-                />
+                    <article key={post.id}>
+                        <CreateEditPost
+                            id={post.id}
+                            title={post.title}
+                            content={post.content}
+                            author={post.author}
+                            category={post.category}
+                            timestamp={new Date(post.timestamp).toDateString()}
+                            voteScore={post.voteScore}
+                            commentCount={post.commentCount}
+                        />
+                    </article>
                 )}
             </section>
 
             <br/><br/><br/>
 
             <section className='comments'>
-            {this.state.comments.length > 0
-            && this.state.comments.map((comment) =>
+                {this.state.comments.length > 0
+                && this.state.comments.map((comment) =>
 
-              <Comment
-              key={comment.id}
-              id={comment.id}
-              parentId={comment.parentId}
-              author={comment.author}
-              body={comment.body}
-              timestamp={comment.timestamp}
-              voteScore={comment.voteScore}
-              />
-            )}
+                  <Comment
+                  key={comment.id}
+                  id={comment.id}
+                  parentId={comment.parentId}
+                  author={comment.author}
+                  body={comment.body}
+                  timestamp={comment.timestamp}
+                  voteScore={comment.voteScore}
+                  />
+                )}
             </section>
         </div>
 

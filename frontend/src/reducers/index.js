@@ -53,13 +53,6 @@ export default function (state = null, action) {
             return {...makeObj(deletedObjectRemovedFromState)};
         }
         case GET_POST: {
-
-            console.log('from reducer GET_POST')
-            console.log('state GET_POST')
-            console.log(state)
-            console.log('action GET_POST')
-            console.log(action)
-
             return action;
         }
         case UPDATE_POST: {

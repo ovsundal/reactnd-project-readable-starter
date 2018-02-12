@@ -20,8 +20,6 @@ class CreateEditPost extends React.Component {
             comments: []
         };
 
-        {console.log(this.state.id)}
-
         //if this is an existing post to edit, do an api query to get post info
         if (this.props.id) {
             this.props.getPost(this.props.id);
@@ -30,7 +28,7 @@ class CreateEditPost extends React.Component {
 
     componentWillReceiveProps(props) {
     //if this is an edit post, set state to added props
-        if(props.id !== 'undefined') {
+        if(props.state.posts && props.state.posts.id) {
             this.setState({
                 id: props.id,
                 author: props.author,
@@ -49,6 +47,7 @@ class CreateEditPost extends React.Component {
     };
 
     handleTextInputChange = event => {
+        event.preventDefault();
         const name = event.target.name;
         const value = event.target.value;
 
@@ -58,6 +57,7 @@ class CreateEditPost extends React.Component {
     };
 
     handleCategoryInputChange = event => {
+        event.preventDefault();
         const value = event.target.value;
 
         this.setState({
@@ -102,15 +102,14 @@ class CreateEditPost extends React.Component {
     render() {
         return (
             <Form>
-                {/*only render score panel if post exist (has an id)*/}
                 {this.state.id !== ''
-                && <div>
+                && <aside>
                     <VotePanel
                         id={this.state.id}
                         voteScore={this.state.voteScore}
                         componentType='post'
                     />
-                </div>
+                </aside>
                 }
                 <FormGroup>
                     <Label for="author">Author</Label>
@@ -211,7 +210,6 @@ const mapDispatchToProps = dispatch => ({
     updatePost: (data) => dispatch(actions.updatePost(data)),
     deletePost: (id) => dispatch(actions.deletePost(id)),
     getPost: (id) => dispatch(actions.getPost(id))
-    // getComments: (id) => dispatch(actions.getComments(id))
 });
 
 export default withRouter(connect(

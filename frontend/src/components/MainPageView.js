@@ -35,17 +35,19 @@ class MainPageView extends Component {
                         <Col xs="8">
                             {/*only render after posts have been retrieved from store*/}
                             {this.props.posts && Object.values(this.props.posts).map((post) =>
-                                <ShowPost
-                                    key={post.id}
-                                    id={post.id}
-                                    title={post.title}
-                                    body={post.body}
-                                    author={post.author}
-                                    category={post.category}
-                                    timestamp={new Date(post.timestamp).toDateString()}
-                                    voteScore={post.voteScore}
-                                    commentCount={post.commentCount}
-                                />
+                            // QUESTION: i have no clue why this throws a ...unique key prop error, why?
+                                <article key={post.id}>
+                                    <ShowPost
+                                        id={post.id}
+                                        title={post.title}
+                                        body={post.body}
+                                        author={post.author}
+                                        category={post.category}
+                                        timestamp={new Date(post.timestamp).toDateString()}
+                                        voteScore={post.voteScore}
+                                        commentCount={post.commentCount}
+                                    />
+                                </article>
                             )}
                         </Col>
                         <Col xs="4">
