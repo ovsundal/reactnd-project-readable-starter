@@ -56,9 +56,12 @@ export const deletePost = (id) => dispatch => {
         .then(posts => dispatch(sendPost(posts, DELETE_POST)));
 };
 
-export const getPost = (id) => dispatch => {
+export const getPost = id => dispatch => {
     PostApi.getPost(id)
-        .then(posts => dispatch(sendPost(posts, GET_POST)));
+        .then(posts => dispatch(sendPost(posts, GET_POST)))
+        // .then(PostApi.getComments(id))
+        // .then(comments => dispatch(sendComment(comments, GET_ALL_COMMENTS))))
+
 };
 
 export const updatePost = (data) => dispatch => {

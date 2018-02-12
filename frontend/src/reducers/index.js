@@ -52,14 +52,15 @@ export default function (state = null, action) {
             return {...makeObj(deletedObjectRemovedFromState)};
         }
         case GET_POST: {
-            return {...makeObj([action.posts])};
+            return action;
         }
         case UPDATE_POST: {
             return {...makeObj([action.posts])};
         }
         case GET_ALL_COMMENTS: {
-            console.log(action)
-            return {...makeObj([action.comments])}
+            // console.log(action)
+            // console.log('from getallcomments reducer')
+            return action;
         }
         default: {
             return state;

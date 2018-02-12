@@ -4,10 +4,12 @@ import * as actions from "../actions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import VotePanel from "./VotePanel";
+import Comment from "./Comment";
+import {toDateTime} from "../utils/DateFormat";
 
 const uuidV1 = require('uuid/v1');
 
-class CreateEditPost extends React.Component {
+class CreateEditPostView extends React.Component {
     constructor(props) {
         super(props);
 
@@ -17,7 +19,8 @@ class CreateEditPost extends React.Component {
                 title: '',
                 content: '',
                 category: '',
-                voteScore: ''
+                voteScore: '',
+                comments: []
             };
 
             //if this is an existing post to edit, do an api query to get post info
@@ -26,25 +29,28 @@ class CreateEditPost extends React.Component {
             }
         }
 
-        //add api query result to state
+        //the entire action object is returned, check if it is post or comment using action.type
     componentWillReceiveProps(props) {
-
-        const currentPost = props.post[this.props.id];
-
-        this.setState({
-            id: currentPost.id,
-            author: currentPost.author,
-            title: currentPost.title,
-            content: currentPost.body,
-            category: currentPost.category,
-            voteScore: currentPost.voteScore,
-            selectedOption: currentPost.selectedOption,
-            selectedCategory: currentPost.category
-        });
+        if(props.state.type === 'GET_POST') {
+            const post = props.state.posts;
+            this.setState({
+                id: post.id,
+                author: post.author,
+                title: post.title,
+                content: post.body,
+                category: post.category,
+                voteScore: post.voteScore,
+                selectedCategory: post.category
+            });
+        } else {
+            const comments = props.state.comments.slice();
+            this.setState({
+                comments: comments
+            });
+        }
     }
 
     componentDidMount() {
-        console.log(this.props)
         this.props.getComments(this.props.id);
     }
 
@@ -106,6 +112,7 @@ class CreateEditPost extends React.Component {
 
     render() {
         return (
+        <div>
             <Form>
                 {/*only render score panel if post exist (has an id)*/}
                 {this.state.id !== ''
@@ -201,16 +208,33 @@ class CreateEditPost extends React.Component {
                     onClick={() => this.handleDelete(this.props.id)}>Delete Post
                 </Button>
                 }
-
-
-
             </Form>
+            <br/><br/><br/>
+
+
+            <section>
+            {this.state.comments.length > 0
+            && this.state.comments.map((comment) =>
+
+              <Comment
+              key={comment.id}
+              id={comment.id}
+              parentId={comment.parentId}
+              author={comment.author}
+              body={comment.body}
+              timestamp={comment.timestamp}
+              voteScore={comment.voteScore}
+              />
+            )}
+            </section>
+        </div>
+
         );
     }
 }
 
 function mapStateToProps(state) {
-    return {post: state}
+    return {state};
 }
 
 const mapDispatchToProps = dispatch => ({
@@ -224,4 +248,4 @@ const mapDispatchToProps = dispatch => ({
 export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(CreateEditPost))
+)(CreateEditPostView))
