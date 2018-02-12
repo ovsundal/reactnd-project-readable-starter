@@ -28,6 +28,7 @@ class Post extends Component {
                         <VotePanel
                             id={this.props.id}
                             voteScore={this.props.voteScore}
+                            componentType='post'
                         />
                         <br/>
                         <CardText className='post-content'>{this.props.body}</CardText>

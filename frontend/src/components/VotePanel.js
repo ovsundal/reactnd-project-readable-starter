@@ -4,8 +4,12 @@ import {connect} from "react-redux";
 
 class VotePanel extends Component {
 
-    submitVote = (id, voteType) => {
-        this.props.votePost(id, voteType)
+    submitVote = (id, voteType, componentType) => {
+
+        componentType === 'post'
+        ? this.props.votePost(id, voteType)
+        : ''
+        // this.props.voteComment(id, voteType)
     };
 
     render() {
@@ -15,11 +19,11 @@ class VotePanel extends Component {
                 <br/>
                 <button
                     className='float-right'
-                    onClick={() => this.submitVote(this.props.id, 'downVote')}>DOWNVOTE
+                    onClick={() => this.submitVote(this.props.id, 'downVote', this.props.componentType)}>DOWNVOTE
                 </button>
                 <button
                     className='float-right'
-                    onClick={() => this.submitVote(this.props.id, 'upVote')}>UPVOTE
+                    onClick={() => this.submitVote(this.props.id, 'upVote', this.props.componentType)}>UPVOTE
                 </button>
             </div>
         )

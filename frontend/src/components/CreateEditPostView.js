@@ -120,6 +120,7 @@ class CreateEditPostView extends React.Component {
                     <VotePanel
                         id={this.state.id}
                         voteScore={this.state.voteScore}
+                        componentType='post'
                     />
                 </div>
                 }
