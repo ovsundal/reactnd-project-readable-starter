@@ -20,23 +20,27 @@ class CreateEditPost extends React.Component {
             comments: []
         };
 
+        {console.log(this.state.id)}
+
         //if this is an existing post to edit, do an api query to get post info
         if (this.props.id) {
             this.props.getPost(this.props.id);
         }
     }
 
-    componentWillReceiveProps(post) {
-
-        this.setState({
-            id: post.id,
-            author: post.author,
-            title: post.title,
-            content: post.body,
-            category: post.category,
-            voteScore: post.voteScore,
-            selectedCategory: post.category
-        });
+    componentWillReceiveProps(props) {
+    //if this is an edit post, set state to added props
+        if(props.id !== 'undefined') {
+            this.setState({
+                id: props.id,
+                author: props.author,
+                title: props.title,
+                content: props.body,
+                category: props.category,
+                voteScore: props.voteScore,
+                selectedCategory: props.category
+            });
+        }
     }
 
     handleDelete = id => {

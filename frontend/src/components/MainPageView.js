@@ -8,7 +8,7 @@ import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 
 
-class MainPage extends Component {
+class MainPageView extends Component {
     constructor(props) {
         super(props);
 
@@ -77,4 +77,4 @@ function mapDispatchToProps(dispatch) {
 export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(MainPage))
+)(MainPageView))
