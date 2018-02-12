@@ -8,7 +8,9 @@ import {
     DELETE_POST,
     GET_POST,
     UPDATE_POST,
-    GET_ALL_COMMENTS, DELETE_COMMENT
+    GET_ALL_COMMENTS,
+    DELETE_COMMENT,
+    VOTE_COMMENT
 } from '../actions';
 
 export default function (state = null, action) {
@@ -64,6 +66,19 @@ export default function (state = null, action) {
             action.comments = state.comments.filter((comment) => {
                 return comment.id !== action.comments.id
             });
+            return action;
+        }
+        case VOTE_COMMENT: {
+
+            const newArr = state.comments.slice();
+            //find the updated comment from state, and update votescore
+            newArr.forEach((comment, index) => {
+                if(comment.id === action.comments.id) {
+                    newArr[index].voteScore = action.comments.voteScore;
+                }
+            });
+
+            action.comments = newArr;
             return action;
         }
         default: {

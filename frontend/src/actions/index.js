@@ -11,6 +11,7 @@ export const GET_POST = 'GET_POST';
 export const UPDATE_POST = 'UPDATE_POST';
 export const GET_ALL_COMMENTS = 'GET_ALL_COMMENTS';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
+export const VOTE_COMMENT = 'VOTE_COMMENT';
 
 
 
@@ -60,9 +61,6 @@ export const deletePost = (id) => dispatch => {
 export const getPost = id => dispatch => {
     PostApi.getPost(id)
         .then(posts => dispatch(sendPost(posts, GET_POST)))
-        // .then(PostApi.getComments(id))
-        // .then(comments => dispatch(sendComment(comments, GET_ALL_COMMENTS))))
-
 };
 
 export const updatePost = (data) => dispatch => {
@@ -75,8 +73,11 @@ export const getComments = (parentId) => dispatch =>
     CommentApi.getComments(parentId)
         .then(comments => dispatch(sendComment(comments, GET_ALL_COMMENTS)));
 
-//comments
 export const deleteComment = (id) => dispatch =>
     CommentApi.deleteComment(id)
         .then(comments => dispatch(sendComment(comments, DELETE_COMMENT)));
+
+export const voteComment = (id, vote) => dispatch =>
+    CommentApi.voteComment(id, vote)
+        .then(comments => dispatch(sendComment(comments, VOTE_COMMENT)));
 

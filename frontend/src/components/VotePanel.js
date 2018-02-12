@@ -8,8 +8,7 @@ class VotePanel extends Component {
 
         componentType === 'post'
         ? this.props.votePost(id, voteType)
-        : ''
-        // this.props.voteComment(id, voteType)
+        : this.props.voteComment(id, voteType)
     };
 
     render() {
@@ -31,7 +30,8 @@ class VotePanel extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    votePost: (id, voteType) => dispatch(actions.votePost(id, voteType))
+    votePost: (id, voteType) => dispatch(actions.votePost(id, voteType)),
+    voteComment: (id, voteType) => dispatch(actions.voteComment(id, voteType))
 });
 
 export default connect(

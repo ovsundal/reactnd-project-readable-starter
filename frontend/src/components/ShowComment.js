@@ -23,6 +23,7 @@ class ShowComment extends Component {
                             <VotePanel
                                 id={this.props.id}
                                 voteScore={this.props.voteScore}
+                                componentType='comment'
                             />
                         </section>
                         <article>
