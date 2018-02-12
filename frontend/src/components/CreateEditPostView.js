@@ -4,7 +4,7 @@ import * as actions from "../actions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import VotePanel from "./VotePanel";
-import Comment from "./Comment";
+import Comment from "./ShowComment";
 import {toDateTime} from "../utils/DateFormat";
 
 const uuidV1 = require('uuid/v1');

@@ -13,3 +13,10 @@ export const getComments = parentId =>
             headers
         }).then(response => response.json());
 
+export const deleteComment = id =>
+    fetch(`${url}comments/${id}`,
+        {
+            method: 'DELETE',
+            headers
+        }).then(response => response.json());
+

@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import VotePanel from "./VotePanel";
 
-class Comment extends Component {
+class ShowComment extends Component {
 
     deleteComment = (id) => {
         this.props.deleteComment(id);
@@ -16,22 +16,20 @@ class Comment extends Component {
             <Col>
                 <Card className="comment">
                     <CardBody>
-                        {/*<Link*/}
-                            {/*to={{*/}
-                                {/*pathname: `/${this.props.category}/${this.props.id}`*/}
-                            {/*}}>*/}
-                            {/*<CardTitle className='comment-title'>{this.props.title}</CardTitle>*/}
-                        {/*</Link>*/}
                         <CardSubtitle>
                             <span className=' comment-author'>Author: {this.props.author}</span>
                         </CardSubtitle>
-                        <VotePanel
-                            id={this.props.id}
-                            voteScore={this.props.voteScore}
-                        />
-                        <br/>
-                        <CardText className='comment-content'>{this.props.body}</CardText>
-                        <hr/>
+                        <section>
+                            <VotePanel
+                                id={this.props.id}
+                                voteScore={this.props.voteScore}
+                            />
+                        </section>
+                        <article>
+                            <br/>
+                            <CardText className='comment-content'>{this.props.body}</CardText>
+                            <hr/>
+                        </article>
                         <footer className='button-panel'>
                             <Button
                                 // onClick={() => this.deleteComment(this.props.id)}
@@ -41,18 +39,15 @@ class Comment extends Component {
                                 // onClick={() => this.deleteComment(this.props.id)}
                                 className='float-right'>Delete
                             </Button>
-                        </footer>
-                        <br/><br/>
-                        <i>
-                            <p>
-                                {/*<span className='comment-category float-left'>*/}
-                                    {/*#{this.props.category}*/}
-                                {/*</span>*/}
+                            <br/><br/>
+                            <i>
+                                <p>
                                 <span className='comment-dateCreated float-right'>
                                     Created: {new Date(this.props.timestamp).toDateString()}
                                 </span>
-                            </p>
-                        </i>
+                                </p>
+                            </i>
+                        </footer>
                     </CardBody>
                 </Card>
             </Col>
@@ -67,4 +62,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     null,
     mapDispatchToProps
-)(Comment);
+)(ShowComment);
