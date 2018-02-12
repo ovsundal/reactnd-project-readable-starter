@@ -73,7 +73,7 @@ class CreateEditPostView extends React.Component {
                     key={post.id}
                     id={post.id}
                     title={post.title}
-                    body={post.body}
+                    content={post.content}
                     author={post.author}
                     category={post.category}
                     timestamp={new Date(post.timestamp).toDateString()}

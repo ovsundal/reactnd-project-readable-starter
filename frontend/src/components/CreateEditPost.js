@@ -35,7 +35,7 @@ class CreateEditPost extends React.Component {
                 id: props.id,
                 author: props.author,
                 title: props.title,
-                content: props.body,
+                content: props.content,
                 category: props.category,
                 voteScore: props.voteScore,
                 selectedCategory: props.category
