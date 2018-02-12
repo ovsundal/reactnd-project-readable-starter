@@ -4,7 +4,7 @@ import {GET_POST} from "../actions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import Comment from "./ShowComment";
-import CreateEditPost from "./CreateEditPost";
+import CreateEditPost from "./EditPost";
 
 const uuidV1 = require('uuid/v1');
 
@@ -61,10 +61,10 @@ class CreateEditPostView extends React.Component {
             <section className='post'>
 
                 {/*for new post*/}
-                {this.state.id === ''
-                &&<CreateEditPost
-                />
-                }
+                {/*{this.state.id === ''*/}
+                {/*&&<CreateEditPost*/}
+                {/*/>*/}
+                {/*}*/}
 
                 {/*for edit post*/}
                 {this.state.id !== ''
