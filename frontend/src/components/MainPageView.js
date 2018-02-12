@@ -5,7 +5,6 @@ import Post from "./Post";
 import SortingModal from "./SortingModal";
 import * as actions from '../actions'
 import {connect} from "react-redux";
-import {toDateTime} from "../utils/DateFormat";
 import {withRouter} from "react-router-dom";
 
 
@@ -43,7 +42,7 @@ class MainPage extends Component {
                                     body={post.body}
                                     author={post.author}
                                     category={post.category}
-                                    timestamp={toDateTime(post.timestamp)}
+                                    timestamp={new Date(post.timestamp).toDateString()}
                                     voteScore={post.voteScore}
                                     commentCount={post.commentCount}
                                 />

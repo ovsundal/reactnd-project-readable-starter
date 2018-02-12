@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './components/NavigationBar';
 import MainPage from "./components/MainPageView";
 import {Route, Switch} from "react-router-dom";

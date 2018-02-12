@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import {Button, Card, CardBody, CardSubtitle, CardText, CardTitle, Col} from 'reactstrap';
+import {Button, Card, CardBody, CardSubtitle, CardText, Col} from 'reactstrap';
 import * as actions from "../actions";
 import {connect} from "react-redux";
-import {Link} from "react-router-dom";
 import VotePanel from "./VotePanel";
 
 class ShowComment extends Component {
