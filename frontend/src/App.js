@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import './components/NavigationBar';
-import MainPage from "./components/MainPageView";
+import MainPageView from "./components/MainPageView";
 import {Route, Switch} from "react-router-dom";
 import {Container} from "reactstrap";
-import CreateEditPost from "./components/CreateEditPostView";
+import CreateEditPostView from "./components/CreateEditPostView";
 import Navigation from "./components/NavigationBar";
 
 class App extends Component {
@@ -28,17 +28,17 @@ class App extends Component {
 
                 {/*routing declarations*/}
                 <Switch>
-                    <Route exact path='/' component={MainPage}/>
+                    <Route exact path='/' component={MainPageView}/>
 
-                    <Route path="/NewPost" component={CreateEditPost}/>
+                    <Route path="/NewPost" component={CreateEditPostView}/>
 
                     <Route exact path="/:category" render={(props) => (
-                        <MainPage
+                        <MainPageView
                         category={props.match.params.category}/>
                     )}/>
 
                     <Route exact path="/:category/:id" render={(props) => (
-                        <CreateEditPost
+                        <CreateEditPostView
                             id={props.match.params.id}
                             category={props.match.params.category}
                         />

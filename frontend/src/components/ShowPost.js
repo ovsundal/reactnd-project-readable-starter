@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import VotePanel from "./VotePanel";
 
-class Post extends Component {
+class ShowPost extends Component {
 
     deletePost = (id) => {
         this.props.deletePost(id);
@@ -70,4 +70,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     null,
     mapDispatchToProps
-)(Post);
+)(ShowPost);

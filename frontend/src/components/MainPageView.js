@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Col, Container, Row,} from 'reactstrap';
 import './NavigationBar';
-import Post from "./Post";
+import ShowPost from "./ShowPost";
 import SortingModal from "./SortingModal";
 import * as actions from '../actions'
 import {connect} from "react-redux";
@@ -35,7 +35,7 @@ class MainPage extends Component {
                         <Col xs="8">
                             {/*only render after posts have been retrieved from store*/}
                             {this.props.posts && Object.values(this.props.posts).map((post) =>
-                                <Post
+                                <ShowPost
                                     key={post.id}
                                     id={post.id}
                                     title={post.title}
