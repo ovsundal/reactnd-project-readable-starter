@@ -17,17 +17,10 @@ class CreateEditPostView extends React.Component {
                 content: '',
                 category: '',
                 voteScore: '',
+                timestamp: '',
                 comments: []
             };
-
-            //if this is an existing post to edit, do an api query to get post info
-
-            // if(this.props.id) {
-            //
-            // }
         }
-
-        //the entire action object is returned, check if it is post or comment using action.type
     componentWillReceiveProps(props) {
         if(props.post && props.post[0]) {
             const post = props.post[0];
@@ -38,15 +31,10 @@ class CreateEditPostView extends React.Component {
                 content: post.body,
                 category: post.category,
                 voteScore: post.voteScore,
+                timestamp: post.timestamp,
                 selectedCategory: post.category
             });
         }
-            // } else {
-        //     const comments = props.state.comments.slice();
-        //     this.setState({
-        //         comments: comments
-        //     });
-        // }
     }
     componentWillMount() {
         this.props.getPost(this.props.id);
@@ -71,7 +59,7 @@ class CreateEditPostView extends React.Component {
                             body={this.state.content}
                             author={this.state.author}
                             category={this.state.category}
-                            timestamp={new Date(this.state.timestamp).toDateString()}
+                            timestamp={this.state.timestamp}
                             voteScore={this.state.voteScore}
                             commentCount={this.state.commentCount}
                         />

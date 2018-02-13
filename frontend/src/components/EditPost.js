@@ -5,6 +5,7 @@ import * as actions from "../actions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import ShowComment from "./ShowComment";
+import CreateComment from "./CreateComment";
 
 class EditPost extends React.Component {
     constructor(props) {
@@ -18,6 +19,7 @@ class EditPost extends React.Component {
             category: '',
             timestamp: '',
             voteScore: '',
+            showNewCommentForm: false,
             comments: []
         };
     }
@@ -27,7 +29,6 @@ class EditPost extends React.Component {
     }
 
     componentWillReceiveProps(props) {
-        // QUESTION: timestamp returns 'Invalid Date here, but correct value from mapStateToProps. Why is it invalid here?'
         if (props.id) {
             this.setState({
                 id: props.id,
@@ -65,6 +66,13 @@ class EditPost extends React.Component {
         };
         this.props.updatePost(data);
         this.props.history.push('/');
+    };
+
+    handleNewCommentForm = () => {
+        const newCommentForm = !this.state.showNewCommentForm;
+        this.setState({
+            showNewCommentForm: newCommentForm
+        })
     };
 
     render() {
@@ -169,7 +177,7 @@ class EditPost extends React.Component {
                         <Col xs='4'>
                             <Button
                                 xs='4'
-                                onClick={this.handleUpdate}>New Comment
+                                onClick={this.handleNewCommentForm}>New Comment
                             </Button>
                         </Col>
                         {this.state.id !== ''
@@ -182,7 +190,20 @@ class EditPost extends React.Component {
                         </Col>
                         }
                     </Row>
-                    <br/><br/><br/>
+                </Form>
+                {this.state.showNewCommentForm
+                && <Col>
+                    <br/><br/>
+                    <CreateComment
+                        parentId={this.state.id}
+                        handleNewCommentForm={this.handleNewCommentForm}
+                    />
+                </Col>}
+
+                <br/><br/>
+                <Form>
+                    {/*comments*/}
+                    <h1 className='text-center'>Comments</h1>
                     {this.state.comments.map((comment) =>
                         <section className='comments' key={comment.id}>
                             <ShowComment
