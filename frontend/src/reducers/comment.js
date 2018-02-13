@@ -12,10 +12,10 @@ export default function CommentReducer(state = [], action) {
         }
         case DELETE_COMMENT: {
             //set array returned equal to state, with the deleted comment filtered out
-            action.comments = state.comments.filter((comment) => {
+            action.comments = state.filter((comment) => {
                 return comment.id !== action.comments.id
             });
-            return action;
+            return action.comments;
         }
         case VOTE_COMMENT: {
 

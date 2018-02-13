@@ -26,7 +26,6 @@ class EditPost extends React.Component {
     }
 
     componentWillReceiveProps(props) {
-        console.log(props)
         if(props.id) {
             this.setState({
                 id: props.id,
