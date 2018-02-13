@@ -1,6 +1,6 @@
 import * as PostApi from '../utils/PostApi';
 import * as CommentApi from '../utils/CommentApi'
-export const ADD_POST = 'ADD_POST';
+export const CREATE_POST = 'CREATE_POST';
 export const GET_ALL_POSTS = 'GET_ALL_POSTS';
 export const VOTE_POST = 'VOTE_POST';
 export const SORT_BY_CATEGORY = 'SORT_BY_CATEGORY';
@@ -12,6 +12,7 @@ export const EDIT_POST = 'EDIT_POST';
 export const GET_ALL_COMMENTS = 'GET_ALL_COMMENTS';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const VOTE_COMMENT = 'VOTE_COMMENT';
+export const CREATE_COMMENT = 'CREATE_COMMENT';
 
 
 
@@ -35,7 +36,7 @@ export const sortBy = (action) => ({
 
 export const createPost = (data) => dispatch =>
     PostApi.createPost(data)
-        .then(post => dispatch(sendPost([post], ADD_POST)));
+        .then(post => dispatch(sendPost([post], CREATE_POST)));
 
 export const getPosts = () => dispatch =>
     PostApi.getPosts()
@@ -83,3 +84,6 @@ export const voteComment = (id, vote) => dispatch =>
     CommentApi.voteComment(id, vote)
         .then(comments => dispatch(sendComment(comments, VOTE_COMMENT)));
 
+export const createComment = (data) => dispatch =>
+    CommentApi.createComment(data)
+        .then(comment => dispatch(sendComment([comment], CREATE_COMMENT)));

@@ -1,7 +1,7 @@
 import {
     GET_ALL_COMMENTS,
     DELETE_COMMENT,
-    VOTE_COMMENT
+    VOTE_COMMENT, CREATE_COMMENT
 } from '../actions';
 
 
@@ -29,11 +29,13 @@ export default function CommentReducer(state = [], action) {
             });
             return newState;
         }
-
-
-
-
-
+        case CREATE_COMMENT: {
+            const newState = [...state, ...action.comments];
+            newState.sort((a, b) => {
+                return b.timestamp - a.timestamp
+            });
+            return newState;
+        }
         default: {
             return state;
         }

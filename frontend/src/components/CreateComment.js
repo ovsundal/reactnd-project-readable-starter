@@ -2,6 +2,7 @@ import {Button, Col, Form, FormGroup, Input, Label, Row} from 'reactstrap';
 import React from "react";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
+import * as actions from "../actions";
 
 const uuidV1 = require('uuid/v1');
 
@@ -36,8 +37,8 @@ class CreateComment extends React.Component {
             timestamp: Date.now(),
             parentId: this.state.parentId
         };
-        console.log(data)
-        // this.props.addPost(data);
+        this.props.createComment(data);
+        this.handleCancel();
         // this.props.history.push('/');
     };
 
@@ -92,7 +93,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = dispatch => ({
-    // addPost: (data) => dispatch(actions.createPost(data))
+    createComment: (data) => dispatch(actions.createComment(data))
 });
 
 export default withRouter(connect(

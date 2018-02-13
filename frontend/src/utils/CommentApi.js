@@ -28,3 +28,10 @@ export const voteComment = (id, vote) =>
             body: JSON.stringify({option: vote})
         }).then(response => response.json());
 
+export const createComment = data =>
+    fetch(`${url}comments`,
+        {
+            method: 'POST',
+            headers,
+            body: JSON.stringify(data)
+        }).then(response => response.json());

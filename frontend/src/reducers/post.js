@@ -1,6 +1,6 @@
 
 import {
-    ADD_POST,
+    CREATE_POST,
     GET_ALL_POSTS,
     SORT_BY_CATEGORY,
     SORT_BY_DATE,
@@ -13,7 +13,7 @@ import {
 
 export default function PostReducer(state = [], action) {
     switch(action.type) {
-        case ADD_POST: {
+        case CREATE_POST: {
             return state;
         }
         case GET_ALL_POSTS: {
