@@ -8,7 +8,7 @@ import {
     DELETE_POST,
     GET_POST,
     UPDATE_POST,
-} from '../actions';
+} from '../actions/constants';
 
 export default function PostReducer(state = [], action) {
     switch(action.type) {
@@ -34,13 +34,15 @@ export default function PostReducer(state = [], action) {
         }
         case SORT_BY_MODE: {
             const newState = state.slice();
-
+console.log('sortbymode called')
+            console.log(state)
+            console.log(action)
             if(action.howToSort === 'score') {
                 newState.sort((a, b) => {
                     return b.voteScore - a.voteScore
                 })
             } else if (action.howToSort === 'date') {
-                newState.sort((a, b) => {
+                newState.sort((b, a) => {
                     return a.timestamp - b.timestamp
                 })
             } else {}

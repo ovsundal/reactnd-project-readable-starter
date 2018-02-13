@@ -15,6 +15,7 @@ class CreateComment extends React.Component {
             author: '',
             body: '',
             timestamp: '',
+
             parentId: this.props.parentId
         };
     }

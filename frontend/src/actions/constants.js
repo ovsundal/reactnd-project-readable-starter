@@ -1,0 +1,13 @@
+export const CREATE_POST = 'CREATE_POST';
+export const GET_ALL_POSTS = 'GET_ALL_POSTS';
+export const VOTE_POST = 'VOTE_POST';
+export const SORT_BY_CATEGORY = 'SORT_BY_CATEGORY';
+export const SORT_BY_MODE = 'SORT_BY_MODE';
+export const DELETE_POST = 'DELETE_POST';
+export const GET_POST = 'GET_POST';
+export const UPDATE_POST = 'UPDATE_POST';
+export const GET_ALL_COMMENTS = 'GET_ALL_COMMENTS';
+export const DELETE_COMMENT = 'DELETE_COMMENT';
+export const VOTE_COMMENT = 'VOTE_COMMENT';
+export const CREATE_COMMENT = 'CREATE_COMMENT';
+export const UPDATE_COMMENT = 'UPDATE_COMMENT';
