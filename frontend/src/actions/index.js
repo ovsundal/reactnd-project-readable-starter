@@ -8,7 +8,7 @@ export const SORT_BY_DATE = 'SORT_BY_DATE';
 export const SORT_BY_SCORE = 'SORT_BY_SCORE';
 export const DELETE_POST = 'DELETE_POST';
 export const GET_POST = 'GET_POST';
-export const UPDATE_POST = 'UPDATE_POST';
+export const EDIT_POST = 'EDIT_POST';
 export const GET_ALL_COMMENTS = 'GET_ALL_COMMENTS';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const VOTE_COMMENT = 'VOTE_COMMENT';
@@ -67,7 +67,7 @@ export const getPost = id => dispatch => {
 
 export const updatePost = (data) => dispatch => {
     PostApi.updatePost(data)
-        .then(posts => dispatch(sendPost(posts, UPDATE_POST)));
+        .then(posts => dispatch(sendPost(posts, EDIT_POST)));
 };
 
 //comments

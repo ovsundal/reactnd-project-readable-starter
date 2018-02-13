@@ -7,7 +7,7 @@ import {
     VOTE_POST,
     DELETE_POST,
     GET_POST,
-    UPDATE_POST,
+    EDIT_POST,
     GET_ALL_COMMENTS,
     DELETE_COMMENT,
     VOTE_COMMENT
@@ -60,8 +60,10 @@ function PostReducer(state = [], action) {
             // console.log([action.posts])
             return [action.posts];
         }
-        case UPDATE_POST: {
-            return {...makeObj([action.posts])};
+        case EDIT_POST: {
+            // console.log(action)
+            // console.log(state)
+            return [action.posts];
         }
         case GET_ALL_COMMENTS: {
             return action;
