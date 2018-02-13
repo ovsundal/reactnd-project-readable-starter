@@ -4,6 +4,7 @@ import VotePanel from "./VotePanel";
 import * as actions from "../actions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
+import ShowComment from "./ShowComment";
 
 class EditPost extends React.Component {
     constructor(props) {
@@ -25,6 +26,7 @@ class EditPost extends React.Component {
     }
 
     componentWillReceiveProps(props) {
+        console.log(props)
         if(props.id) {
             this.setState({
                 id: props.id,
@@ -32,7 +34,8 @@ class EditPost extends React.Component {
                 title: props.title,
                 body: props.body,
                 category: props.category,
-                voteScore: props.voteScore
+                voteScore: props.voteScore,
+                comments: props.comments
             });
         }
     }
@@ -154,13 +157,30 @@ class EditPost extends React.Component {
                     onClick={() => this.handleDelete(this.props.id)}>Delete Post
                 </Button>
                 }
+                <br/><br/><br/>
+                {this.state.comments.map((comment) =>
+                    <section className='comments' key={comment.id}>
+                        <ShowComment
+                            id={comment.id}
+                            parentId={comment.parentId}
+                            timestamp={comment.timeStamp}
+                            body={comment.body}
+                            author={comment.author}
+                            voteScore={comment.voteScore}
+                        />
+                    </section>
+                )}
             </Form>
         )
     }
 }
 
 function mapStateToProps(state) {
-    return {state};
+    console.log(state)
+    return {
+        post: state.PostReducer,
+        comments: state.CommentReducer
+    };
 }
 
 const mapDispatchToProps = dispatch => ({
