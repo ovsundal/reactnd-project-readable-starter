@@ -8,11 +8,19 @@ class SortingModal extends React.Component {
     constructor(props) {
         super(props);
 
-        //initialize with get all posts
+        //initialize with get all posts, sorted by date
         this.state = {
-            selectedCategory: 'all'
+            selectedCategory: 'all',
+            selectedMode: 'date'
         };
         this.props.getPosts();
+    }
+
+    componentWillReceiveProps(props) {
+        console.log('props')
+        console.log(props.state.PostReducer.forEach((post) => {
+            console.log(post)
+        }))
     }
 
     handleFilterByCategory = event => {
@@ -28,11 +36,12 @@ class SortingModal extends React.Component {
     };
 
     handleFilterBySortingMode = event => {
-
-        // // this.props.sortPostsByMode(event.target.value);
-        // this.setState({
-        //     selectedMode: event.target.value
-        // })
+        const modeValue = event.target.value;
+        console.log(this.props)
+        this.props.sortPostsByMode(modeValue);
+        this.setState({
+            selectedMode: modeValue
+        })
     };
 
     render() {
@@ -125,15 +134,21 @@ class SortingModal extends React.Component {
     };
 }
 
+function mapStateToProps(state) {
+    console.log(state)
+    return {state};
+}
+
+
 function mapDispatchToProps(dispatch) {
     return {
         getPosts: () => dispatch(actions.getPosts()),
         sortPostsByCategory: (category) => dispatch(actions.sortPostsByCategory(category)),
-        // sortPostsByMode: (mode) => dispatch(actions.sortPostsByMode(mode))
+        sortPostsByMode: (mode) => dispatch(actions.sortPostsByMode(mode))
     }
 }
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(SortingModal)

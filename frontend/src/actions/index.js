@@ -4,8 +4,7 @@ export const CREATE_POST = 'CREATE_POST';
 export const GET_ALL_POSTS = 'GET_ALL_POSTS';
 export const VOTE_POST = 'VOTE_POST';
 export const SORT_BY_CATEGORY = 'SORT_BY_CATEGORY';
-export const SORT_BY_DATE = 'SORT_BY_DATE';
-export const SORT_BY_SCORE = 'SORT_BY_SCORE';
+export const SORT_BY_MODE = 'SORT_BY_MODE';
 export const DELETE_POST = 'DELETE_POST';
 export const GET_POST = 'GET_POST';
 export const UPDATE_POST = 'UPDATE_POST';
@@ -19,8 +18,8 @@ export const UPDATE_COMMENT = 'UPDATE_COMMENT';
 
 export const sendPost = (posts, action) => (
     {
-    type: action,
-    posts
+        type: action,
+        posts
     }
 );
 
@@ -29,10 +28,9 @@ export const sendComment = (comments, action) => ({
     comments
 });
 
-
-//må ha posts her ellers vil reducer state være null
-export const sortBy = (action) => ({
-    type: action
+export const sortBy = (howToSort, action) => ({
+    type: action,
+    howToSort
 });
 
 export const createPost = (data) => dispatch =>
@@ -52,9 +50,8 @@ export const sortPostsByCategory = category => dispatch =>
         .then(posts => dispatch(sendPost(posts, SORT_BY_CATEGORY)));
 
 export const sortPostsByMode = (mode) => dispatch => {
-    mode === 'date'
-        ? dispatch(sortBy(SORT_BY_DATE))
-        : dispatch(sortBy(SORT_BY_SCORE))
+    dispatch(sortBy(mode, SORT_BY_MODE));
+
 };
 
 export const deletePost = (id) => dispatch => {

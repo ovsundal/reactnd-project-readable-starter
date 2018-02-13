@@ -3,8 +3,7 @@ import {
     CREATE_POST,
     GET_ALL_POSTS,
     SORT_BY_CATEGORY,
-    SORT_BY_DATE,
-    SORT_BY_SCORE,
+    SORT_BY_MODE,
     VOTE_POST,
     DELETE_POST,
     GET_POST,
@@ -35,27 +34,25 @@ export default function PostReducer(state = [], action) {
             console.log(action)
             return action.posts;
         }
-        // case SORT_BY_DATE: {
-        //
-        //     const sortedArrByDate = Object.values(state).sort((a,b) => {
-        //         return b.timestamp - a.timestamp;
-        //     });
-        //     return {...makeObj(sortedArrByDate)};
-        // }
-        // case SORT_BY_SCORE: {
-        //
-        //     const sortedArrByScore = Object.values(state)
-        //         .sort((a, b) => {
-        //             return b.voteScore - a.voteScore;
-        //         });
-        //     return {...makeObj(sortedArrByScore)};
-        // }
+        case SORT_BY_MODE: {
+            const newState = state.slice();
+
+            if(action.howToSort === 'score') {
+                newState.sort((a, b) => {
+                    return b.voteScore - a.voteScore
+                })
+            } else if (action.howToSort === 'date') {
+                newState.sort((a, b) => {
+                    return a.timestamp - b.timestamp
+                })
+            } else {}
+            return newState;
+        }
         case DELETE_POST: {
             const newState =
                 Object.values(state).filter((post) => {
                     return post.id !== action.posts.id;
                 });
-            console.log(newState);
             return newState;
         }
         case GET_POST: {
