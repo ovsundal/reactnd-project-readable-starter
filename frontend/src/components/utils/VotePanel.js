@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import * as actions from "../actions";
+import * as actions from "../../actions/index";
 import {connect} from "react-redux";
 
 class VotePanel extends Component {

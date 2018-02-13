@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {Col, Container, Row,} from 'reactstrap';
-import './NavigationBar';
-import ShowPost from "./ShowPosts";
-import SortingModal from "./SortingModal";
-import * as actions from '../actions'
+import '../utils/NavigationBar';
+import SortingModal from "../utils/SortingModal";
+import * as actions from '../../actions'
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
+import ShowPosts from "../post/ShowPosts";
 
 class MainPageView extends Component {
     constructor(props) {
@@ -20,7 +20,7 @@ class MainPageView extends Component {
                         <Col xs="8">
                             {this.props.posts.map((post) =>
                                 <article key={post.id}>
-                                    <ShowPost
+                                    <ShowPosts
                                         id={post.id}
                                         title={post.title}
                                         body={post.body}
@@ -34,9 +34,7 @@ class MainPageView extends Component {
                             )}
                         </Col>
                         <Col xs="4">
-                            <SortingModal
-                            // category={this.props.category}
-                            />
+                            <SortingModal />
                         </Col>
                     </Row>
             </Container>

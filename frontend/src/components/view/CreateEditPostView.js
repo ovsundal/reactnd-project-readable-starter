@@ -1,10 +1,10 @@
 import React from 'react';
-import * as actions from "../actions";
+import * as actions from "../../actions/index";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
-import ShowComment from "./ShowComments";
-import EditPost from "./EditPost";
-import CreatePost from "./CreatePost";
+import ShowComment from "../comment/ShowComments";
+import EditPost from "../post/EditPost";
+import CreatePost from "../post/CreatePost";
 
 class CreateEditPostView extends React.Component {
     constructor(props) {

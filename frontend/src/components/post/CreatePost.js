@@ -1,4 +1,4 @@
-import * as actions from "../actions";
+import * as actions from "../../actions/index";
 import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
 import React from "react";
 import {connect} from "react-redux";

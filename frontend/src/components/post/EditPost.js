@@ -1,11 +1,11 @@
 import {Button, Col, Container, Form, FormGroup, Input, Label, Row} from 'reactstrap';
 import React from 'react';
-import VotePanel from "./VotePanel";
-import * as actions from "../actions";
+import VotePanel from "../utils/VotePanel";
+import * as actions from "../../actions/index";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
-import ShowComment from "./ShowComments";
-import CreateComment from "./CreateComment";
+import ShowComment from "../comment/ShowComments";
+import CreateComment from "../comment/CreateComment";
 
 class EditPost extends React.Component {
     constructor(props) {

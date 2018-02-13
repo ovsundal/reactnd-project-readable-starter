@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card, CardBody, FormGroup, Input, Label} from 'reactstrap';
-import * as actions from "../actions";
+import * as actions from "../../actions/index";
 import {connect} from "react-redux";
 
 class SortingModal extends React.Component {
@@ -14,6 +14,10 @@ class SortingModal extends React.Component {
             selectedMode: 'date'
         };
         this.props.getPosts();
+
+    }
+
+    componentDidMount() {
         this.props.sortPostsByMode(this.state.selectedMode);
     }
 

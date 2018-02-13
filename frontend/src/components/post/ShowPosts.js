@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Button, Card, CardBody, CardSubtitle, CardText, CardTitle, Col} from 'reactstrap';
-import * as actions from "../actions";
+import * as actions from "../../actions/index";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-import VotePanel from "./VotePanel";
+import VotePanel from "../utils/VotePanel";
 
 class ShowPosts extends Component {
 

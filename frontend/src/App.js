@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import './components/NavigationBar';
-import MainPageView from "./components/MainPageView";
+import './components/utils/NavigationBar';
+import MainPageView from "./components/view/MainPageView";
 import {Route, Switch} from "react-router-dom";
 import {Container} from "reactstrap";
-import CreateEditPostView from "./components/CreateEditPostView";
-import Navigation from "./components/NavigationBar";
-import CreatePost from "./components/CreatePost";
+import CreateEditPostView from "./components/view/CreateEditPostView";
+import Navigation from "./components/utils/NavigationBar";
+import CreatePost from "./components/post/CreatePost";
 
 class App extends Component {
     constructor(props) {

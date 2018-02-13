@@ -2,7 +2,7 @@ import {Button, Col, Container, FormGroup, Input, Label, Row} from 'reactstrap';
 import React from "react";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
-import * as actions from "../actions";
+import * as actions from "../../actions/index";
 
 class EditComment extends React.Component {
     constructor(props) {
