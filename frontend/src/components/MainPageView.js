@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Col, Container, Row,} from 'reactstrap';
 import './NavigationBar';
-import ShowPost from "./ShowPost";
+import ShowPost from "./ShowPosts";
 import SortingModal from "./SortingModal";
 import * as actions from '../actions'
 import {connect} from "react-redux";

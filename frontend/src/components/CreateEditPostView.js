@@ -2,7 +2,7 @@ import React from 'react';
 import * as actions from "../actions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
-import ShowComment from "./ShowComment";
+import ShowComment from "./ShowComments";
 import EditPost from "./EditPost";
 import CreatePost from "./CreatePost";
 

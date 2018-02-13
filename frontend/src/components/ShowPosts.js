@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import VotePanel from "./VotePanel";
 
-class ShowPost extends Component {
+class ShowPosts extends Component {
 
     deletePost = (id) => {
         this.props.deletePost(id);
@@ -28,7 +28,7 @@ class ShowPost extends Component {
                         <VotePanel
                             id={this.props.id}
                             voteScore={this.props.voteScore}
-                            componentType='post'
+                            compType='post'
                         />
                         <br/>
                         <CardText className='post-content'>{this.props.body}</CardText>
@@ -70,4 +70,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     null,
     mapDispatchToProps
-)(ShowPost);
+)(ShowPosts);

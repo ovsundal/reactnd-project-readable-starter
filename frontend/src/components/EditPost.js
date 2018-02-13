@@ -4,7 +4,7 @@ import VotePanel from "./VotePanel";
 import * as actions from "../actions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
-import ShowComment from "./ShowComment";
+import ShowComment from "./ShowComments";
 import CreateComment from "./CreateComment";
 
 class EditPost extends React.Component {

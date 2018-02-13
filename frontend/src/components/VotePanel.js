@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 class VotePanel extends Component {
 
     submitVote = (id, voteType, componentType) => {
+console.log(componentType === 'post')
 
         componentType === 'post'
         ? this.props.votePost(id, voteType)
@@ -14,15 +15,17 @@ class VotePanel extends Component {
     render() {
         return (
             <div>
+
+                {/*QUESTION: Why does this component not recognize this.props.compType?*/}
                 <span className='float-right'>Score: {this.props.voteScore}</span>
                 <br/>
                 <button
                     className='float-right'
-                    onClick={() => this.submitVote(this.props.id, 'downVote', this.props.componentType)}>DOWNVOTE
+                    onClick={() => this.submitVote(this.props.id, 'downVote', this.props.compType)}>DOWNVOTE
                 </button>
                 <button
                     className='float-right'
-                    onClick={() => this.submitVote(this.props.id, 'upVote', this.props.componentType)}>UPVOTE
+                    onClick={() => this.submitVote(this.props.id, 'upVote', this.props.compType)}>UPVOTE
                 </button>
             </div>
         )

@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import VotePanel from "./VotePanel";
 import EditComment from "./EditComment";
 
-class ShowComment extends Component {
+class ShowComments extends Component {
     constructor(props) {
         super(props);
 
@@ -38,7 +38,7 @@ class ShowComment extends Component {
                         <VotePanel
                             id={this.props.id}
                             voteScore={this.props.voteScore}
-                            componentType='comment'
+                            compType='comment'
                         />
                     </section>
                     <article>
@@ -95,4 +95,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     null,
     mapDispatchToProps
-)(ShowComment);
+)(ShowComments);
