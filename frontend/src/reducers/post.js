@@ -19,9 +19,16 @@ export default function PostReducer(state = [], action) {
         case GET_ALL_POSTS: {
             return action.posts;
         }
-
         case VOTE_POST: {
-            return {...state, ...makeObj([action.posts])};
+            let newState = state.slice();
+
+            //find post that was voted from state, and change value to new score
+            newState.forEach((post, index) => {
+               if(post.id === action.posts.id) {
+                   newState[index].voteScore = action.posts.voteScore;
+               }
+            });
+            return newState;
         }
         case SORT_BY_CATEGORY: {
             //set state to null and merge with posts returned from query
