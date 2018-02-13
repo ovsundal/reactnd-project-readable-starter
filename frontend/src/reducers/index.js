@@ -14,7 +14,7 @@ import {
 } from '../actions';
 import {combineReducers} from "redux";
 
-function PostReducer(state = null, action) {
+function PostReducer(state = [], action) {
     // console.log('from reducer top')
     // console.log(state)
     // console.log(action)
@@ -23,9 +23,6 @@ function PostReducer(state = null, action) {
             return {...state};
         }
         case GET_ALL_POSTS: {
-            // console.log('from getall')
-            // console.log(state)
-            // console.log(action)
             return action.posts;
         }
 
