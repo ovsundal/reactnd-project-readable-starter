@@ -64,7 +64,6 @@ class MainPageView extends Component {
 //it's a function that lets connect() know how to map specific
 //parts of the stores state into usable props
 function mapStateToProps(state) {
-    console.log(typeof state )
     return {posts: state.PostReducer}
 }
 

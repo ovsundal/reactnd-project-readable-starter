@@ -47,11 +47,14 @@ function PostReducer(state = [], action) {
             return {...makeObj(sortedArrByScore)};
         }
         case DELETE_POST: {
-            const deletedObjectRemovedFromState =
+            console.log(state)
+            console.log(action)
+            const newState =
                 Object.values(state).filter((post) => {
                     return post.id !== action.posts.id;
                 });
-            return {...makeObj(deletedObjectRemovedFromState)};
+            console.log(newState);
+            return newState;
         }
         case GET_POST: {
             // console.log([action.posts])
@@ -66,6 +69,7 @@ function PostReducer(state = [], action) {
             return action;
         }
         case DELETE_COMMENT: {
+
             //set array returned equal to state, with the deleted comment filtered out
             action.comments = state.comments.filter((comment) => {
                 return comment.id !== action.comments.id
