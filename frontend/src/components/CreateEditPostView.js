@@ -1,10 +1,9 @@
 import React from 'react';
 import * as actions from "../actions";
-import {GET_POST} from "../actions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import Comment from "./ShowComment";
-import CreateEditPost from "./EditPost";
+import EditPost from "./EditPost";
 import CreatePost from "./CreatePost";
 
 class CreateEditPostView extends React.Component {
@@ -23,16 +22,15 @@ class CreateEditPostView extends React.Component {
 
             //if this is an existing post to edit, do an api query to get post info
 
-            if(this.props.id) {
-                this.props.getPost(this.props.id);
-            }
+            // if(this.props.id) {
+            //
+            // }
         }
 
         //the entire action object is returned, check if it is post or comment using action.type
     componentWillReceiveProps(props) {
-
-        if(props.state.type === GET_POST) {
-            const post = props.state.posts;
+        if(props.post && props.post[0]) {
+            const post = props.post[0];
             this.setState({
                 id: post.id,
                 author: post.author,
@@ -42,15 +40,16 @@ class CreateEditPostView extends React.Component {
                 voteScore: post.voteScore,
                 selectedCategory: post.category
             });
-        } else {
-            const comments = props.state.comments.slice();
-            this.setState({
-                comments: comments
-            });
         }
+            // } else {
+        //     const comments = props.state.comments.slice();
+        //     this.setState({
+        //         comments: comments
+        //     });
+        // }
     }
-
-    componentDidMount() {
+    componentWillMount() {
+        this.props.getPost(this.props.id);
         this.props.getComments(this.props.id);
     }
 
@@ -58,7 +57,6 @@ class CreateEditPostView extends React.Component {
         return (
         <div>
             <section className='post'>
-
                 {/*for new post*/}
                 {this.state.id === ''
                 && <CreatePost/>
@@ -66,20 +64,19 @@ class CreateEditPostView extends React.Component {
 
                 {/*for edit post*/}
                 {this.state.id !== ''
-                && [this.state].map((post) =>
-                    <article key={post.id}>
-                        <CreateEditPost
-                            id={post.id}
-                            title={post.title}
-                            content={post.content}
-                            author={post.author}
-                            category={post.category}
-                            timestamp={new Date(post.timestamp).toDateString()}
-                            voteScore={post.voteScore}
-                            commentCount={post.commentCount}
+                && <article key={this.state.id}>
+                        <EditPost
+                            id={this.state.id}
+                            title={this.state.title}
+                            body={this.state.content}
+                            author={this.state.author}
+                            category={this.state.category}
+                            timestamp={new Date(this.state.timestamp).toDateString()}
+                            voteScore={this.state.voteScore}
+                            commentCount={this.state.commentCount}
                         />
                     </article>
-                )}
+                }
             </section>
 
             <br/><br/><br/>
@@ -106,7 +103,7 @@ class CreateEditPostView extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {state};
+    return {post: state.PostReducer};
 }
 
 const mapDispatchToProps = dispatch => ({

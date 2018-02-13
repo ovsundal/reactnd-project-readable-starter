@@ -25,15 +25,14 @@ class EditPost extends React.Component {
     }
 
     componentWillReceiveProps(props) {
-        const post = props.state.posts;
-        if(post && post.id) {
+        if(props.id) {
             this.setState({
-                id: post.id,
-                author: post.author,
-                title: post.title,
-                body: post.body,
-                category: post.category,
-                voteScore: post.voteScore
+                id: props.id,
+                author: props.author,
+                title: props.title,
+                body: props.body,
+                category: props.category,
+                voteScore: props.voteScore
             });
         }
     }

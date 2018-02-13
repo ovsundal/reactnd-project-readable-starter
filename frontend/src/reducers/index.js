@@ -57,7 +57,8 @@ function PostReducer(state = [], action) {
             return {...makeObj(deletedObjectRemovedFromState)};
         }
         case GET_POST: {
-            return action;
+            // console.log([action.posts])
+            return [action.posts];
         }
         case UPDATE_POST: {
             return {...makeObj([action.posts])};
