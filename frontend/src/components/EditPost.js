@@ -1,4 +1,4 @@
-import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
+import {Button, Col, Container, Form, FormGroup, Input, Label, Row} from 'reactstrap';
 import React from 'react';
 import VotePanel from "./VotePanel";
 import * as actions from "../actions";
@@ -16,6 +16,7 @@ class EditPost extends React.Component {
             title: '',
             body: '',
             category: '',
+            timestamp: '',
             voteScore: '',
             comments: []
         };
@@ -26,7 +27,8 @@ class EditPost extends React.Component {
     }
 
     componentWillReceiveProps(props) {
-        if(props.id) {
+        // QUESTION: timestamp returns 'Invalid Date here, but correct value from mapStateToProps. Why is it invalid here?'
+        if (props.id) {
             this.setState({
                 id: props.id,
                 author: props.author,
@@ -34,6 +36,7 @@ class EditPost extends React.Component {
                 body: props.body,
                 category: props.category,
                 voteScore: props.voteScore,
+                timestamp: props.timestamp,
                 comments: props.comments
             });
         }
@@ -66,116 +69,139 @@ class EditPost extends React.Component {
 
     render() {
         return (
-            <Form>
-                {this.state.id !== ''
-                && <aside>
-                    <VotePanel
-                        id={this.state.id}
-                        voteScore={this.state.voteScore}
-                        componentType='post'
-                    />
-                </aside>
-                }
-                <FormGroup>
-                    <Label for="author">Author</Label>
-                    <Input
-                        type="text"
-                        name="author"
-                        placeholder="author"
-                        value={this.state.author}
-                        onChange={this.handleTextInputChange}
-                        disabled
-                    />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="title">Title</Label>
-                    <Input type="text"
-                           name="title"
-                           placeholder="title"
-                           value={this.state.title}
-                           onChange={this.handleTextInputChange}
-                    />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="body">Content</Label>
-                    <Input
-                        type="textarea"
-                        name="body"
-                        placeholder="content"
-                        value={this.state.body}
-                        onChange={this.handleTextInputChange}
-                    />
-                </FormGroup>
-                <FormGroup tag="fieldset">
-                    <legend>Category</legend>
-                    <FormGroup check>
-                        <Label check>
-                            <Input
-                                type="radio"
-                                name="category"
-                                value="react"
-                                checked={this.state.category === "react"}
-                                disabled
-                            />
-                            react
-                        </Label>
-                    </FormGroup>
-                    <FormGroup check>
-                        <Label check>
-                            <Input
-                                type="radio"
-                                name="category"
-                                value="redux"
-                                checked={this.state.category === "redux"}
-                                disabled
-                            />
-                            redux
-                        </Label>
-                    </FormGroup>
-                    <FormGroup check>
-                        <Label check>
-                            <Input
-                                type="radio"
-                                name="category"
-                                value="udacity"
-                                checked={this.state.category === "udacity"}
-                                disabled
-                            />
-                            udacity
-                        </Label>
-                    </FormGroup>
-                </FormGroup>
-                <Button
-                    className='float-left'
-                    onClick={this.handleUpdate}>Update
-                </Button>
-                {/*only render delete post button if post exist (has an id)*/}
-                {this.state.id !== ''
-                && <Button
-                    className='float-right'
-                    onClick={() => this.handleDelete(this.props.id)}>Delete Post
-                </Button>
-                }
-                <br/><br/><br/>
-                {this.state.comments.map((comment) =>
-                    <section className='comments' key={comment.id}>
-                        <ShowComment
-                            id={comment.id}
-                            parentId={comment.parentId}
-                            timestamp={comment.timeStamp}
-                            body={comment.body}
-                            author={comment.author}
-                            voteScore={comment.voteScore}
+            <Container>
+                <Form>
+                    {this.state.id !== ''
+                    && <aside>
+                        {/*when i use this voting, it seems that all voting panels from the post and all comments are triggered,*/}
+                        {/*how to fix this?*/}
+                        <VotePanel
+                            key={this.props.id}
+                            id={this.props.id}
+                            voteScore={this.props.voteScore}
+                            componentType='post'
                         />
-                    </section>
-                )}
-            </Form>
+                    </aside>
+                    }
+                    <FormGroup>
+                        <Label for="author">Author</Label>
+                        <Input
+                            type="text"
+                            name="author"
+                            placeholder="author"
+                            value={this.state.author}
+                            onChange={this.handleTextInputChange}
+                            disabled
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="title">Title</Label>
+                        <Input type="text"
+                               name="title"
+                               placeholder="title"
+                               value={this.state.title}
+                               onChange={this.handleTextInputChange}
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="body">Content</Label>
+                        <Input
+                            type="textarea"
+                            name="body"
+                            placeholder="content"
+                            value={this.state.body}
+                            onChange={this.handleTextInputChange}
+                        />
+                    </FormGroup>
+                    <Row className='text-center'>
+                        <Col xs='6'>
+                            <FormGroup tag="fieldset">
+                                <legend>Category</legend>
+                                <FormGroup check>
+                                    <Label check>
+                                        <Input
+                                            type="radio"
+                                            name="category"
+                                            value="react"
+                                            checked={this.state.category === "react"}
+                                            disabled
+                                        />
+                                        react
+                                    </Label>
+                                </FormGroup>
+                                <FormGroup check>
+                                    <Label check>
+                                        <Input
+                                            type="radio"
+                                            name="category"
+                                            value="redux"
+                                            checked={this.state.category === "redux"}
+                                            disabled
+                                        />
+                                        redux
+                                    </Label>
+                                </FormGroup>
+                                <FormGroup check>
+                                    <Label check>
+                                        <Input
+                                            type="radio"
+                                            name="category"
+                                            value="udacity"
+                                            checked={this.state.category === "udacity"}
+                                            disabled
+                                        />
+                                        udacity
+                                    </Label>
+                                </FormGroup>
+                            </FormGroup>
+                        </Col>
+                        <Col xs='6'>
+                            <h4>Created: {new Date(this.state.timestamp).toDateString()}</h4>
+                        </Col>
+                    </Row>
+                    <Row className='text-center'>
+                        <Col xs='4'>
+                            <Button
+                                color='primary'
+                                onClick={this.handleUpdate}>Update
+                            </Button>
+                        </Col>
+                        <Col xs='4'>
+                            <Button
+                                xs='4'
+                                onClick={this.handleUpdate}>New Comment
+                            </Button>
+                        </Col>
+                        {this.state.id !== ''
+                        && <Col xs='4'>
+                            <Button
+                                color='danger'
+                                xs='4'
+                                onClick={() => this.handleDelete(this.props.id)}>Delete Post
+                            </Button>
+                        </Col>
+                        }
+                    </Row>
+                    <br/><br/><br/>
+                    {this.state.comments.map((comment) =>
+                        <section className='comments' key={comment.id}>
+                            <ShowComment
+                                id={comment.id}
+                                parentId={comment.parentId}
+                                timestamp={comment.timestamp}
+                                body={comment.body}
+                                author={comment.author}
+                                voteScore={comment.voteScore}
+                            />
+                        </section>
+                    )}
+                </Form>
+            </Container>
         )
     }
 }
 
 function mapStateToProps(state) {
-    console.log(state)
     return {
         post: state.PostReducer,
         comments: state.CommentReducer

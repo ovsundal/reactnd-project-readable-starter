@@ -18,17 +18,16 @@ export default function CommentReducer(state = [], action) {
             return action.comments;
         }
         case VOTE_COMMENT: {
-
-            const newArr = state.comments.slice();
-            //find the updated comment from state, and update votescore
-            newArr.forEach((comment, index) => {
-                if(comment.id === action.comments.id) {
-                    newArr[index].voteScore = action.comments.voteScore;
-                }
+            let newState = state.slice();
+            console.log(action)
+            console.log(state)
+            //find post that was voted from state, and change value to new score
+            newState.forEach((comment, index) => {
+                // if(comment.id === action.comment.id) {
+                // //     newState[index].voteScore = action.posts.voteScore;
+                // }
             });
-
-            action.comments = newArr;
-            return action;
+            return newState;
         }
 
 

@@ -32,10 +32,12 @@ class ShowComment extends Component {
                         </article>
                         <footer className='button-panel'>
                             <Button
+                                color='primary'
                                 // onClick={() => this.deleteComment(this.props.id)}
                                 className='float-left'>Edit
                             </Button>
                             <Button
+                                color='danger'
                                 onClick={() => this.deleteComment(this.props.id)}
                                 className='float-right'>Delete
                             </Button>
