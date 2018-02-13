@@ -6,7 +6,7 @@ const headers =
     };
 
 //add new post
-export const addPost = data =>
+export const createPost = data =>
     fetch(`${url}posts`,
         {
             method: 'POST',

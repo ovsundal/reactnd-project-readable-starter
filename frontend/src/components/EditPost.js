@@ -164,7 +164,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = dispatch => ({
-    addPost: (data) => dispatch(actions.addPost(data)),
+    addPost: (data) => dispatch(actions.createPost(data)),
     updatePost: (data) => dispatch(actions.updatePost(data)),
     deletePost: (id) => dispatch(actions.deletePost(id)),
     getPost: (id) => dispatch(actions.getPost(id))

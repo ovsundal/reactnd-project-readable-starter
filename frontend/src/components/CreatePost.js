@@ -44,6 +44,7 @@ class CreatePost extends React.Component {
             title: this.state.title,
             body: this.state.body,
             category: this.state.selectedCategory,
+            timestamp: Date.now(),
             voteScore: 1
         };
         this.props.addPost(data);
@@ -135,7 +136,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = dispatch => ({
-    addPost: (data) => dispatch(actions.addPost(data))
+    addPost: (data) => dispatch(actions.createPost(data))
 });
 
 export default withRouter(connect(

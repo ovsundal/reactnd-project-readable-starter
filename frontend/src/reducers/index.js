@@ -15,12 +15,9 @@ import {
 import {combineReducers} from "redux";
 
 function PostReducer(state = [], action) {
-    // console.log('from reducer top')
-    // console.log(state)
-    // console.log(action)
     switch(action.type) {
         case ADD_POST: {
-            return {...state};
+            return state;
         }
         case GET_ALL_POSTS: {
             return action.posts;

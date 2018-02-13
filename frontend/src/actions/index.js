@@ -33,9 +33,9 @@ export const sortBy = (action) => ({
     type: action
 });
 
-export const addPost = (data) => dispatch =>
-    PostApi.addPost(data)
-        .then(post => dispatch(sendPost(post, ADD_POST)));
+export const createPost = (data) => dispatch =>
+    PostApi.createPost(data)
+        .then(post => dispatch(sendPost([post], ADD_POST)));
 
 export const getPosts = () => dispatch =>
     PostApi.getPosts()
