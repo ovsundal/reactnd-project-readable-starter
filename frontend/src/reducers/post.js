@@ -30,8 +30,6 @@ export default function PostReducer(state = [], action) {
             return newState;
         }
         case SORT_BY_CATEGORY: {
-            console.log(state)
-            console.log(action)
             return action.posts;
         }
         case SORT_BY_MODE: {

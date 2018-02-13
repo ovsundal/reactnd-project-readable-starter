@@ -14,13 +14,7 @@ class SortingModal extends React.Component {
             selectedMode: 'date'
         };
         this.props.getPosts();
-    }
-
-    componentWillReceiveProps(props) {
-        console.log('props')
-        console.log(props.state.PostReducer.forEach((post) => {
-            console.log(post)
-        }))
+        this.props.sortPostsByMode(this.state.selectedMode);
     }
 
     handleFilterByCategory = event => {
@@ -37,7 +31,6 @@ class SortingModal extends React.Component {
 
     handleFilterBySortingMode = event => {
         const modeValue = event.target.value;
-        console.log(this.props)
         this.props.sortPostsByMode(modeValue);
         this.setState({
             selectedMode: modeValue
@@ -135,7 +128,6 @@ class SortingModal extends React.Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state)
     return {state};
 }
 
