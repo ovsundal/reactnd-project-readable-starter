@@ -8,37 +8,31 @@ class SortingModal extends React.Component {
     constructor(props) {
         super(props);
 
+        //initialize with get all posts
         this.state = {
-            selectedCategory: this.props.category
-                ? this.props.category
-                : 'all',
-            selectedMode: ''
+            selectedCategory: 'all'
         };
-
-        //if url contains a category, find all category posts
-        if(this.props.category) {
-            this.props.sortPostsByCategory(this.props.category)
-        }
+        this.props.getPosts();
     }
 
-
     handleFilterByCategory = event => {
+        const categoryValue = event.target.value;
 
-        event.target.value === 'all'
-            ? this.props.getPosts()
-            : this.props.sortPostsByCategory(event.target.value);
+        categoryValue === 'all'
+        ? this.props.getPosts()
+        : this.props.sortPostsByCategory(categoryValue);
 
         this.setState({
-            selectedCategory: event.target.value
+            selectedCategory: categoryValue
         })
     };
 
     handleFilterBySortingMode = event => {
 
-        this.props.sortPostsByMode(event.target.value);
-        this.setState({
-            selectedMode: event.target.value
-        })
+        // // this.props.sortPostsByMode(event.target.value);
+        // this.setState({
+        //     selectedMode: event.target.value
+        // })
     };
 
     render() {
@@ -135,7 +129,7 @@ function mapDispatchToProps(dispatch) {
     return {
         getPosts: () => dispatch(actions.getPosts()),
         sortPostsByCategory: (category) => dispatch(actions.sortPostsByCategory(category)),
-        sortPostsByMode: (mode) => dispatch(actions.sortPostsByMode(mode))
+        // sortPostsByMode: (mode) => dispatch(actions.sortPostsByMode(mode))
     }
 }
 

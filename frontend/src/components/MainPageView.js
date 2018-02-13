@@ -10,21 +10,38 @@ import {withRouter} from "react-router-dom";
 class MainPageView extends Component {
     constructor(props) {
         super(props);
+        this.props.getPosts();
 
-        this.toggle = this.toggle.bind(this);
-        this.state = {
-            isOpen: false
-        };
+        // this.toggle = this.toggle.bind(this);
+        // this.state = {
+        //     isOpen: false
+        // };
     }
 
-    toggle() {
-        this.setState({
-            isOpen: !this.state.isOpen
-        });
+    // toggle() {
+    //     this.setState({
+    //         isOpen: !this.state.isOpen
+    //     });
+    // }
+
+    componentWillReceiveProps(props) {
+
+        //if a filter was applied, set this.props.posts to the array from FilterReducer.
+        //If not, use the array from PostReducer
+
+        // console.log(props.filter)
+        console.log(props)
+        // if(props.filter.length > 0) {
+        //     console.log('not empty')
+        // } else {
+        //     console.log('empty')
+        // }
+        // console.log(props)
+        // console.log(props.filter)
     }
 
     componentDidMount() {
-        this.props.getPosts();
+
     }
 
     render() {
@@ -33,7 +50,6 @@ class MainPageView extends Component {
                     <Row>
                         <Col xs="8">
                             {this.props.posts.map((post) =>
-                            // QUESTION: i have no clue why this throws a ...unique key prop error, why?
                                 <article key={post.id}>
                                     <ShowPost
                                         id={post.id}
@@ -50,7 +66,7 @@ class MainPageView extends Component {
                         </Col>
                         <Col xs="4">
                             <SortingModal
-                            category={this.props.category}
+                            // category={this.props.category}
                             />
                         </Col>
                     </Row>
@@ -64,7 +80,10 @@ class MainPageView extends Component {
 //it's a function that lets connect() know how to map specific
 //parts of the stores state into usable props
 function mapStateToProps(state) {
-    return {posts: state.PostReducer}
+    console.log(state)
+        return {
+            posts: state.PostReducer,
+        }
 }
 
 //bind dispatch to action creators before they hit the component
