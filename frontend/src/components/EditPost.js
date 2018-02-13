@@ -191,6 +191,7 @@ class EditPost extends React.Component {
                         }
                     </Row>
                 </Form>
+                {/*form for creating new comments*/}
                 {this.state.showNewCommentForm
                 && <Col>
                     <br/><br/>
@@ -202,7 +203,7 @@ class EditPost extends React.Component {
 
                 <br/><br/>
                 <Form>
-                    {/*comments*/}
+                    {/*display all comments*/}
                     <h1 className='text-center'>Comments</h1>
                     {this.state.comments.map((comment) =>
                         <section className='comments' key={comment.id}>

@@ -2,7 +2,7 @@ import React from 'react';
 import * as actions from "../actions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
-import Comment from "./ShowComment";
+import ShowComment from "./ShowComment";
 import EditPost from "./EditPost";
 import CreatePost from "./CreatePost";
 
@@ -73,7 +73,7 @@ class CreateEditPostView extends React.Component {
                 {this.state.comments.length > 0
                 && this.state.comments.map((comment) =>
 
-                  <Comment
+                  <ShowComment
                   key={comment.id}
                   id={comment.id}
                   parentId={comment.parentId}
