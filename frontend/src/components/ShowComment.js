@@ -18,7 +18,7 @@ class ShowComment extends Component {
         this.props.deleteComment(id);
     };
 
-    editComment = () => {
+    toggleEditCommentWindow = () => {
         const inEditMode = !this.state.inEditMode;
         this.setState({
             inEditMode
@@ -49,7 +49,7 @@ class ShowComment extends Component {
                     <footer className='button-panel'>
                         <Button
                             color='primary'
-                            onClick={() => this.editComment()}
+                            onClick={() => this.toggleEditCommentWindow()}
                             className='float-left'>Edit
                         </Button>
                         <Button
@@ -78,7 +78,7 @@ class ShowComment extends Component {
                         body={this.props.body}
                         timestamp={this.props.timestamp}
                         parentId={this.props.parentId}
-                        editComment={this.editComment}
+                        toggleEditCommentWindow={this.toggleEditCommentWindow}
                     />
                     <br/>
                 </article>

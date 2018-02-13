@@ -35,3 +35,11 @@ export const createComment = data =>
             headers,
             body: JSON.stringify(data)
         }).then(response => response.json());
+
+export const updateComment = data =>
+    fetch(`${url}comments/${data.id}`,
+        {
+            method: 'PUT',
+            headers,
+            body: JSON.stringify(data)
+        }).then(response => response.json());

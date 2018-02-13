@@ -35,13 +35,12 @@ class EditComment extends React.Component {
             timestamp: Date.now(),
             parentId: this.state.parentId
         };
-        // this.props.createComment(data);
-        this.handleCancel();
-        // this.props.history.push('/');
+        this.props.updateComment(data);
+        this.props.toggleEditCommentWindow();
     };
 
     handleCancel = () => {
-        this.props.editComment();
+        this.props.toggleEditCommentWindow();
     };
 
     render() {
@@ -91,7 +90,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = dispatch => ({
-    // createComment: (data) => dispatch(actions.createComment(data))
+    updateComment: (data) => dispatch(actions.updateComment(data))
 });
 
 export default withRouter(connect(

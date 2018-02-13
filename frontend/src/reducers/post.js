@@ -8,7 +8,7 @@ import {
     VOTE_POST,
     DELETE_POST,
     GET_POST,
-    EDIT_POST,
+    UPDATE_POST,
 } from '../actions';
 
 export default function PostReducer(state = [], action) {
@@ -51,8 +51,6 @@ export default function PostReducer(state = [], action) {
             return {...makeObj(sortedArrByScore)};
         }
         case DELETE_POST: {
-            console.log(state)
-            console.log(action)
             const newState =
                 Object.values(state).filter((post) => {
                     return post.id !== action.posts.id;
@@ -63,7 +61,7 @@ export default function PostReducer(state = [], action) {
         case GET_POST: {
             return [action.posts];
         }
-        case EDIT_POST: {
+        case UPDATE_POST: {
             return [action.posts];
         }
         default: {
