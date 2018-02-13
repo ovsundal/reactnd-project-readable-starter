@@ -12,14 +12,21 @@ import {
     DELETE_COMMENT,
     VOTE_COMMENT
 } from '../actions';
+import {combineReducers} from "redux";
 
-export default function (state = null, action) {
+function PostReducer(state = null, action) {
+    // console.log('from reducer top')
+    // console.log(state)
+    // console.log(action)
     switch(action.type) {
         case ADD_POST: {
             return {...state};
         }
         case GET_ALL_POSTS: {
-            return {...makeObj(action.posts)};
+            // console.log('from getall')
+            // console.log(state)
+            // console.log(action)
+            return action.posts;
         }
 
         case VOTE_POST: {
@@ -97,3 +104,7 @@ function makeObj (posts) {
     }
     return newObj
 }
+
+export default combineReducers({
+    PostReducer
+})

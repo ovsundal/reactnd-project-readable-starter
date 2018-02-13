@@ -7,7 +7,6 @@ import * as actions from '../actions'
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 
-
 class MainPageView extends Component {
     constructor(props) {
         super(props);
@@ -24,7 +23,7 @@ class MainPageView extends Component {
         });
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.getPosts();
     }
 
@@ -33,9 +32,11 @@ class MainPageView extends Component {
             <Container>
                     <Row>
                         <Col xs="8">
+                            {/*{console.log(this.props)}*/}
                             {/*only render after posts have been retrieved from store*/}
                             {this.props.posts && Object.values(this.props.posts).map((post) =>
                             // QUESTION: i have no clue why this throws a ...unique key prop error, why?
+
                                 <article key={post.id}>
                                     <ShowPost
                                         id={post.id}
@@ -66,7 +67,7 @@ class MainPageView extends Component {
 //it's a function that lets connect() know how to map specific
 //parts of the stores state into usable props
 function mapStateToProps(state) {
-    return {posts: state}
+    return {posts: state.PostReducer}
 }
 
 //bind dispatch to action creators before they hit the component

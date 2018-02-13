@@ -15,10 +15,12 @@ export const VOTE_COMMENT = 'VOTE_COMMENT';
 
 
 
-export const sendPost = (posts, action) => ({
+export const sendPost = (posts, action) => (
+    {
     type: action,
     posts
-});
+    }
+);
 
 export const sendComment = (comments, action) => ({
     type: action,
