@@ -85,15 +85,11 @@ class EditComment extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {state};
-}
-
 const mapDispatchToProps = dispatch => ({
     updateComment: (data) => dispatch(actions.updateComment(data))
 });
 
 export default withRouter(connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
 )(EditComment))

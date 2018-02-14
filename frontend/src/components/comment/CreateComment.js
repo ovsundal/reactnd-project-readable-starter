@@ -89,15 +89,11 @@ class CreateComment extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {state};
-}
-
 const mapDispatchToProps = dispatch => ({
     createComment: (data) => dispatch(actions.createComment(data))
 });
 
 export default withRouter(connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
 )(CreateComment))
