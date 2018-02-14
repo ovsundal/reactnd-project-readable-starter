@@ -38,6 +38,7 @@ class ShowComments extends Component {
                         <VotePanel
                             id={this.props.id}
                             voteScore={this.props.voteScore}
+                            parentId={this.props.parentId}
                             componentType={'comment'}
                         />
                     </section>
@@ -87,6 +88,8 @@ class ShowComments extends Component {
         );
     };
 }
+
+
 
 export default connect(
     null,

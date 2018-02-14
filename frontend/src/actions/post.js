@@ -19,12 +19,10 @@ export const getPosts = () => dispatch =>
         .then(posts => dispatch(sendPost(posts, GET_ALL_POSTS)));
 
 export const votePost = (id, voteType) => dispatch => {
- console.log('votePost called'), console.log(id), console.log(voteType)
-
     PostApi.votePost(id, voteType)
         .then(PostApi.getPosts())
         .then(post => dispatch(sendPost(post, VOTE_POST)));
-}
+};
 
 export const sortPostsByCategory = category => dispatch =>
     PostApi.sortPostsByCategory(category)

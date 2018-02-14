@@ -4,16 +4,17 @@ import {voteComment, votePost} from "../../actions";
 
 class VotePanel extends Component {
 
-    submitVote = (id, voteType, compType) => {
+    submitVote = (voteType) => {
     console.log('from submitVote. Should only be called once')
     // console.log(id);
     // console.log(voteType);
     // console.log(compType);
         console.log(this.props)
+        const {id, componentType, votePost, voteComment, parentId} = this.props;
 
-        this.props.componentType === 'post'
-        ? this.props.votePost(id, voteType)
-        : this.props.voteComment(id, voteType)
+        componentType === 'post'
+        ? votePost(id, voteType)
+        : voteComment(id, voteType, parentId)
     };
 
 
@@ -22,11 +23,8 @@ class VotePanel extends Component {
     }
 
     render() {
-        console.log(this.props)
         const
             {
-            id,
-            compType,
             voteScore
             }
             = this.props;
@@ -38,16 +36,18 @@ class VotePanel extends Component {
                 <br/>
                 <button
                     className='float-right' type='button'
-                    onClick={() => this.submitVote(id, 'downVote', compType)}>DOWNVOTE
+                    onClick={() => this.submitVote('downVote')}>DOWNVOTE
                 </button>
                 <button
                     className='float-right' type='button'
-                    onClick={() => this.submitVote(id, 'upVote', compType)}>UPVOTE
+                    onClick={() => this.submitVote('upVote')}>UPVOTE
                 </button>
             </div>
         )
     }
 }
+
+
 
 export default connect(
     null,

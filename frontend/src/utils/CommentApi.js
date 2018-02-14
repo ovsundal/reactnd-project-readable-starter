@@ -21,12 +21,12 @@ export const deleteComment = id =>
         }).then(response => response.json());
 
 export const voteComment = (id, vote) =>
-    console.log(fetch(`${url}comments/${id}`,
+    fetch(`${url}comments/${id}`,
         {
             method: 'POST',
             headers,
             body: JSON.stringify({option: vote})
-        }).then(response => response.json()));
+        }).then(response => response.json());
 
 export const createComment = data =>
     fetch(`${url}comments`,
