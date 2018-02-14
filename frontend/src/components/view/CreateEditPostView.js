@@ -10,19 +10,20 @@ class CreateEditPostView extends React.Component {
     constructor(props) {
         super(props);
 
-            this.state = {
-                id: '',
-                author: '',
-                title: '',
-                content: '',
-                category: '',
-                voteScore: '',
-                timestamp: '',
-                comments: []
-            };
-        }
+        this.state = {
+            id: '',
+            author: '',
+            title: '',
+            content: '',
+            category: '',
+            voteScore: '',
+            timestamp: '',
+            comments: []
+        };
+    }
+
     componentWillReceiveProps(props) {
-        if(props.post && props.post[0]) {
+        if (props.post && props.post[0]) {
             const post = props.post[0];
             this.setState({
                 id: post.id,
@@ -36,59 +37,69 @@ class CreateEditPostView extends React.Component {
             });
         }
     }
+
     componentWillMount() {
         this.props.getPost(this.props.id);
         this.props.getComments(this.props.id);
     }
 
     render() {
+        const {id, comments} = this.state;
         return (
-        <div>
-            <section className='post'>
-                {/*for new post*/}
-                {this.state.id === ''
-                && <CreatePost/>
-                }
+            <div>
+                <section className='post'>
+                    {id === ''
+                    && createNewPost()
+                    }
 
-                {/*for edit post*/}
-                {this.state.id !== ''
-                && <article key={this.state.id}>
-                        <EditPost
-                            id={this.state.id}
-                            title={this.state.title}
-                            body={this.state.content}
-                            author={this.state.author}
-                            category={this.state.category}
-                            timestamp={this.state.timestamp}
-                            voteScore={this.state.voteScore}
-                            commentCount={this.state.commentCount}
+                    {id !== ''
+                    && editPost(this.state)
+                    }
+                </section>
+
+                <br/><br/><br/>
+
+                <section className='comments'>
+                    {comments.length > 0
+                    && comments.map((comment) =>
+
+                        <ShowComment
+                            key={comment.id}
+                            id={comment.id}
+                            parentId={comment.parentId}
+                            author={comment.author}
+                            body={comment.body}
+                            timestamp={comment.timestamp}
+                            voteScore={comment.voteScore}
                         />
-                    </article>
-                }
-            </section>
-
-            <br/><br/><br/>
-
-            <section className='comments'>
-                {this.state.comments.length > 0
-                && this.state.comments.map((comment) =>
-
-                  <ShowComment
-                  key={comment.id}
-                  id={comment.id}
-                  parentId={comment.parentId}
-                  author={comment.author}
-                  body={comment.body}
-                  timestamp={comment.timestamp}
-                  voteScore={comment.voteScore}
-                  />
-                )}
-            </section>
-        </div>
-
+                    )}
+                </section>
+            </div>
         );
     }
 }
+
+function createNewPost() {
+    return <article>
+            <CreatePost/>
+    </article>
+}
+
+function editPost(state) {
+    return <article>
+        <EditPost
+            id={state.id}
+            title={state.title}
+            body={state.content}
+            author={state.author}
+            category={state.category}
+            timestamp={state.timestamp}
+            voteScore={state.voteScore}
+            commentCount={state.commentCount}
+        />
+    </article>
+}
+
 
 function mapStateToProps({PostReducer}) {
     return {post: PostReducer};
