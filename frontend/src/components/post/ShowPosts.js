@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Button, Card, CardBody, CardSubtitle, CardText, CardTitle, Col} from 'reactstrap';
-import * as actions from "../../actions/index";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import VotePanel from "../utils/VotePanel";
+import {deletePost} from "../../actions";
 
 class ShowPosts extends Component {
 
@@ -28,7 +28,7 @@ class ShowPosts extends Component {
                         <VotePanel
                             id={this.props.id}
                             voteScore={this.props.voteScore}
-                            compType='post'
+                            componentType='post'
                         />
                         <br/>
                         <CardText className='post-content'>{this.props.body}</CardText>
@@ -63,11 +63,7 @@ class ShowPosts extends Component {
     };
 }
 
-const mapDispatchToProps = dispatch => ({
-    deletePost: (id) => dispatch(actions.deletePost(id))
-});
-
 export default connect(
     null,
-    mapDispatchToProps
+    {deletePost}
 )(ShowPosts);

@@ -38,7 +38,7 @@ class ShowComments extends Component {
                         <VotePanel
                             id={this.props.id}
                             voteScore={this.props.voteScore}
-                            compType='comment'
+                            componentType={'comment'}
                         />
                     </section>
                     <article>

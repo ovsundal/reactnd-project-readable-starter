@@ -19,6 +19,7 @@ export default function PostReducer(state = [], action) {
             return action.posts;
         }
         case VOTE_POST: {
+            console.log('vote post was called')
             let newState = state.slice();
 
             //find post that was voted from state, and change value to new score

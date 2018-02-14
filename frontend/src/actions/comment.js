@@ -15,9 +15,14 @@ export const deleteComment = (id) => dispatch =>
     CommentApi.deleteComment(id)
         .then(comments => dispatch(sendComment(comments, DELETE_COMMENT)));
 
-export const voteComment = (id, vote) => dispatch =>
+export const voteComment = (id, vote) => dispatch => {
+    console.log('from voteComment action')
+    console.log(id)
+    console.log(vote)
     CommentApi.voteComment(id, vote)
-        .then(comments => dispatch(sendComment(comments, VOTE_COMMENT)));
+        .then(() => dispatch(sendComment(VOTE_COMMENT)));
+};
+
 
 export const createComment = (data) => dispatch =>
     CommentApi.createComment(data)

@@ -19,8 +19,9 @@ export default function CommentReducer(state = [], action) {
         }
         case VOTE_COMMENT: {
             let newState = state.slice();
-            console.log(action)
-            console.log(state)
+            // console.log('vote comment was called')
+            // console.log(action)
+            // console.log(state)
             //find post that was voted from state, and change value to new score
             newState.forEach((comment, index) => {
                 // if(comment.id === action.comment.id) {
