@@ -131,15 +131,11 @@ class CreatePost extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {state};
-}
-
 const mapDispatchToProps = dispatch => ({
     addPost: (data) => dispatch(actions.createPost(data))
 });
 
 export default withRouter(connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
 )(CreatePost))

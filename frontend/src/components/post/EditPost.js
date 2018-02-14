@@ -222,10 +222,10 @@ class EditPost extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({PostReducer, CommentReducer}) {
     return {
-        post: state.PostReducer,
-        comments: state.CommentReducer
+        post: PostReducer,
+        comments: CommentReducer
     };
 }
 
