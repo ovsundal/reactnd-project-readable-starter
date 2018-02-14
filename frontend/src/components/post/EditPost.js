@@ -84,7 +84,6 @@ class EditPost extends React.Component {
                         {/*when i use this voting, it seems that all voting panels from the post and all comments are triggered,*/}
                         {/*how to fix this?*/}
                         <VotePanel
-                            key={this.props.id}
                             id={this.props.id}
                             voteScore={this.props.voteScore}
                             componentType='post'

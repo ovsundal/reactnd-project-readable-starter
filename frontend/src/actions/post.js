@@ -1,7 +1,7 @@
 import {
     CREATE_POST, DELETE_POST, GET_ALL_POSTS, GET_POST, SORT_BY_CATEGORY, SORT_BY_MODE, UPDATE_POST,
     VOTE_POST
-} from "./constants";
+} from "./types";
 import * as PostApi from "../utils/PostApi";
 
 

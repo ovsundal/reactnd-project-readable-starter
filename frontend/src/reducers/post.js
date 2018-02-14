@@ -8,7 +8,7 @@ import {
     DELETE_POST,
     GET_POST,
     UPDATE_POST,
-} from '../actions/constants';
+} from '../actions/types';
 
 export default function PostReducer(state = [], action) {
     switch(action.type) {

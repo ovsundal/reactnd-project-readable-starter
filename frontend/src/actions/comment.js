@@ -1,5 +1,5 @@
 import * as CommentApi from "../utils/CommentApi";
-import {CREATE_COMMENT, DELETE_COMMENT, GET_ALL_COMMENTS, UPDATE_COMMENT, VOTE_COMMENT} from "./constants";
+import {CREATE_COMMENT, DELETE_COMMENT, GET_ALL_COMMENTS, UPDATE_COMMENT, VOTE_COMMENT} from "./types";
 
 
 export const sendComment = (comments, action) => ({

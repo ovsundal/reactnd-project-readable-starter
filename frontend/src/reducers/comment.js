@@ -2,7 +2,7 @@ import {
     GET_ALL_COMMENTS,
     DELETE_COMMENT,
     VOTE_COMMENT, CREATE_COMMENT, UPDATE_COMMENT
-} from '../actions/constants';
+} from '../actions/types';
 
 
 export default function CommentReducer(state = [], action) {
