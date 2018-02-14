@@ -1,13 +1,6 @@
-
 import {
-    CREATE_POST,
-    GET_ALL_POSTS,
-    SORT_BY_CATEGORY,
-    SORT_BY_MODE,
+    CREATE_POST, DELETE_POST, GET_ALL_POSTS, GET_POST, SORT_BY_CATEGORY, UPDATE_POST,
     VOTE_POST,
-    DELETE_POST,
-    GET_POST,
-    UPDATE_POST,
 } from '../actions/types';
 
 export default function PostReducer(state = [], action) {
@@ -32,26 +25,24 @@ export default function PostReducer(state = [], action) {
         case SORT_BY_CATEGORY: {
             return action.posts;
         }
-        case SORT_BY_MODE: {
-            const newState = state.slice();
-
-            if(action.howToSort === 'score') {
-                newState.sort((a, b) => {
-                    return b.voteScore - a.voteScore
-                })
-            } else if (action.howToSort === 'date') {
-                newState.sort((b, a) => {
-                    return a.timestamp - b.timestamp
-                })
-            } else {}
-            return newState;
-        }
+        // case SORT_BY_MODE: {
+        //     const newState = state.slice();
+        //
+        //     if(action.howToSort === 'score') {
+        //         newState.sort((a, b) => {
+        //             return b.voteScore - a.voteScore
+        //         })
+        //     } else if (action.howToSort === 'date') {
+        //         newState.sort((b, a) => {
+        //             return a.timestamp - b.timestamp
+        //         })
+        //     } else {}
+        //     return newState;
+        // }
         case DELETE_POST: {
-            const newState =
-                Object.values(state).filter((post) => {
+                return Object.values(state).filter((post) => {
                     return post.id !== action.posts.id;
                 });
-            return newState;
         }
         case GET_POST: {
             return [action.posts];

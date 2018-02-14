@@ -57,8 +57,10 @@ class CreatePost extends React.Component {
                 <FormGroup>
                     <Label for="author">Author</Label>
                     <Input
+                        required
                         type="text"
                         name="author"
+                        id="author"
                         placeholder="author"
                         value={this.state.author}
                         onChange={this.handleTextInputChange}
@@ -67,7 +69,9 @@ class CreatePost extends React.Component {
                 <FormGroup>
                     <Label for="title">Title</Label>
                     <Input type="text"
+                           required
                            name="title"
+                           id="title"
                            placeholder="title"
                            value={this.state.title}
                            onChange={this.handleTextInputChange}
@@ -76,8 +80,10 @@ class CreatePost extends React.Component {
                 <FormGroup>
                     <Label for="body">Content</Label>
                     <Input
+                        required
                         type="textarea"
                         name="body"
+                        id="body"
                         placeholder="content"
                         value={this.state.body}
                         onChange={this.handleTextInputChange}
@@ -123,6 +129,7 @@ class CreatePost extends React.Component {
                     </FormGroup>
                 </FormGroup>
                 <Button
+                    type="submit"
                     className='float-left'
                     onClick={this.handleCreate}>Submit
                 </Button>

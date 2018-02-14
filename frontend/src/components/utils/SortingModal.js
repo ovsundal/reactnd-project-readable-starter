@@ -1,7 +1,7 @@
 import React from 'react';
 import {Card, CardBody, FormGroup, Input, Label} from 'reactstrap';
-import * as actions from "../../actions/index";
 import {connect} from "react-redux";
+import {getPosts, sortPostsByCategory, sortPostsByMode} from "../../actions";
 
 class SortingModal extends React.Component {
 
@@ -131,15 +131,7 @@ class SortingModal extends React.Component {
     };
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        getPosts: () => dispatch(actions.getPosts()),
-        sortPostsByCategory: (category) => dispatch(actions.sortPostsByCategory(category)),
-        sortPostsByMode: (mode) => dispatch(actions.sortPostsByMode(mode))
-    }
-}
-
 export default connect(
     null,
-    mapDispatchToProps
+    {getPosts, sortPostsByCategory, sortPostsByMode}
 )(SortingModal)

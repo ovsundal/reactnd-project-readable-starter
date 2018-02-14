@@ -81,8 +81,6 @@ class EditPost extends React.Component {
                 <Form>
                     {this.state.id !== ''
                     && <aside>
-                        {/*when i use this voting, it seems that all voting panels from the post and all comments are triggered,*/}
-                        {/*how to fix this?*/}
                         <VotePanel
                             id={this.props.id}
                             voteScore={this.props.voteScore}
@@ -204,7 +202,9 @@ class EditPost extends React.Component {
                 <Form>
                     {/*display all comments*/}
                     <h1 className='text-center'>Comments</h1>
-                    {this.state.comments.map((comment) =>
+                    {this.state.comments
+                        .sort((a, b) => {return b.timestamp - a.timestamp})
+                        .map((comment) =>
                         <section className='comments' key={comment.id}>
                             <ShowComment
                                 id={comment.id}

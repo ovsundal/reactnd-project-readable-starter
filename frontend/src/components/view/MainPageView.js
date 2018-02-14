@@ -18,6 +18,7 @@ class MainPageView extends Component {
             <Container>
                 <Row>
                     <Col xs="8">
+                        {console.log(this.props)}
                         {this.props.posts && this.props.posts.map((post) =>
                             <article key={post.id}>
                                 <ShowPosts

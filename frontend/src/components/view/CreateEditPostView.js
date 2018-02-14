@@ -59,21 +59,22 @@ class CreateEditPostView extends React.Component {
 
                 <br/><br/><br/>
 
-                <section className='comments'>
-                    {comments.length > 0
-                    && comments.map((comment) =>
-
-                        <ShowComment
-                            key={comment.id}
-                            id={comment.id}
-                            parentId={comment.parentId}
-                            author={comment.author}
-                            body={comment.body}
-                            timestamp={comment.timestamp}
-                            voteScore={comment.voteScore}
-                        />
-                    )}
-                </section>
+                {/*<section className='comments'>*/}
+                    {/*{comments.length > 0*/}
+                    {/*&& comments*/}
+                        {/*.sort((a, b) => {return a.timestamp - b.timestamp})*/}
+                        {/*.map((comment) =>*/}
+                        {/*<ShowComment*/}
+                            {/*key={comment.id}*/}
+                            {/*id={comment.id}*/}
+                            {/*parentId={comment.parentId}*/}
+                            {/*author={comment.author}*/}
+                            {/*body={comment.body}*/}
+                            {/*timestamp={comment.timestamp}*/}
+                            {/*voteScore={comment.voteScore}*/}
+                        {/*/>*/}
+                    {/*)}*/}
+                {/*</section>*/}
             </div>
         );
     }
@@ -99,7 +100,6 @@ function editPost(state) {
         />
     </article>
 }
-
 
 function mapStateToProps({PostReducer}) {
     return {post: PostReducer};
