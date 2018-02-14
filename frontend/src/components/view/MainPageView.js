@@ -16,41 +16,44 @@ class MainPageView extends Component {
     render() {
         return (
             <Container>
-                    <Row>
-                        <Col xs="8">
-                            {this.props.posts.map((post) =>
-                                <article key={post.id}>
-                                    <ShowPosts
-                                        id={post.id}
-                                        title={post.title}
-                                        body={post.body}
-                                        author={post.author}
-                                        category={post.category}
-                                        timestamp={new Date(post.timestamp).toDateString()}
-                                        voteScore={post.voteScore}
-                                        commentCount={post.commentCount}
-                                    />
-                                </article>
-                            )}
-                        </Col>
-                        <Col xs="4">
-                            <SortingModal />
-                        </Col>
-                    </Row>
+                <Row>
+                    <Col xs="8">
+                        {this.props.posts && this.props.posts.map((post) =>
+                            <article key={post.id}>
+                                <ShowPosts
+                                    id={post.id}
+                                    title={post.title}
+                                    body={post.body}
+                                    author={post.author}
+                                    category={post.category}
+                                    timestamp={new Date(post.timestamp).toDateString()}
+                                    voteScore={post.voteScore}
+                                    commentCount={post.commentCount}
+                                />
+                            </article>
+                        )}
+                    </Col>
+                    <Col xs="4">
+                        <SortingModal/>
+                    </Col>
+                </Row>
             </Container>
         )
     }
 }
-function mapStateToProps(state) {
-        return {
-            posts: state.PostReducer,
-        }
+
+function mapStateToProps({PostReducer}) {
+    return {
+        posts: PostReducer
+    }
 }
+
 function mapDispatchToProps(dispatch) {
     return {
         getPosts: () => dispatch(actions.getPosts())
     }
 }
+
 export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps

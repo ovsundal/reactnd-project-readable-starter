@@ -35,8 +35,6 @@ class ShowComments extends Component {
                         <span className=' comment-author'>Author: {this.props.author}</span>
                     </CardSubtitle>
                     <section>
-                        {console.log(this.props)}
-                        {console.log(this.state)}
                         <VotePanel
                             id={this.props.id}
                             voteScore={this.props.voteScore}

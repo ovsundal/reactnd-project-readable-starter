@@ -90,8 +90,8 @@ class CreateEditPostView extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {post: state.PostReducer};
+function mapStateToProps({PostReducer}) {
+    return {post: PostReducer};
 }
 
 const mapDispatchToProps = dispatch => ({
