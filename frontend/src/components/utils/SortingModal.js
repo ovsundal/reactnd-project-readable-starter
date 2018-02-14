@@ -131,11 +131,6 @@ class SortingModal extends React.Component {
     };
 }
 
-function mapStateToProps(state) {
-    return {state};
-}
-
-
 function mapDispatchToProps(dispatch) {
     return {
         getPosts: () => dispatch(actions.getPosts()),
@@ -145,6 +140,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
 )(SortingModal)
