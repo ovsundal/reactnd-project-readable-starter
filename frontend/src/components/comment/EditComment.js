@@ -2,7 +2,7 @@ import {Button, Col, Container, FormGroup, Input, Label, Row} from 'reactstrap';
 import React from "react";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
-import * as actions from "../../actions/index";
+import {updateComment} from "../../actions";
 
 class EditComment extends React.Component {
     constructor(props) {
@@ -85,11 +85,7 @@ class EditComment extends React.Component {
     }
 }
 
-const mapDispatchToProps = dispatch => ({
-    updateComment: (data) => dispatch(actions.updateComment(data))
-});
-
 export default withRouter(connect(
     null,
-    mapDispatchToProps
+    {updateComment}
 )(EditComment))

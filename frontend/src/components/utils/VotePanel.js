@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import * as actions from "../../actions/index";
 import {connect} from "react-redux";
+import {voteComment, votePost} from "../../actions";
 
 class VotePanel extends Component {
 
@@ -31,12 +31,7 @@ class VotePanel extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => ({
-    votePost: (id, voteType) => dispatch(actions.votePost(id, voteType)),
-    voteComment: (id, voteType) => dispatch(actions.voteComment(id, voteType))
-});
-
 export default connect(
     null,
-    mapDispatchToProps
+    {votePost, voteComment}
 )(VotePanel);

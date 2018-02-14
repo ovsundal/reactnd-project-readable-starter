@@ -2,7 +2,7 @@ import {Button, Col, Form, FormGroup, Input, Label, Row} from 'reactstrap';
 import React from "react";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
-import * as actions from "../../actions/index";
+import {createComment} from "../../actions";
 
 const uuidV1 = require('uuid/v1');
 
@@ -89,11 +89,7 @@ class CreateComment extends React.Component {
     }
 }
 
-const mapDispatchToProps = dispatch => ({
-    createComment: (data) => dispatch(actions.createComment(data))
-});
-
 export default withRouter(connect(
     null,
-    mapDispatchToProps
+    {createComment}
 )(CreateComment))

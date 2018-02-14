@@ -1,8 +1,8 @@
-import * as actions from "../../actions/index";
 import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
 import React from "react";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
+import {createPost} from "../../actions";
 
 const uuidV1 = require('uuid/v1');
 
@@ -47,7 +47,7 @@ class CreatePost extends React.Component {
             timestamp: Date.now(),
             voteScore: 1
         };
-        this.props.addPost(data);
+        this.props.createPost(data);
         this.props.history.push('/');
     };
 
@@ -131,11 +131,7 @@ class CreatePost extends React.Component {
     }
 }
 
-const mapDispatchToProps = dispatch => ({
-    addPost: (data) => dispatch(actions.createPost(data))
-});
-
 export default withRouter(connect(
     null,
-    mapDispatchToProps
+    {createPost}
 )(CreatePost))

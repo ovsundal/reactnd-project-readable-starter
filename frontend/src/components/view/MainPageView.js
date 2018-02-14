@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Col, Container, Row,} from 'reactstrap';
 import '../utils/NavigationBar';
 import SortingModal from "../utils/SortingModal";
-import * as actions from '../../actions'
+import {getPosts} from '../../actions'
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import ShowPosts from "../post/ShowPosts";
@@ -48,13 +48,7 @@ function mapStateToProps({PostReducer}) {
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        getPosts: () => dispatch(actions.getPosts())
-    }
-}
-
 export default withRouter(connect(
     mapStateToProps,
-    mapDispatchToProps
+    {getPosts}
 )(MainPageView))

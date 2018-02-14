@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Button, Card, CardBody, CardSubtitle, CardText, Col} from 'reactstrap';
-import * as actions from "../../actions/index";
 import {connect} from "react-redux";
 import VotePanel from "../utils/VotePanel";
 import EditComment from "./EditComment";
+import {deleteComment} from "../../actions";
 
 class ShowComments extends Component {
     constructor(props) {
@@ -88,11 +88,7 @@ class ShowComments extends Component {
     };
 }
 
-const mapDispatchToProps = dispatch => ({
-    deleteComment: (id) => dispatch(actions.deleteComment(id))
-});
-
 export default connect(
     null,
-    mapDispatchToProps
+    {deleteComment}
 )(ShowComments);
