@@ -49,7 +49,6 @@ export const updatePost = (data) => dispatch => {
 };
 
 export const sendPost = (posts, action) => (
-    console.log('sendPost CAlled'), console.log(posts), console.log(action),
     {
         type: action,
         posts

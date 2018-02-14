@@ -5,33 +5,17 @@ import {voteComment, votePost} from "../../actions";
 class VotePanel extends Component {
 
     submitVote = (voteType) => {
-    console.log('from submitVote. Should only be called once')
-    // console.log(id);
-    // console.log(voteType);
-    // console.log(compType);
-        console.log(this.props)
-        const {id, componentType, votePost, voteComment, parentId} = this.props;
+        const {id, componentType, votePost, voteComment} = this.props;
 
         componentType === 'post'
         ? votePost(id, voteType)
-        : voteComment(id, voteType, parentId)
+        : voteComment(id, voteType)
     };
 
-
-    componentWillReceiveProps(props) {
-        console.log(props)
-    }
-
     render() {
-        const
-            {
-            voteScore
-            }
-            = this.props;
-
+        const {voteScore} = this.props;
         return (
             <div>
-                {/*QUESTION: Why does this component not recognize this.props.compType?*/}
                 <span className='float-right'>Score: {voteScore}</span>
                 <br/>
                 <button
@@ -46,8 +30,6 @@ class VotePanel extends Component {
         )
     }
 }
-
-
 
 export default connect(
     null,
