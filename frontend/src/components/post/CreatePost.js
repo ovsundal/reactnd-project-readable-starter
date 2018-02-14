@@ -124,7 +124,7 @@ class CreatePost extends React.Component {
                 </FormGroup>
                 <Button
                     className='float-left'
-                    onClick={this.handleCreate}>Update
+                    onClick={this.handleCreate}>Submit
                 </Button>
             </Form>
         )

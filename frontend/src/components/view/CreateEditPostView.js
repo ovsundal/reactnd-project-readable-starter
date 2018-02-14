@@ -4,7 +4,7 @@ import {withRouter} from "react-router-dom";
 import ShowComment from "../comment/ShowComments";
 import EditPost from "../post/EditPost";
 import CreatePost from "../post/CreatePost";
-import {createPost, deletePost, getComments, getPosts, updatePost} from "../../actions";
+import {createPost, deletePost, getComments, getPost, updatePost} from "../../actions";
 
 class CreateEditPostView extends React.Component {
     constructor(props) {
@@ -37,7 +37,7 @@ class CreateEditPostView extends React.Component {
         }
     }
     componentWillMount() {
-        this.props.getPosts(this.props.id);
+        this.props.getPost(this.props.id);
         this.props.getComments(this.props.id);
     }
 
@@ -96,5 +96,5 @@ function mapStateToProps({PostReducer}) {
 
 export default withRouter(connect(
     mapStateToProps,
-    {createPost, updatePost, deletePost, getPosts, getComments}
+    {createPost, updatePost, deletePost, getPost, getComments}
 )(CreateEditPostView))

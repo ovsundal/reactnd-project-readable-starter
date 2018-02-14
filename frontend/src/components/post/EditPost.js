@@ -1,11 +1,11 @@
 import {Button, Col, Container, Form, FormGroup, Input, Label, Row} from 'reactstrap';
 import React from 'react';
 import VotePanel from "../utils/VotePanel";
-import * as actions from "../../actions/index";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import ShowComment from "../comment/ShowComments";
 import CreateComment from "../comment/CreateComment";
+import {deletePost, getPost, updatePost} from "../../actions";
 
 class EditPost extends React.Component {
     constructor(props) {
@@ -229,14 +229,7 @@ function mapStateToProps({PostReducer, CommentReducer}) {
     };
 }
 
-const mapDispatchToProps = dispatch => ({
-    addPost: (data) => dispatch(actions.createPost(data)),
-    updatePost: (data) => dispatch(actions.updatePost(data)),
-    deletePost: (id) => dispatch(actions.deletePost(id)),
-    getPost: (id) => dispatch(actions.getPost(id))
-});
-
 export default withRouter(connect(
     mapStateToProps,
-    mapDispatchToProps
+    {updatePost, deletePost, getPost}
 )(EditPost))
