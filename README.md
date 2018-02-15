@@ -1,22 +1,17 @@
-# Readable API Server
+# Project Readable 
 
-This is the starter project for the final assessment project for Udacity's Redux course where you will build a content and comment web app. Users will be able to post content to predefined categories, comment on their posts and other users' posts, and vote on posts and comments. Users will also be able to edit and delete posts and comments.
+This project involved making a blog with the ability to add new posts, comments to posts,
+and a scoring mechanism. Posts can also be sorted by category, or date created/score. 
 
-This repository includes the code for the backend API Server that you'll use to develop and interact with the front-end portion of the project.
+## Installation
+It is assumed you have node package manager (NPM) installed.
+Api-server: Navigate to /project-root/api-server. Enter "node server".
+Front-end: Navigate to /project-root/frontend. Enter "npm start".
 
-## Start Developing
+This project is part of Udacitys [React Nanodegree](https://www.udacity.com/course/react-nanodegree--nd019) 
+program. For this project, the backend api-server was included, no changes were made here. The frontend, React 
+and Redux was written by the author. Style template used was 
+[Bootstraps sketchy theme](https://bootswatch.com/sketchy/)
 
-To get started developing right away:
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-* Install and start the API server
-    - `cd api-server`
-    - `npm install`
-    - `node server`
-* In another terminal window, use Create React App to scaffold out the front-end
-    - `create-react-app frontend`
-    - `cd frontend`
-    - `npm start`
-
-## API Server
-
-Information about the API server and how to use it can be found in its [README file](api-server/README.md).
