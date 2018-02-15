@@ -1,4 +1,4 @@
-import {Button, Form, FormGroup, Input, Label} from 'reactstrap';
+import {Button, Container, Form, FormGroup, Input, Label} from 'reactstrap';
 import React from "react";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
@@ -38,6 +38,7 @@ class CreatePost extends React.Component {
 
     handleCreate = event => {
         event.preventDefault();
+
         const data = {
             id: uuidV1(),
             author: this.state.author,
@@ -53,87 +54,90 @@ class CreatePost extends React.Component {
 
     render() {
         return (
-            <Form>
-                <FormGroup>
-                    <Label for="author">Author</Label>
-                    <Input
-                        valid={false}
-                        type="text"
-                        name="author"
-                        id="author"
-                        placeholder="author"
-                        value={this.state.author}
-                        onChange={this.handleTextInputChange}
-                    />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="title">Title</Label>
-                    <Input type="text"
-                           required
-                           name="title"
-                           id="title"
-                           placeholder="title"
-                           value={this.state.title}
-                           onChange={this.handleTextInputChange}
-                    />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="body">Content</Label>
-                    <Input
-                        required
-                        type="textarea"
-                        name="body"
-                        id="body"
-                        placeholder="content"
-                        value={this.state.body}
-                        onChange={this.handleTextInputChange}
-                    />
-                </FormGroup>
-                <FormGroup tag="fieldset">
-                    <legend>Category</legend>
-                    <FormGroup check>
-                        <Label check>
-                            <Input
-                                type="radio"
-                                name="category"
-                                value="react"
-                                checked={this.state.selectedCategory === "react"}
-                                onChange={this.handleCategoryInputChange}
-                            />
-                            react
-                        </Label>
+            <Container>
+                <Form onSubmit={this.handleCreate}>
+                    <FormGroup>
+                        <Label for="author">Author</Label>
+                        <Input
+                            required
+                            type="text"
+                            name="author"
+                            id="author"
+                            placeholder="author"
+                            value={this.state.author}
+                            onChange={this.handleTextInputChange}
+                        />
                     </FormGroup>
-                    <FormGroup check>
-                        <Label check>
-                            <Input
-                                type="radio"
-                                name="category"
-                                value="redux"
-                                checked={this.state.selectedCategory === "redux"}
-                                onChange={this.handleCategoryInputChange}
-                            />
-                            redux
-                        </Label>
+                    <FormGroup>
+                        <Label for="title">Title</Label>
+                        <Input type="text"
+                               required
+                               name="title"
+                               id="title"
+                               placeholder="title"
+                               value={this.state.title}
+                               onChange={this.handleTextInputChange}
+                        />
                     </FormGroup>
-                    <FormGroup check>
-                        <Label check>
-                            <Input
-                                type="radio"
-                                name="category"
-                                value="udacity"
-                                checked={this.state.selectedCategory === "udacity"}
-                                onChange={this.handleCategoryInputChange}
-                            />
-                            udacity
-                        </Label>
+                    <FormGroup>
+                        <Label for="body">Content</Label>
+                        <Input
+                            required
+                            type="textarea"
+                            name="body"
+                            id="body"
+                            placeholder="content"
+                            value={this.state.body}
+                            onChange={this.handleTextInputChange}
+                        />
                     </FormGroup>
-                </FormGroup>
-                <Button
-                    type="submit"
-                    className='float-left'
-                    onClick={this.handleCreate}>Submit
-                </Button>
-            </Form>
+                    <FormGroup tag="fieldset">
+                        <legend>Category</legend>
+                        <FormGroup check>
+                            <Label check>
+                                <Input
+                                    required
+                                    type="radio"
+                                    name="category"
+                                    value="react"
+                                    checked={this.state.selectedCategory === "react"}
+                                    onChange={this.handleCategoryInputChange}
+                                />
+                                react
+                            </Label>
+                        </FormGroup>
+                        <FormGroup check>
+                            <Label check>
+                                <Input
+                                    type="radio"
+                                    name="category"
+                                    value="redux"
+                                    checked={this.state.selectedCategory === "redux"}
+                                    onChange={this.handleCategoryInputChange}
+                                />
+                                redux
+                            </Label>
+                        </FormGroup>
+                        <FormGroup check>
+                            <Label check>
+                                <Input
+                                    type="radio"
+                                    name="category"
+                                    value="udacity"
+                                    checked={this.state.selectedCategory === "udacity"}
+                                    onChange={this.handleCategoryInputChange}
+                                />
+                                udacity
+                            </Label>
+                        </FormGroup>
+                    </FormGroup>
+                    <Button
+                        type="submit"
+                        className='float-left'
+                    >Submit
+                    </Button>
+                </Form>
+            </Container>
         )
     }
 }
