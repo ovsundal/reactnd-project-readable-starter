@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import ShowComment from "../comment/ShowComments";
 import CreateComment from "../comment/CreateComment";
-import {deletePost, getPost, updatePost} from "../../actions";
+import {deletePost, getComments, getPost, updatePost} from "../../actions";
 
 class EditPost extends React.Component {
     constructor(props) {
@@ -26,6 +26,7 @@ class EditPost extends React.Component {
 
     componentWillMount() {
         this.props.getPost(this.props.match.params.id);
+        // this.props.getComments(this.props.match.params.id);
     }
 
     componentWillReceiveProps(props) {
@@ -39,7 +40,7 @@ class EditPost extends React.Component {
                 category: post.category,
                 voteScore: post.voteScore,
                 timestamp: post.timestamp,
-                comments: post.comments
+                comments: props.comments
             });
         }
     }
@@ -79,7 +80,7 @@ class EditPost extends React.Component {
     render() {
         return (
             <Container>
-                <Form>
+                <Form onSubmit={this.handleUpdate}>
                     {this.state.id !== ''
                     && <aside>
                         <VotePanel
@@ -102,7 +103,9 @@ class EditPost extends React.Component {
                     </FormGroup>
                     <FormGroup>
                         <Label for="title">Title</Label>
-                        <Input type="text"
+                        <Input
+                            required
+                            type="text"
                                name="title"
                                placeholder="title"
                                value={this.state.title}
@@ -112,6 +115,7 @@ class EditPost extends React.Component {
                     <FormGroup>
                         <Label for="body">Content</Label>
                         <Input
+                            required
                             type="textarea"
                             name="body"
                             placeholder="content"
@@ -126,6 +130,7 @@ class EditPost extends React.Component {
                                 <FormGroup check>
                                     <Label check>
                                         <Input
+                                            required
                                             type="radio"
                                             name="category"
                                             value="react"
@@ -168,8 +173,9 @@ class EditPost extends React.Component {
                     <Row className='text-center'>
                         <Col xs='4'>
                             <Button
+                                type="submit"
                                 color='primary'
-                                onClick={this.handleUpdate}>Update
+                                >Update
                             </Button>
                         </Col>
                         <Col xs='4'>
@@ -232,5 +238,5 @@ function mapStateToProps({PostReducer, CommentReducer}) {
 
 export default withRouter(connect(
     mapStateToProps,
-    {updatePost, deletePost, getPost}
+    {updatePost, deletePost, getPost, getComments}
 )(EditPost))
