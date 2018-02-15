@@ -50,9 +50,8 @@ class CreateEditPostView extends React.Component {
                     {id === ''
                     && createNewPost()
                     }
-
                     {id !== ''
-                    && editPost(this.state)
+                    && editPost()
                     }
                 </section>
                 <br/><br/><br/>
@@ -67,17 +66,19 @@ function createNewPost() {
     </article>
 }
 
-function editPost(state) {
+function editPost() {
+    // console.log(post)
+
     return <article>
         <EditPost
-            id={state.id}
-            title={state.title}
-            body={state.content}
-            author={state.author}
-            category={state.category}
-            timestamp={state.timestamp}
-            voteScore={state.voteScore}
-            commentCount={state.commentCount}
+            // id={post.id}
+            // title={post.title}
+            // body={post.content}
+            // author={post.author}
+            // category={post.category}
+            // timestamp={post.timestamp}
+            // voteScore={post.voteScore}
+            // commentCount={post.commentCount}
         />
     </article>
 }
