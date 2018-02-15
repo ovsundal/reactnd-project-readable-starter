@@ -206,7 +206,7 @@ class EditPost extends React.Component {
                 </Col>}
 
                 <br/><br/>
-                <Form>
+                <section>
                     {/*display all comments*/}
                     <h1 className='text-center'>Comments</h1>
                     {this.state.comments && this.state.comments
@@ -223,7 +223,7 @@ class EditPost extends React.Component {
                             />
                         </section>
                     )}
-                </Form>
+                </section>
             </Container>
         )
     }

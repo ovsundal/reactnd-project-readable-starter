@@ -45,6 +45,7 @@ class EditComment extends React.Component {
 
     render() {
         return (
+            <Container>
                 <Form onSubmit={this.handleUpdate}>
                     <h2 className='text-center'>Edit Comment</h2>
                     <FormGroup>
@@ -83,6 +84,7 @@ class EditComment extends React.Component {
                         </Col>
                     </Row>
                 </Form>
+            </Container>
         )
     }
 }
