@@ -39,6 +39,9 @@ class SortingModal extends React.Component {
         this.setState({
             selectedMode: modeValue
         })
+        this.props.applySorting(modeValue)
+        //send this state value to MainPageView
+
     };
 
     render() {

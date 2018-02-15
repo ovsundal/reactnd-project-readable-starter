@@ -11,15 +11,38 @@ class MainPageView extends Component {
     constructor(props) {
         super(props);
         this.props.getPosts();
+
+        this.state= {
+            sortMode: 'date'
+        }
     }
+    //receives a cb from SortingModal based on radio button selection in Sort By
+    applySorting = (sortMode) => {
+        this.setState({
+            sortMode
+        });
+    };
+    //does the actual sorting based on cb in applySorting
+    sortBy = (posts, sortMode) => {
+        if(sortMode === 'date') {
+            return posts.sort((a,b) => {
+                return b.timestamp - a.timestamp;
+            })
+        } else {
+            return posts.sort((a,b) => {
+                return b.voteScore - a.voteScore;
+            })
+        }
+    };
 
     render() {
         return (
             <Container>
                 <Row>
                     <Col xs="8">
-                        {console.log(this.props)}
-                        {this.props.posts && this.props.posts.map((post) =>
+                        {this.props.posts
+                        && this.sortBy(this.props.posts, this.state.sortMode)
+                            .map((post) =>
                             <article key={post.id}>
                                 <ShowPosts
                                     id={post.id}
@@ -35,7 +58,9 @@ class MainPageView extends Component {
                         )}
                     </Col>
                     <Col xs="4">
-                        <SortingModal/>
+                        <SortingModal
+                            applySorting={this.applySorting}
+                        />
                     </Col>
                 </Row>
             </Container>
