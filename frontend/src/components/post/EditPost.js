@@ -189,7 +189,7 @@ class EditPost extends React.Component {
                             <Button
                                 color='danger'
                                 xs='4'
-                                onClick={() => this.handleDelete(this.props.id)}>Delete Post
+                                onClick={() => this.handleDelete(this.props.match.params.id)}>Delete Post
                             </Button>
                         </Col>
                         }
