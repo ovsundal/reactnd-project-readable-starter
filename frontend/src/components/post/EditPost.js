@@ -83,8 +83,8 @@ class EditPost extends React.Component {
                     {this.state.id !== ''
                     && <aside>
                         <VotePanel
-                            id={this.props.id}
-                            voteScore={this.props.voteScore}
+                            id={this.state.id}
+                            voteScore={this.state.voteScore}
                             componentType='post'
                         />
                     </aside>
