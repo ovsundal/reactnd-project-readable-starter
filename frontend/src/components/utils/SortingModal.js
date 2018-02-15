@@ -2,6 +2,7 @@ import React from 'react';
 import {Card, CardBody, FormGroup, Input, Label} from 'reactstrap';
 import {connect} from "react-redux";
 import {getPosts, sortPostsByCategory, sortPostsByMode} from "../../actions";
+import {withRouter} from "react-router-dom";
 
 class SortingModal extends React.Component {
 
@@ -30,7 +31,8 @@ class SortingModal extends React.Component {
 
         this.setState({
             selectedCategory: categoryValue
-        })
+        });
+        this.props.history.push(`/${categoryValue}`)
     };
 
     handleFilterBySortingMode = event => {
@@ -38,10 +40,9 @@ class SortingModal extends React.Component {
         this.props.sortPostsByMode(modeValue);
         this.setState({
             selectedMode: modeValue
-        })
+        });
+        //pass the value to MainPageView (parent) component
         this.props.applySorting(modeValue)
-        //send this state value to MainPageView
-
     };
 
     render() {
@@ -134,7 +135,7 @@ class SortingModal extends React.Component {
     };
 }
 
-export default connect(
+export default withRouter(connect(
     null,
     {getPosts, sortPostsByCategory, sortPostsByMode}
-)(SortingModal)
+)(SortingModal))

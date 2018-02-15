@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Col, Container, Row,} from 'reactstrap';
 import '../utils/NavigationBar';
 import SortingModal from "../utils/SortingModal";
-import {getPosts} from '../../actions'
+import {getPosts, sortPostsByCategory} from '../../actions'
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import ShowPosts from "../post/ShowPosts";
@@ -10,12 +10,22 @@ import ShowPosts from "../post/ShowPosts";
 class MainPageView extends Component {
     constructor(props) {
         super(props);
+
+
         this.props.getPosts();
 
         this.state= {
             sortMode: 'date'
         }
     }
+
+    componentWillReceiveProps(props) {
+        //category changed in router arrives here, get posts based on category
+        props.category === 'all'
+        ? this.props.getPosts()
+        : this.props.sortPostsByCategory(props.category)
+    }
+
     //receives a cb from SortingModal based on radio button selection in Sort By
     applySorting = (sortMode) => {
         this.setState({
@@ -76,5 +86,5 @@ function mapStateToProps({PostReducer}) {
 
 export default withRouter(connect(
     mapStateToProps,
-    {getPosts}
+    {getPosts,sortPostsByCategory}
 )(MainPageView))

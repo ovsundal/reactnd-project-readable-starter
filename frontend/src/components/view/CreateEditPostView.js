@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
-import ShowComment from "../comment/ShowComments";
 import EditPost from "../post/EditPost";
 import CreatePost from "../post/CreatePost";
 import {createPost, deletePost, getComments, getPost, updatePost} from "../../actions";
@@ -44,7 +43,7 @@ class CreateEditPostView extends React.Component {
     }
 
     render() {
-        const {id, comments} = this.state;
+        const {id} = this.state;
         return (
             <div>
                 <section className='post'>
@@ -56,25 +55,7 @@ class CreateEditPostView extends React.Component {
                     && editPost(this.state)
                     }
                 </section>
-
                 <br/><br/><br/>
-
-                {/*<section className='comments'>*/}
-                    {/*{comments.length > 0*/}
-                    {/*&& comments*/}
-                        {/*.sort((a, b) => {return a.timestamp - b.timestamp})*/}
-                        {/*.map((comment) =>*/}
-                        {/*<ShowComment*/}
-                            {/*key={comment.id}*/}
-                            {/*id={comment.id}*/}
-                            {/*parentId={comment.parentId}*/}
-                            {/*author={comment.author}*/}
-                            {/*body={comment.body}*/}
-                            {/*timestamp={comment.timestamp}*/}
-                            {/*voteScore={comment.voteScore}*/}
-                        {/*/>*/}
-                    {/*)}*/}
-                {/*</section>*/}
             </div>
         );
     }
