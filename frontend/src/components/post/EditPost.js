@@ -11,7 +11,7 @@ import PageNotFound from "../utils/PageNotFound";
 class EditPost extends React.Component {
     constructor(props) {
         super(props);
-console.log(this.props)
+
         this.state = {
             id: '',
             author: '',
@@ -28,12 +28,10 @@ console.log(this.props)
 
     componentWillMount() {
         this.props.getPost(this.props.match.params.id);
-        // this.props.getComments(this.props.match.params.id);
     }
 
     componentWillReceiveProps(props) {
         const post = props.post[0];
-        console.log(post.id)
         if (post.id) {
             this.setState({
                 id: post.id,
@@ -47,7 +45,6 @@ console.log(this.props)
                 deleted: false
             });
         } else {
-            console.log('from else')
             this.setState({
                 deleted: true
             })

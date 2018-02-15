@@ -4,6 +4,8 @@ import {withRouter} from "react-router-dom";
 import EditPost from "../post/EditPost";
 import CreatePost from "../post/CreatePost";
 import {createPost, deletePost, getComments, getPost, updatePost} from "../../actions";
+import {Col, Container, Row} from "reactstrap";
+import SortingModal from "../utils/SortingModal";
 
 class CreateEditPostView extends React.Component {
     constructor(props) {
@@ -17,7 +19,9 @@ class CreateEditPostView extends React.Component {
             category: '',
             voteScore: '',
             timestamp: '',
-            comments: []
+            comments: [],
+            sortMode: 'date'
+
         };
     }
 
@@ -38,32 +42,46 @@ class CreateEditPostView extends React.Component {
     }
 
     componentWillMount() {
-        console.log(this.props)
         this.props.getPost(this.props.id);
         this.props.getComments(this.props.id);
     }
 
+    applySorting = (sortMode) => {
+        this.setState({
+            sortMode
+        });
+    };
+
     render() {
         const {id} = this.state;
         return (
-            <div>
-                <section className='post'>
-                    {id === ''
-                    && createNewPost()
-                    }
-                    {id !== ''
-                    && editPost()
-                    }
-                </section>
-                <br/><br/><br/>
-            </div>
+            <Container>
+                <Row>
+                    <Col xs="8">
+                        <section className='post'>
+                            {id === ''
+                            && createNewPost()
+                            }
+                            {id !== ''
+                            && editPost()
+                            }
+                        </section>
+                    </Col>
+                    <Col xs="4">
+                        <SortingModal
+                            applySorting={this.applySorting}
+                        />
+                    </Col>
+                    <br/><br/><br/>
+                </Row>
+            </Container>
         );
     }
 }
 
 function createNewPost() {
     return <article>
-            <CreatePost/>
+        <CreatePost/>
     </article>
 }
 
@@ -71,16 +89,7 @@ function editPost() {
     // console.log(post)
 
     return <article>
-        <EditPost
-            // id={post.id}
-            // title={post.title}
-            // body={post.content}
-            // author={post.author}
-            // category={post.category}
-            // timestamp={post.timestamp}
-            // voteScore={post.voteScore}
-            // commentCount={post.commentCount}
-        />
+        <EditPost/>
     </article>
 }
 
