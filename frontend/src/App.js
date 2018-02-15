@@ -6,6 +6,7 @@ import {Container} from "reactstrap";
 import CreateEditPostView from "./components/view/CreateEditPostView";
 import Navigation from "./components/utils/NavigationBar";
 import CreatePost from "./components/post/CreatePost";
+import 'font-awesome/css/font-awesome.min.css'
 
 class App extends Component {
     constructor(props) {

@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {voteComment, votePost} from "../../actions";
+import {Button} from "reactstrap";
 
 class VotePanel extends Component {
 
@@ -18,14 +19,14 @@ class VotePanel extends Component {
             <section>
                 <span className='float-right'>Score: {voteScore}</span>
                 <br/>
-                <button
-                    className='float-right' type='button'
-                    onClick={() => this.submitVote('downVote')}>DOWNVOTE
-                </button>
-                <button
-                    className='float-right' type='button'
-                    onClick={() => this.submitVote('upVote')}>UPVOTE
-                </button>
+                <Button
+                    className='float-right fa fa-thumbs-o-down' type='button'
+                    onClick={() => this.submitVote('downVote')}>
+                </Button>
+                <Button
+                    className='float-right 	fa fa-thumbs-o-up' type='button'
+                    onClick={() => this.submitVote('upVote')}>
+                </Button>
             </section>
         )
     }
