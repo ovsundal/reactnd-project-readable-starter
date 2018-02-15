@@ -48,7 +48,7 @@ class CreatePost extends React.Component {
             voteScore: 1
         };
         this.props.createPost(data);
-        this.props.history.push('/');
+        // this.props.history.push('/');
     };
 
     render() {
@@ -57,7 +57,7 @@ class CreatePost extends React.Component {
                 <FormGroup>
                     <Label for="author">Author</Label>
                     <Input
-                        required
+                        valid={false}
                         type="text"
                         name="author"
                         id="author"

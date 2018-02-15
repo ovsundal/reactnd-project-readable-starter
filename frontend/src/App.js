@@ -16,6 +16,7 @@ class App extends Component {
             isOpen: false
         };
     }
+
     toggle() {
         this.setState({
             isOpen: !this.state.isOpen
@@ -29,13 +30,17 @@ class App extends Component {
 
                 {/*routing declarations*/}
                 <Switch>
-                    <Route exact path='/' component={MainPageView}/>
+                    {/*<Route exact path='/' component={MainPageView}/>*/}
+                    <Route exact path="/" render={() =>
+                        <MainPageView
+                            category="all"/>
+                    }/>
 
                     <Route path="/NewPost" component={CreatePost}/>
 
                     <Route exact path="/:category" render={(props) => (
                         <MainPageView
-                        category={props.match.params.category}/>
+                            category={props.match.params.category}/>
                     )}/>
 
                     <Route exact path="/:category/:id" render={(props) => (
@@ -50,4 +55,5 @@ class App extends Component {
         )
     }
 }
+
 export default App;
