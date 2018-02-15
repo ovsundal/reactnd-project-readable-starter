@@ -1,4 +1,4 @@
-import {Button, Col, Container, FormGroup, Input, Label, Row} from 'reactstrap';
+import {Button, Col, Container, Form, FormGroup, Input, Label, Row} from 'reactstrap';
 import React from "react";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
@@ -45,42 +45,44 @@ class EditComment extends React.Component {
 
     render() {
         return (
-            <Container>
-                <h2 className='text-center'>Edit Comment</h2>
-                <FormGroup>
-                    <Label for="author">Author</Label>
-                    <Input
-                        type="text"
-                        name="author"
-                        placeholder="author"
-                        value={this.state.author}
-                        disabled
-                    />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="body">Content</Label>
-                    <Input
-                        type="textarea"
-                        name="body"
-                        placeholder="content"
-                        value={this.state.body}
-                        onChange={this.handleTextInputChange}
-                    />
-                </FormGroup>
-                <Row className='text-center'>
-                    <Col xs='6'>
-                        <Button
-                            onClick={this.handleUpdate}>Update
-                        </Button>
-                    </Col>
-                    <Col xs='6'>
-                        <Button
-                            // handle cancel from parent
-                            onClick={this.handleCancel}>Cancel
-                        </Button>
-                    </Col>
-                </Row>
-            </Container>
+                <Form onSubmit={this.handleUpdate}>
+                    <h2 className='text-center'>Edit Comment</h2>
+                    <FormGroup>
+                        <Label for="author">Author</Label>
+                        <Input
+                            type="text"
+                            name="author"
+                            placeholder="author"
+                            value={this.state.author}
+                            disabled
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="body">Content</Label>
+                        <Input
+                            required
+                            type="textarea"
+                            name="body"
+                            placeholder="content"
+                            value={this.state.body}
+                            onChange={this.handleTextInputChange}
+                        />
+                    </FormGroup>
+                    <Row className='text-center'>
+                        <Col xs='6'>
+                            <Button
+                                type="submit"
+                                >Update
+                            </Button>
+                        </Col>
+                        <Col xs='6'>
+                            <Button
+                                // handle cancel from parent
+                                onClick={this.handleCancel}>Cancel
+                            </Button>
+                        </Col>
+                    </Row>
+                </Form>
         )
     }
 }

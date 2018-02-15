@@ -49,11 +49,12 @@ class CreateComment extends React.Component {
 
     render() {
         return (
-            <Form>
+            <Form onSubmit={this.handleCreate}>
                 <h2 className='text-center'>Create New Comment</h2>
                 <FormGroup>
                     <Label for="author">Author</Label>
                     <Input
+                        required
                         type="text"
                         name="author"
                         placeholder="author"
@@ -64,6 +65,7 @@ class CreateComment extends React.Component {
                 <FormGroup>
                     <Label for="body">Content</Label>
                     <Input
+                        required
                         type="textarea"
                         name="body"
                         placeholder="content"
@@ -74,7 +76,8 @@ class CreateComment extends React.Component {
                 <Row className='text-center'>
                     <Col xs='6'>
                         <Button
-                            onClick={this.handleCreate}>Submit
+                            type="submit"
+                            >Submit
                         </Button>
                     </Col>
                     <Col xs='6'>
