@@ -38,6 +38,7 @@ class CreateEditPostView extends React.Component {
     }
 
     componentWillMount() {
+        console.log(this.props)
         this.props.getPost(this.props.id);
         this.props.getComments(this.props.id);
     }

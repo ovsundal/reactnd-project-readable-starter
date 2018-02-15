@@ -25,20 +25,6 @@ export default function PostReducer(state = [], action) {
         case SORT_BY_CATEGORY: {
             return action.posts;
         }
-        // case SORT_BY_MODE: {
-        //     const newState = state.slice();
-        //
-        //     if(action.howToSort === 'score') {
-        //         newState.sort((a, b) => {
-        //             return b.voteScore - a.voteScore
-        //         })
-        //     } else if (action.howToSort === 'date') {
-        //         newState.sort((b, a) => {
-        //             return a.timestamp - b.timestamp
-        //         })
-        //     } else {}
-        //     return newState;
-        // }
         case DELETE_POST: {
                 return Object.values(state).filter((post) => {
                     return post.id !== action.posts.id;
