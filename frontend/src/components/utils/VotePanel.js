@@ -15,7 +15,7 @@ class VotePanel extends Component {
     render() {
         const {voteScore} = this.props;
         return (
-            <div>
+            <section>
                 <span className='float-right'>Score: {voteScore}</span>
                 <br/>
                 <button
@@ -26,7 +26,7 @@ class VotePanel extends Component {
                     className='float-right' type='button'
                     onClick={() => this.submitVote('upVote')}>UPVOTE
                 </button>
-            </div>
+            </section>
         )
     }
 }
