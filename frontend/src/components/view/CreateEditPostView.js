@@ -20,7 +20,7 @@ class CreateEditPostView extends React.Component {
             voteScore: '',
             timestamp: '',
             comments: [],
-            sortMode: 'date'
+            sortMode: ''
 
         };
     }
@@ -36,7 +36,7 @@ class CreateEditPostView extends React.Component {
                 category: post.category,
                 voteScore: post.voteScore,
                 timestamp: post.timestamp,
-                selectedCategory: post.category
+                selectedCategory: post.category,
             });
         }
     }
@@ -86,7 +86,6 @@ function createNewPost() {
 }
 
 function editPost() {
-    // console.log(post)
 
     return <article>
         <EditPost/>

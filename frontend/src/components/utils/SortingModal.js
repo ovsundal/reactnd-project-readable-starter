@@ -25,14 +25,22 @@ class SortingModal extends React.Component {
     handleFilterByCategory = event => {
         const categoryValue = event.target.value;
 
-        categoryValue === 'all'
-        ? this.props.getPosts()
-        : this.props.sortPostsByCategory(categoryValue);
+        // categoryValue === 'all'
+        // ? this.props.getPosts()
+        // : this.props.sortPostsByCategory(categoryValue);
+
+
+        if(categoryValue === 'all') {
+            this.props.getPosts();
+            this.props.history.push(`/`)
+        } else {
+            this.props.sortPostsByCategory(categoryValue);
+            this.props.history.push(`/${categoryValue}`);
+        }
 
         this.setState({
             selectedCategory: categoryValue
         });
-        this.props.history.push(`/${categoryValue}`)
     };
 
     handleFilterBySortingMode = event => {

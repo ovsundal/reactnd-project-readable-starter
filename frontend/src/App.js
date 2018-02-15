@@ -31,7 +31,6 @@ class App extends Component {
 
                 {/*routing declarations*/}
                 <Switch>
-                    {/*<Route exact path='/' component={MainPageView}/>*/}
                     <Route exact path="/" render={() =>
                         <MainPageView
                             category="all"/>
